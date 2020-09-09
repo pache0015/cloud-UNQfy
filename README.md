@@ -2,12 +2,12 @@
 
 # Seminario: Taller de Desarrollos de Servicios Web / Cloud Modernos - 2020 2s - 
  
-_El presente software toma como motivación principal el trabajo practico de la materia Seminario : Taller de Desarrollos de Servicios Web / Cloud Modernos el cual pide modelar (diseñar e implementar) una aplicación similar a Spotify, llamada **UNQfy** .  En esta, existe una gran cantidad de temas musicales (_tracks_)  los cuales siempre pertenecen a un _álbum_. Un _álbum_ tiene un sólo _artista_ como autor pero un _artista_ puede ser autor de múltiples _albumes_. Cada _track_ tiene asociado uno o más _géneros_, que son strings. También existen _playlists_, que son conjuntos de _tracks_ que pueden pertenecer a diferentes _álbumes_.
+El presente software toma como motivación principal el trabajo practico de la materia Seminario : Taller de Desarrollos de Servicios Web / Cloud Modernos el cual pide modelar (diseñar e implementar) una aplicación similar a Spotify, llamada **UNQfy** .  En esta, existe una gran cantidad de temas musicales (_tracks_)  los cuales siempre pertenecen a un _álbum_. Un _álbum_ tiene un sólo _artista_ como autor pero un _artista_ puede ser autor de múltiples _albumes_. Cada _track_ tiene asociado uno o más _géneros_, que son strings. También existen _playlists_, que son conjuntos de _tracks_ que pueden pertenecer a diferentes _álbumes_.
 En **UNQfy**, además de las típicas operaciones de alta, baja y modificación de todos estos elementos (_tracks, albums, artistas_), es posible:
 
-- Realizar búsquedas de temas. 
-- Recuperar todas las canciones (_tracks_) que fueron interpretadas por un determinado _artista_, y todas las canciones que se correspondan con un determinado género.
-- Autogenerar una _Playlist_ en base a una lista de géneros, es decir, rellenar una _playlist_ con canciones de determinados géneros y con una duración máxima.
+* Realizar búsquedas de temas. 
+* Recuperar todas las canciones (_tracks_) que fueron interpretadas por un determinado _artista_, y todas las canciones que se correspondan con un determinado género.
+* Autogenerar una _Playlist_ en base a una lista de géneros, es decir, rellenar una _playlist_ con canciones de determinados géneros y con una duración máxima.
 
 Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Posteriormente se explican los detalles, pero a grandes rasgos implica tener una serie de comandos que permitan alterar e inspeccionar el modelo de objetos de **UNQfy**.
 
@@ -24,7 +24,7 @@ Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Post
 
 ### Pre-requisitos 📋
 
-_Las *requisitos* necesarios para correr el proyecto:_
+Los *requisitos* necesarios para correr el proyecto:_
 
 - [nodejs](https://nodejs.org/) >= v10.x. 
 - [npm](https://www.npmjs.com/) >= 6.x.y 
@@ -35,13 +35,12 @@ _Las *requisitos* necesarios para correr el proyecto:_
 
 ## Construido con 🛠️
 
-_Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
+Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 
-
-**Falta?**
-- Utiliando Programacion Orientada a Objetos
+- Se utilizó Programacion Orientada a Objetos para el desarrollo del mismo.
 - [Javascript ES6](https://www.w3schools.com/Js/js_es6.asp)
 - [nodejs](https://nodejs.org/) - Para el back-end (Utilizamos la version 12.8.x).
+**Falta?**
 
 
 ## Patrones utilizados:
@@ -55,14 +54,14 @@ _Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 
 ### Instalación 🔧
 
-_Mas allá de la instalación de los pre-requisitos, el proyecto no necesita de ninguna instalación previa. 
+Más allá de la instalación de los pre-requisitos, el proyecto no necesita de ninguna instalación previa. 
 
 
 ## Comenzando 🚀
 
 Una vez clonado el repositorio, se interactúa con el programa desde la línea de comandos (*CLI*), para esto se debe contar con [`nodejs`](https://nodejs.org/) instalado y ejecutar `npm install` en una terminal desde la carpeta **falta**.
 
-**Aclaración: Todos los comandos se deben correr desde la carpeta *FALTA**
+**Aclaración**: Todos los comandos se deben correr desde la carpeta *FALTA**
 
 
 
@@ -82,10 +81,10 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 ### Instanciadores
 **Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si no existen reportan en la consola que no se pudo completar la operación, indicando el error correspondiente.
-**Aclaración B:** Losdatos deben ser validos. COnsiderando valido,como:
+**Aclaración B:** Lo sdatos deben ser validos. COnsiderando valido,como:
     **Falta listar reglas**
--
--
+* Una regla
+* Dos reglas
 
 
 1. **Agregar artista** 
