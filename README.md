@@ -25,14 +25,16 @@ También se desea la opción de autogenerar  una Playlist en base a una lista de
 
 ### Pre-requisitos 📋
 
-_Las *requisitos* necesarios para correr el proyecto:_
+Las *requisitos* necesarios para correr el proyecto:
+
     - [nodejs](https://nodejs.org/) >= v10.x. 
     - [npm](https://www.npmjs.com/) >= 6.x.y 
     - **FALTA?**
 
+
 ## Construido con 🛠️
 
-_Menciona las herramientas que se utilizon para crear el proyecto_
+_Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 
 **Falta**
 
