@@ -1,19 +1,18 @@
 # cloud-UNQfy
 
-# Seminario servicios Cloud - 2020 2s - 
+# Seminario: Taller de Desarrollos de Servicios Web / Cloud Modernos - 2020 2s - 
  
-_El presente software toma como motivación principal Modele (diseñe e implemente) una aplicación similar a Spotify, que llamaremos UNQfy
+_El presente software toma como motivación principal el trabajo practico de la materia Seminario : Taller de Desarrollos de Servicios Web / Cloud Modernos el cual pide modelar (diseñar e implementar) una aplicación similar a Spotify, llamada **UNQfy** .  En esta, existe una gran cantidad de temas musicales (_tracks_)  los cuales siempre pertenecen a un _álbum_. Un _álbum_ tiene un sólo _artista_ como autor pero un _artista_ puede ser autor de múltiples _albumes_. Cada _track_ tiene asociado uno o más _géneros_, que son strings. También existen _playlists_, que son conjuntos de _tracks_ que pueden pertenecer a diferentes _álbumes_.
+En **UNQfy**, además de las típicas operaciones de alta, baja y modificación de todos estos elementos (_tracks, albums, artistas_), es posible:
 
-En UNQfy existe una gran cantidad de temas musicales (tracks)  los cuales siempre pertenecen a un álbum. Un álbum tiene un sólo artista como autor pero un artista puede ser autor de múltiples albumes. Cada track tiene asociado uno o más géneros, que son strings. También existen playlists, que son conjuntos de tracks que pueden pertenecer a diferentes álbumes.
+- Realizar búsquedas de temas. 
+- Recuperar todas las canciones (_tracks_) que fueron interpretadas por un determinado _artista_, y todas las canciones que se correspondan con un determinado género.
+- Autogenerar una _Playlist_ en base a una lista de géneros, es decir, rellenar una _playlist_ con canciones de determinados géneros y con una duración máxima.
 
-En UNQfy, además de las típicas operaciones de alta, baja y modificación de todos estos elementos (tracks, albums, artistas), es posible:
-realizar búsquedas de temas. 
-Debe ser posible recuperar todas las canciones que fueron interpretadas por un determinado artista, y
-todas las canciones que se correspondan con un determinado género.
-También se desea la opción de autogenerar  una Playlist en base a una lista de géneros, es decir, rellenar una playlist con canciones de determinados géneros y con una duración máxima.
+Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Posteriormente se explican los detalles, pero a grandes rasgos implica tener una serie de comandos que permitan alterar e inspeccionar el modelo de objetos de **UNQfy**.
 
 
-###**Integrantes:**
+### **Integrantes:**
 
 | Integrante |   Legajo  |   email   | github user |
 | :------:   | :-------: | :------:  |  :-------:  |
@@ -25,78 +24,104 @@ También se desea la opción de autogenerar  una Playlist en base a una lista de
 
 ### Pre-requisitos 📋
 
-Las *requisitos* necesarios para correr el proyecto:
+_Las *requisitos* necesarios para correr el proyecto:_
 
-    - [nodejs](https://nodejs.org/) >= v10.x. 
-    - [npm](https://www.npmjs.com/) >= 6.x.y 
-    - **FALTA?**
+- [nodejs](https://nodejs.org/) >= v10.x. 
+- [npm](https://www.npmjs.com/) >= 6.x.y 
+- **FALTA?**
+
+
 
 
 ## Construido con 🛠️
 
 _Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 
-**Falta**
 
-- [Python](https://www.python.org/) - Para el back-end (Utilizamos la version **3.6.8**).
-- [Geopy](https://pypi.org/project/geopy/) - Para obtener los puntos desde la ubicación de la secuencia.
+**Falta?**
+- Utiliando Programacion Orientada a Objetos
+- [Javascript ES6](https://www.w3schools.com/Js/js_es6.asp)
+- [nodejs](https://nodejs.org/) - Para el back-end (Utilizamos la version 12.8.x).
+
+
+## Patrones utilizados:
+
+| **Patrón** |   **Documentacion/Agentes**   |
+| :------:   |            :-------:          |
+| - [Facade](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |                   |
+
+**Falta**
 
 
 ### Instalación 🔧
 
 _Mas allá de la instalación de los pre-requisitos, el proyecto no necesita de ninguna instalación previa. 
 
-## Despliegue 📦
-
-**FALTA LA PARTE DE LOS TEST**
-
 
 ## Comenzando 🚀
 
-Se interactúa con el programa desde la línea de comandos (*CLI*), para esto se debe contar con [`nodejs`](https://nodejs.org/) instalado y ejecutar `npm install` en una terminal desde la carpeta **falta**.
+Una vez clonado el repositorio, se interactúa con el programa desde la línea de comandos (*CLI*), para esto se debe contar con [`nodejs`](https://nodejs.org/) instalado y ejecutar `npm install` en una terminal desde la carpeta **falta**.
 
 **Aclaración: Todos los comandos se deben correr desde la carpeta *FALTA**
+
+
+
+
+## Despliegue 📦
+
+Ejecutar `npm test` para correr los tests del proyecto.
+
 
 
 
 ### Documentación de uso
 
 
-A continuación se listan los comandos que acepta y cómo deben ser usardos los mismos:
+A continuación se listan los comandos que acepta y cómo deben ser usados los mismos:
+
 
 ### Instanciadores
+**Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si no existen reportan en la consola que no se pudo completar la operación, indicando el error correspondiente.
+**Aclaración B:** Losdatos deben ser validos. COnsiderando valido,como:
+    **Falta listar reglas**
+-
+-
+
 
 1. **Agregar artista** 
 
   ```bash
-  node main.js addArtist <name> <country>
+  node main.js addArtist <aName> <aCountry> 
   ```
 
-  Reemplazar `name` por el nombre del artista y `country` por el país del mismo.
+  Reemplazar `aName` por el nombre del artista y `aCountry` por el país del mismo.
 
 2. **Agregar album**
 
   ```bash
-  node main.js addAlbum <name> <artistId> <year>
+  node main.js addAlbum <aName> <aArtistID> <aYear>
   ```
 
-  Reemplazar `name` por el nombre del album, `artistId` por el id del artista autor del mismo, `year` por su año de lanzamiento.
+  Reemplazar `aName` por el nombre del _albúm_, `aArtistID` por el ID del _artista_ **autor** del mismo, `aYear` por su año de lanzamiento.
 
 3. **Agregar track**
 
   ```bash
-  node main.js addTrack <name> <albumId> <duration> <genre1> <genre2> .. <genreN>
+  node main.js addTrack <aName> <aAlbumID> <aDuration> <genre1> <genre2> .. <genreN>
   ```
 
-  Reemplazar `name` por el nombre del track, `albumId` por el id de su album, `duration` por la duración del mismo, y el resto de los argumentos van a ser leidos como géneros (`genre1`, `genre2`, etc).
+  Reemplazar `aName` por el nombre del _track_, `aAlbumID` por el ID de su _album_, `aDuration` por la duración del mismo, y el resto de los argumentos, los géneros  (`genre1`, `genre2`, etc. Hasta el `genreN`).
+
+**Aclaración:** Debe darse al menos un genero
+
 
 4. **Agregar usuario**
 
   ```bash
-  node main.js addUser <name>
+  node main.js addUser <aName> 
   ```
 
-  Reemplazar `name` por el nombre del usuario.
+  Reemplazar `aName` por el nombre del _usuario_ a crear.
 
 ------
 
@@ -105,60 +130,60 @@ A continuación se listan los comandos que acepta y cómo deben ser usardos los 
 - **Eliminar artista**
 
   ```bash
-  node main.js deleteArtist <artistId>
+  node main.js deleteArtist <aArtistID>
   ```
 
-  Reemplazar `artistId` por el id del artista.
+  Reemplazar `aArtistID` por el id del _artista_.
 
 - **Elminar album**
 
   ```bash
-  node main.js deleteAlbum <albumId>
+  node main.js deleteAlbum <aAlbumID>
   ```
 
-  Reemplazar `albumId` el id del album.
+  Reemplazar `aAlbumID` el iD del _album_.
 
 - **Eliminar track**
 
   ```bash
-  node main.js deleteTrack <trackId>
+  node main.js deleteTrack <aTrackID>
   ```
 
-  Reemplazar `trackId` por el id del track.
+  Reemplazar `aTrackID` por el iD del _track_.
 
 - **Eliminar playlist**
 
   ```bash
-  node main.js deletePlaylist <playlistId>
+  node main.js deletePlaylist <aPlaylistID>
   ```
 
-  Reemplazar `playlistId` por el id del playlist.
+  Reemplazar `aPlaylistID` por el ID del _playlist_.
 
 ------
 
 #### Getters
 
-- **Obtener todos los artistas**
+- **Obtener todxs lxs artistas de la aplicación**
 
   ```bash
   node main.js getArtists
   ```
 
-- **Obtener todos los albumes de un artista**
+- **Obtener todos los albumes de unx artista dado**
 
   ```bash
-  node main.js getAlbums <artistId>
+  node main.js getAlbums <aArtistID>
   ```
 
-  Reemplazar `artistId` por el id del artista autor de los albumes.
+  Reemplazar `aArtistID` por el id del _artista_ a buscar, que es autor de los _albumes_.
 
 - **Obtener todos los tracks de un album**
 
   ```bash
-  node main.js getTracks <albumId>
+  node main.js getTracks <aAlbumID>
   ```
 
-  Reemplazar `albumId` por el id del album de los tracks.
+  Reemplazar `aAlbumID` por el ID del _album_ a buscar, donde pertenecen los _tracks_.
 
 - **Obtener todos los playlists**
 
@@ -166,7 +191,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usardos los 
   node main.js getPlaylists
   ```
 
-- **Obetener todos los users**
+- **Obetener todxs lxs users**
 
   ```bash
   node main.js getUsers
@@ -175,43 +200,87 @@ A continuación se listan los comandos que acepta y cómo deben ser usardos los 
 - **Obtener artista**
 
   ```bash
-  node main.js getArtist <artistId>
+  node main.js getArtist <aArtistID>
   ```
 
-  Reemplazar `artistId` por el id del artista.
+  Reemplazar `aArtistID` por el id del _artista_ a buscar.
 
 - **Obtener album**
 
   ```bash
-  node main.js getAlbum <albumId>
+  node main.js getAlbum <aAlbumID>
   ```
 
-  Reemplazar `albumId` por el id del album.
+  Reemplazar `aAlbumID` por el Id del _album_ a buscar.
 
 - **Obtener track**
 
   ```bash
-  node main.js getTrack <trackId>
+  node main.js getTrack <aTrackID>
   ```
 
-  Reemplazar `trackId` por el id del track.
+  Reemplazar `aTrackID` por el ID del _track_ a buscar.
 
 - **Obtener playlist**
 
   ```bash
-  node main.js getPlaylist <playlistId>
+  node main.js getPlaylist <aPlaylistID>
   ```
 
-  Reemplazar `playlistId` por el id de la playlist.
+  Reemplazar `aPlaylistID` por el ID de la _playlist_ a buscar.
 
 - **Obtener user**
 
   ```bash
-  node main.js getUser <userId>
+  node main.js getUser <aUserID>
   ```
 
-  Reemplazar `userId` por el id del user.
+  Reemplazar `aUserID` por el ID del _user_ a buscar.
 
 
+- **Buscar tracks de un artista**
+
+  ```bash
+  node main.js getTracksMatchingArtist <aArtistID>
+  ```
+
+  Reemplazar `aArtistsID` por el ID del _artista_ a buscar.
+
+- **Buscar tracks por géneros**
+
+  ```bash
+  node main.js getTracksMatchingGenres <genre1> <genre2> .. <genreN>
+  ```
+
+  Reemplazar `genre1`, `genre2` y todos los siguientes argumentos por los géneros de todos los _tracks_ a buscar.
+
+------
+
+#### Miscelaneos:
+
+
+- **Top 3 tracks más escuchados de un artista**
+
+  ```bash
+  node main.js top3TracksFromArtist <artistId>
+  ```
+
+  Reemplazar `artistId` por el id del artista.
+
+- **Generar un playlist con duración máxima y de ciertos géneros**
+
+  ```bash
+  node main.js generatePlaylist <name> <maxDuration> <genre1> <genre2> .. <genreN>
+  ```
+
+  Reemplazar `aName` por el nombre del _playlist_, `aMaxDuration` por la duración máxima de la misma, y `genre1`, `genre2`,etc, hasta `genreN` para los posibles géneros para sus _tracks_.
+
+- **Unx usuarix escucha un track**
+
+  ```bash
+  node main.js userListenTrack <aUserID> <aTrackID>
+  ```
+
+  Reemplazar `aUserID` por el ID del _usuario_, y `aTrackID` por el ID del _track_.
 
 
