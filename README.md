@@ -1,8 +1,8 @@
-# cloud-UNQfy
-
 # Seminario: Taller de Desarrollos de Servicios Web / Cloud Modernos - 2020 2s - 
+
+## UNQfy
  
-El presente software toma como motivación principal el trabajo practico de la materia Seminario : Taller de Desarrollos de Servicios Web / Cloud Modernos el cual pide modelar (diseñar e implementar) una aplicación similar a Spotify, llamada **UNQfy** .  En esta, existe una gran cantidad de temas musicales (_tracks_)  los cuales siempre pertenecen a un _álbum_. Un _álbum_ tiene un sólo _artista_ como autor pero un _artista_ puede ser autor de múltiples _albumes_. Cada _track_ tiene asociado uno o más _géneros_, que son strings. También existen _playlists_, que son conjuntos de _tracks_ que pueden pertenecer a diferentes _álbumes_.
+El presente software toma como motivación principal el [trabajo practico](https://docs.google.com/document/d/1Tfkl6l1_ly4FybquDjTqMHa5gdmrYgvvZpXZaneRFvA/edit#) de la materia *Seminario: Taller de Desarrollos de Servicios Web / Cloud Modernos*, el cual pide modelar (diseñar e implementar) una aplicación similar a Spotify, llamada **UNQfy** .  En esta, existe una gran cantidad de temas musicales (_tracks_)  los cuales siempre pertenecen a un _álbum_. Un _álbum_ tiene un sólo _artista_ como autor pero un _artista_ puede ser autor de múltiples _albumes_. Cada _track_ tiene asociado uno o más _géneros_, que son strings. También existen _playlists_, que son conjuntos de _tracks_ que pueden pertenecer a diferentes _álbumes_.
 En **UNQfy**, además de las típicas operaciones de alta, baja y modificación de todos estos elementos (_tracks, albums, artistas_), es posible:
 
 * Realizar búsquedas de temas. 
