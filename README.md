@@ -9,7 +9,7 @@ En **UNQfy**, además de las típicas operaciones de alta, baja y modificación 
 * Recuperar todas las canciones (_tracks_) que fueron interpretadas por un determinado _artista_, y todas las canciones que se correspondan con un determinado género.
 * Autogenerar una _Playlist_ en base a una lista de géneros, es decir, rellenar una _playlist_ con canciones de determinados géneros y con una duración máxima.
 
-Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Posteriormente se explican los detalles, pero a grandes rasgos implica tener una serie de comandos que permitan alterar e inspeccionar el modelo de objetos de **UNQfy**.
+Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Esto implica tener una serie de comandos que permitan alterar e inspeccionar el modelo de objetos de **UNQfy**.
 
 
 ### **Integrantes:**
@@ -32,13 +32,13 @@ Los *requisitos* necesarios para correr el proyecto:_
 
 
 
-
 ## Construido con 🛠️
 
 Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 
-- Se utilizó Programacion Orientada a Objetos para el desarrollo del mismo.
-- [Javascript ES6](https://www.w3schools.com/Js/js_es6.asp)
+- Se utilizó Programacion Orientada a Objetos para el desarrollo del mismo,
+  definiendo clases con la sintaxis [ECMA Script 6](https://www.w3schools.com/Js/js_es6.asp).
+- [Javascript](https://www.javascript.com/)
 - [nodejs](https://nodejs.org/) - Para el back-end (Utilizamos la version 12.8.x).
 **Falta?**
 
@@ -80,20 +80,16 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 
 ### Instanciadores
-**Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si no existen reportan en la consola que no se pudo completar la operación, indicando el error correspondiente.
-**Aclaración B:** Lo sdatos deben ser validos. COnsiderando valido,como:
-    **Falta listar reglas**
-* Una regla
-* Dos reglas
-
+**Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si los mismos, no existen entonces se reporta en la consola que no se pudo completar dicha operación, indicando el error correspondiente.
+**Aclaración B:** Todo dato ingresado debe ser válido. En caso contrario, se levantara la excepción correspondiente. 
 
 1. **Agregar artista** 
 
   ```bash
-  node main.js addArtist <aName> <aCountry> 
+  node main.js addArtist <aName> <aCountry>
   ```
 
-  Reemplazar `aName` por el nombre del artista y `aCountry` por el país del mismo.
+  Reemplazar `aName`  por el nombre del artista y `aCountry` por el país del mismo.
 
 2. **Agregar album**
 
@@ -106,54 +102,61 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 3. **Agregar track**
 
   ```bash
-  node main.js addTrack <aName> <aAlbumID> <aDuration> <genre1> <genre2> .. <genreN>
+  node main.js addTrack <aAlbumID> <aName>  <aDuration> <genre1> <genre2> .. <genreN>
   ```
 
-  Reemplazar `aName` por el nombre del _track_, `aAlbumID` por el ID de su _album_, `aDuration` por la duración del mismo, y el resto de los argumentos, los géneros  (`genre1`, `genre2`, etc. Hasta el `genreN`).
+  Reemplazar `aAlbumID` por el ID de su _album, `aName` por el nombre del _track_, _, `aDuration` por la duración del mismo, y el resto de los argumentos, los géneros  (`genre1`, `genre2`, etc. Hasta el `genreN`).
 
 **Aclaración:** Debe darse al menos un genero
-
 
 4. **Agregar usuario**
 
   ```bash
-  node main.js addUser <aName> 
+  node main.js addUser <aNickname> 
   ```
 
-  Reemplazar `aName` por el nombre del _usuario_ a crear.
+  Reemplazar `aNickname` por el alías del _usuario_ a crear.
+
+5. **Generar un playlist con duración máxima y de ciertos géneros**
+
+  ```bash
+  node main.js generatePlaylist <name> <maxDuration> <genre1> <genre2> .. <genreN>
+  ```
+
+  Reemplazar `aName` por el nombre del _playlist_, `aMaxDuration` por la duración máxima de la misma, y `genre1`, `genre2`,etc, hasta `genreN` para los posibles géneros para sus _tracks_.
 
 ------
 
 #### Eliminadores
 
-- **Eliminar artista**
+1. **Eliminar artista**
 
   ```bash
-  node main.js deleteArtist <aArtistID>
+  node main.js removeArtist <aArtistID>
   ```
 
   Reemplazar `aArtistID` por el id del _artista_.
 
-- **Elminar album**
+2. **Elminar album**
 
   ```bash
-  node main.js deleteAlbum <aAlbumID>
+  node main.js removeAlbum <aAlbumID>
   ```
 
   Reemplazar `aAlbumID` el iD del _album_.
 
-- **Eliminar track**
+3. **Eliminar track**
 
   ```bash
-  node main.js deleteTrack <aTrackID>
+  node main.js removeTrack <aTrackID>
   ```
 
   Reemplazar `aTrackID` por el iD del _track_.
 
-- **Eliminar playlist**
+4. **Eliminar playlist**
 
   ```bash
-  node main.js deletePlaylist <aPlaylistID>
+  node main.js removePlaylist <aPlaylistID>
   ```
 
   Reemplazar `aPlaylistID` por el ID del _playlist_.
@@ -162,13 +165,13 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 #### Getters
 
-- **Obtener todxs lxs artistas de la aplicación**
+1. **Obtener todxs lxs artistas de la aplicación**
 
   ```bash
   node main.js getArtists
   ```
 
-- **Obtener todos los albumes de unx artista dado**
+2. **Obtener todos los albumes de unx artista dado**
 
   ```bash
   node main.js getAlbums <aArtistID>
@@ -176,7 +179,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aArtistID` por el id del _artista_ a buscar, que es autor de los _albumes_.
 
-- **Obtener todos los tracks de un album**
+3. **Obtener todos los tracks de un album**
 
   ```bash
   node main.js getTracks <aAlbumID>
@@ -184,19 +187,20 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aAlbumID` por el ID del _album_ a buscar, donde pertenecen los _tracks_.
 
-- **Obtener todos los playlists**
+4. **Obtener todas las playlists**
 
   ```bash
   node main.js getPlaylists
   ```
 
-- **Obetener todxs lxs users**
+5. **Obetener todxs lxs users**
 
   ```bash
   node main.js getUsers
   ```
 
-- **Obtener artista**
+
+6. **Obtener artista**
 
   ```bash
   node main.js getArtist <aArtistID>
@@ -204,7 +208,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aArtistID` por el id del _artista_ a buscar.
 
-- **Obtener album**
+7. **Obtener album**
 
   ```bash
   node main.js getAlbum <aAlbumID>
@@ -212,7 +216,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aAlbumID` por el Id del _album_ a buscar.
 
-- **Obtener track**
+8. **Obtener track**
 
   ```bash
   node main.js getTrack <aTrackID>
@@ -220,7 +224,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aTrackID` por el ID del _track_ a buscar.
 
-- **Obtener playlist**
+9. **Obtener playlist**
 
   ```bash
   node main.js getPlaylist <aPlaylistID>
@@ -228,7 +232,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aPlaylistID` por el ID de la _playlist_ a buscar.
 
-- **Obtener user**
+10. **Obtener user**
 
   ```bash
   node main.js getUser <aUserID>
@@ -237,7 +241,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
   Reemplazar `aUserID` por el ID del _user_ a buscar.
 
 
-- **Buscar tracks de un artista**
+11. **Buscar todos los tracks de un artista**
 
   ```bash
   node main.js getTracksMatchingArtist <aArtistID>
@@ -245,7 +249,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aArtistsID` por el ID del _artista_ a buscar.
 
-- **Buscar tracks por géneros**
+12. **Buscar tracks por géneros**
 
   ```bash
   node main.js getTracksMatchingGenres <genre1> <genre2> .. <genreN>
@@ -255,10 +259,64 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 ------
 
+#### Search & Print:
+
+
+1. **Buscar todas las entidades por nombre parcial (artistas, albumes, tracks y playlists)**
+
+  ```bash
+  node main.js searchAllWithPartialName <stringToSearch>
+  ```
+
+  Reemplazar `stringToSearch` por el nombre parcial a buscar.
+
+2. **Buscar tracks por nombre parcial**
+
+  ```bash
+  node main.js searchTracksWithPartialName <stringToSearch>
+  ```
+
+  Reemplazar `stringToSearch` por el nombre parcial a buscar.
+
+3. **Buscar albumes por nombre parcial**
+
+  ```bash
+  node main.js searchAlbumsWithPartialName <stringToSearch>
+  ```
+
+  Reemplazar `stringToSearch` por el nombre parcial a buscar.
+
+4. **Buscar artistas por nombre parcial**
+
+  ```bash
+  node main.js searchArtistsWithPartialName <stringToSearch>
+  ```
+
+  Reemplazar `stringToSearch` por el nombre parcial a buscar.
+
+5. **Buscar playlists por nombre parcial**
+
+  ```bash
+  node main.js searchPlaylistsWithPartialName <stringToSearch>
+  ```
+
+  Reemplazar `stringToSearch` por el nombre parcial a buscar.
+
+
+------
+
 #### Miscelaneos:
 
+1. **Cantidad de veces que un user escuchó un track particular**
 
-- **Top 3 tracks más escuchados de un artista**
+  ```bash
+  node main.js timesListenedTrackByUser <userId> <trackId>
+  ```
+
+  Reemplazar `userId` por el id del user, y `trackId` por el id del track.
+
+
+2. **Top 3 tracks más escuchados de un artista**
 
   ```bash
   node main.js top3TracksFromArtist <artistId>
@@ -266,15 +324,8 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `artistId` por el id del artista.
 
-- **Generar un playlist con duración máxima y de ciertos géneros**
 
-  ```bash
-  node main.js generatePlaylist <name> <maxDuration> <genre1> <genre2> .. <genreN>
-  ```
-
-  Reemplazar `aName` por el nombre del _playlist_, `aMaxDuration` por la duración máxima de la misma, y `genre1`, `genre2`,etc, hasta `genreN` para los posibles géneros para sus _tracks_.
-
-- **Unx usuarix escucha un track**
+3. **Unx usuarix escucha un track**
 
   ```bash
   node main.js userListenTrack <aUserID> <aTrackID>
