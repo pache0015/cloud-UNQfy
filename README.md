@@ -78,6 +78,18 @@ Ejecutar `npm test` para correr los tests del proyecto.
 
 A continuación se listan los comandos que acepta y cómo deben ser usados los mismos:
 
+**tabla de contenidos**
+
+Links a tipos de comandos:
+
+
+- [Instanciadores](#Instanciadores)
+- [Getters](#Getters)
+- [Eliminadores](#Eliminadores)
+- [Search & Print](#Search & Print)
+- [Miscelaneos](#Miscelaneos)
+
+
 
 ### Instanciadores
 **Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si los mismos, no existen entonces se reporta en la consola que no se pudo completar dicha operación, indicando el error correspondiente.
@@ -127,41 +139,6 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 ------
 
-#### Eliminadores
-
-1. **Eliminar artista**
-
-  ```bash
-  node main.js removeArtist <aArtistID>
-  ```
-
-  Reemplazar `aArtistID` por el id del _artista_.
-
-2. **Elminar album**
-
-  ```bash
-  node main.js removeAlbum <aAlbumID>
-  ```
-
-  Reemplazar `aAlbumID` el iD del _album_.
-
-3. **Eliminar track**
-
-  ```bash
-  node main.js removeTrack <aTrackID>
-  ```
-
-  Reemplazar `aTrackID` por el iD del _track_.
-
-4. **Eliminar playlist**
-
-  ```bash
-  node main.js removePlaylist <aPlaylistID>
-  ```
-
-  Reemplazar `aPlaylistID` por el ID del _playlist_.
-
-------
 
 #### Getters
 
@@ -259,6 +236,42 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
 ------
 
+#### Eliminadores
+
+1. **Eliminar artista**
+
+  ```bash
+  node main.js removeArtist <aArtistID>
+  ```
+
+  Reemplazar `aArtistID` por el id del _artista_.
+
+2. **Elminar album**
+
+  ```bash
+  node main.js removeAlbum <aAlbumID>
+  ```
+
+  Reemplazar `aAlbumID` el iD del _album_.
+
+3. **Eliminar track**
+
+  ```bash
+  node main.js removeTrack <aTrackID>
+  ```
+
+  Reemplazar `aTrackID` por el iD del _track_.
+
+4. **Eliminar playlist**
+
+  ```bash
+  node main.js removePlaylist <aPlaylistID>
+  ```
+
+  Reemplazar `aPlaylistID` por el ID del _playlist_.
+
+------
+
 #### Search & Print:
 
 
@@ -333,4 +346,4 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 
   Reemplazar `aUserID` por el ID del _usuario_, y `aTrackID` por el ID del _track_.
 
-
+------
