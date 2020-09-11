@@ -48,7 +48,8 @@ Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
 | **Patrón** |   **Documentacion/Agentes**   |
 | :------:   |            :-------:          |
 | - [Facade](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |                   |
-
+| - [Strategy](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |                 |
+| - [Template method](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |          |
 **Falta**
 
 
@@ -272,7 +273,7 @@ Links a tipos de comandos:
 
 ------
 
-#### Search&Print:
+#### Search&Print
 
 
 1. **Buscar todas las entidades por nombre parcial (artistas, albumes, tracks y playlists)**
