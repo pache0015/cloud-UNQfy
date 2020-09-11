@@ -86,7 +86,7 @@ Links a tipos de comandos:
 - [Instanciadores](#Instanciadores)
 - [Getters](#Getters)
 - [Eliminadores](#Eliminadores)
-- [Search & Print](#Search & Print)
+- [Search & Print](#Search&Print)
 - [Miscelaneos](#Miscelaneos)
 
 
@@ -272,7 +272,7 @@ Links a tipos de comandos:
 
 ------
 
-#### Search & Print:
+#### Search&Print:
 
 
 1. **Buscar todas las entidades por nombre parcial (artistas, albumes, tracks y playlists)**
