@@ -310,7 +310,7 @@ A continuación se listan los comandos que acepta y cómo deben ser usados los m
 1. **Cantidad de veces que un user escuchó un track particular**
 
   ```bash
-  node main.js timesListenedTrackByUser <userId> <trackId>
+  node main.js timesUserListenedTrack <userId> <trackId>
   ```
 
   Reemplazar `userId` por el id del user, y `trackId` por el id del track.
