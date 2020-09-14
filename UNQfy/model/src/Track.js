@@ -1,3 +1,5 @@
+const Identificable = require('./Identificable.js')
+
 class Track extends Identificable{
     constructor(anID, aName, aDuration, aListOfGenres){
         this.duration = aDuration;

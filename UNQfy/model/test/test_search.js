@@ -3,10 +3,19 @@
 const assert = require('chai').assert;
 const Searcher = require('../src/Searcher.js');
 
+class DummyIdentificable{
+  constructor(aName){
+    this.name = aName
+  }
+}
 
 describe('Search entities with a partial name', () => {
   beforeEach(() => {
     my_search = new Searcher();
+    uniq_identificable = new DummyIdentificable("Sarasa");
+    list_with_a_uniq_identificable = [uniq_identificable];
+    list_witH_a_uniq_identificable_with_others = [uniq_identificable, new DummyIdentificable("A"), new DummyIdentificable("B"), new DummyIdentificable("C"), new DummyIdentificable("D")]
+    list_witH_diferent_identificables = [new DummyIdentificable("Pepe"), new DummyIdentificable("Pepe y sus amigos"), new DummyIdentificable("Regalame un sentimiento"), new DummyIdentificable("Pepemania")]
   });
 
   it('should return a empty list when search in a empty list', () => {
@@ -14,44 +23,43 @@ describe('Search entities with a partial name', () => {
     assert.lengthOf(searchInAEmptyList, 0);
   });
 
-  it('', () => {
-    let list_with_uniq_identificable = [new ("Sarasa")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
+  it('should return a list with an unique object when the list has a uniq element and its name matchs exactly  with the argument', () => {
+    let searchInAEmptyList = my_search.searchAllWithPartialName(list_with_a_uniq_identificable,"Sarasa",)
+    assert.lengthOf(searchInAEmptyList, 1);
+    assert.isTrue(searchInAEmptyList.includes(uniq_identificable))
   });
 
-
-  it('', () => {
-    let list_with_uniq_identificable = [new ("SARASA")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
+  it('should return a list with an unique object when the list has a uniq element and its name matchs exactly, but in UpperCase  ', () => {
+    let searchInAEmptyList = my_search.searchAllWithPartialName(list_with_a_uniq_identificable,"SARASA",)
+    assert.lengthOf(searchInAEmptyList, 1);
+    assert.isTrue(searchInAEmptyList.includes(uniq_identificable))
   });
 
-  it('', () => {
-    let list_with_uniq_identificable = [new ("sarasa")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
+  it('should return a list with an unique object when the list of the argument has a unique object when the name matchs exactly but in LowerCase  ', () => {
+    let searchInAEmptyList = my_search.searchAllWithPartialName(list_with_a_uniq_identificable,"sarasa",)
+    assert.lengthOf(searchInAEmptyList, 1);
+    assert.isTrue(searchInAEmptyList.includes(uniq_identificable))
   });
 
-  it('', () => {
-    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
-  });
-
-
-  it('', () => {
-    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
-  });
-
- it('', () => {
-    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
-    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
-    assert.lengthOf(searchInAEmptyList, 0);
-  });
-});
+//  it('', () => {
+//    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
+//    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
+//    assert.lengthOf(searchInAEmptyList, 0);
+//  });
+//
+//
+//  it('', () => {
+//    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
+//    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
+//    assert.lengthOf(searchInAEmptyList, 0);
+//  });
+//
+// it('', () => {
+//    let list_with_uniq_identificable = [new ("Sarasa y sus amigos")]
+//    let searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa",)
+//    assert.lengthOf(searchInAEmptyList, 0);
+//  });
+//});
 
 //    assert.equal(track.name, 'Welcome to the jungle');
 //    assert.strictEqual(track.duration, 200);
@@ -151,5 +159,4 @@ describe('Search entities with a partial name', () => {
 //    assert.isTrue(playlist.hasTrack(t3));
 //    assert.isTrue(playlist.hasTrack(t4));
 //    assert.lengthOf(playlist.tracks, 4);
-//  });
-
+});

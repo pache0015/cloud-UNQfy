@@ -1,3 +1,5 @@
+const Identificable = require('./Identificable.js')
+
 class PlayList extends Identificable{
     constructor(anID, aName, aMaxDuration, aListOfTracks){
         this.name = aName;
