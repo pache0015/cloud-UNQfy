@@ -1,3 +1,5 @@
+const Identificable = require('./Identificable.js')
+
 class Artist extends Identificable{
     constructor(anID, aCountry){
         this.country = aCountry;

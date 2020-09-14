@@ -1,3 +1,5 @@
+const Identificable = require('./Identificable.js')
+
 class User extends Identificable{
     constructor(anID, aNickname){
         this.name = aNickname;

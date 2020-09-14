@@ -1,3 +1,5 @@
+const Identificable = require('./Identificable.js')
+
 class Album extends Identificable{
     constructor(anID, aName, aYear, anAuthor){
         this.author = anAuthor;

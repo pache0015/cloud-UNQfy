@@ -1,6 +1,8 @@
 class Identificable{
-    constructor(anID){
+    constructor(anID, aName){
         this.id = anID;
-        name;
+        this.name = aName;
     }
 }
+
+module.exports = Identificable
