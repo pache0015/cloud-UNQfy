@@ -48,7 +48,7 @@ function saveUNQfy(unqfy, filename = 'data.json') {
 
 function main() {
   console.log('arguments: ');
-  process.argv.forEach(argument => console.log(argument));
+  process.argv.forEach(argument => console.log(typeof(argument)));
 }
 
 main();

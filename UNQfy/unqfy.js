@@ -1,9 +1,15 @@
 
 const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
+const PartialSearcher = require('./model/src/Searcher.js');
 
 
 class UNQfy {
+
+  constructor(){
+    this.searcher = new PartialSearcher();
+  
+  }
 
   // artistData: objeto JS con los datos necesarios para crear un artista
   //   artistData.name (string)
@@ -85,8 +91,28 @@ class UNQfy {
       * un metodo duration() que retorne la duración de la playlist.
       * un metodo hasTrack(aTrack) que retorna true si aTrack se encuentra en la playlist.
   */
-
+  
   }
+
+  //Busqueda:
+
+  searchTracksWithPartialName(partialStringToSearch){
+    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+  }
+
+  searchAlbumsWithPartialName(partialStringToSearch){
+    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+  }
+
+  searchArtistsWithPartialName(partialStringToSearch){
+    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+  }
+
+  searchPlaylistsWithPartialName(partialStringToSearch){
+    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+  }
+
+  //Persistencia:
 
   save(filename) {
     const serializedData = picklify.picklify(this);

@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const Searcher = require('../src/Searcher.js');
+const PartialSearcher = require('../src/Searcher.js');
 
 class DummyIdentificable{
   constructor(aName){
@@ -11,7 +11,7 @@ class DummyIdentificable{
 
 describe('Search entities with a partial name', () => {
   beforeEach(() => {
-    my_search = new Searcher();
+    my_search = new PartialSearcher();
     uniq_identificable = new DummyIdentificable("Sarasa");
     list_with_a_uniq_identificable = [uniq_identificable];
     list_witH_a_uniq_identificable_with_others = [uniq_identificable, new DummyIdentificable("A"), new DummyIdentificable("B"), new DummyIdentificable("C"), new DummyIdentificable("D")]
