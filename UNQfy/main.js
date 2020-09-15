@@ -61,7 +61,7 @@ function main() {
     throw e
   }
   if(isDestructiveFunction(command)){
-    saveUnfiyfy(unquify);
+    saveUNQfy(unquify);
   }
 }
 

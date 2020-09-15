@@ -22,5 +22,5 @@ let Singleton = (function () {
         }
     };
 })();
-
-module.exports = Singleton;
+const _instance = Singleton.getInstance()
+module.exports = _instance;

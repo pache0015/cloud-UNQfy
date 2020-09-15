@@ -3,7 +3,15 @@ const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
 const PartialSearcher = require('./model/src/Searcher.js');
 const Artist = require('./model/src/Artist.js');
+const Album = require('./model/src/Album.js');
+const Track = require('./model/src/Track.js');
+const User = require('./model/src/User.js');
+const PlayList = require('./model/src/PlayList.js');
+const PlayListGenerator = require('./model/src/PlayListGenerator.js');
+const PartialSearcher = require('./model/src/PartialSearcher.js');
+const _instance = require('./model/src/IDGenerator.js');
 const AlreadyExistEntity = require('./model/src/exceptions.js');
+const _instance = require('./model/src/IDGenerator.js');
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -18,7 +26,7 @@ function addEntity(obj, id, aHash){
 }
 
 function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
-  if(!(alreayExist || alreadyExist(alreayExist, aHash, aEntityID))){
+  if(!(alreayExist || alreadyExist(aHash, aEntityID))){
     throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe");
   }
   else{
@@ -48,12 +56,11 @@ class UNQfy {
     const newArtist = new Artist(artistData.name, artistData.country);
     const existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
     try{
-      evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
+      return evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
     }
     catch(e){
       throw e;
     }
-    return newArtist;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album
@@ -160,7 +167,7 @@ class UNQfy {
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
     //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy];
+    const classes = [UNQfy, Artist, Album, Track, User, PlayList, PartialSearcher, PlayListGenerator, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
