@@ -16,6 +16,10 @@ function saveUNQfy(unqfy, filename = 'data.json') {
   unqfy.save(filename);
 }
 
+function isDestructiveFunction(aStringCommand){
+  return ["add","create"].some( str => asd.includes(aStringCommand);
+}
+
 /*
  En esta funcion deberán interpretar los argumentos pasado por linea de comandos
  e implementar los diferentes comandos.
@@ -47,8 +51,18 @@ function saveUNQfy(unqfy, filename = 'data.json') {
 */
 
 function main() {
-  console.log('arguments: ');
-  process.argv.forEach(argument => console.log(typeof(argument)));
+  const unquify = getUnfiyfy()
+  const commandAndArguments = process.argv
+  const command = commandAndArguments[2];
+  try{
+    new CommandExecutor().evaluateCommand(listOfCommandAndArguments, aUNQUIfy)
+  }
+  if(isDestructiveFunction(command)){
+    saveUnfiyfy(unquify);
+  }
 }
 
 main();
+eval(`${process.argv[2]}(${process.argv[3]}, ${process.argv[4]})`)
+
+process.argv[2] + '(' + process.argv[3] + ', '+process.argv[4] +')'

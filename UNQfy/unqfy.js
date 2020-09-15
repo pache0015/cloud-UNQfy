@@ -91,10 +91,14 @@ class UNQfy {
       * un metodo duration() que retorne la duración de la playlist.
       * un metodo hasTrack(aTrack) que retorna true si aTrack se encuentra en la playlist.
   */
-  
   }
 
+
   //Busqueda:
+
+  changeSearcher(aSearcher){
+    this.searcher = aSearcher;
+  }
 
   searchTracksWithPartialName(partialStringToSearch){
     this.searcher.searchAllWithPartialName([], partialStringToSearch);
@@ -129,6 +133,6 @@ class UNQfy {
 
 // COMPLETAR POR EL ALUMNO: exportar todas las clases que necesiten ser utilizadas desde un modulo cliente
 module.exports = {
-  UNQfy: UNQfy,
+  UNQfy: UNQfy
 };
 

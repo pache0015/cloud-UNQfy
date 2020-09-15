@@ -9,5 +9,6 @@ class PartialSearcher extends Searcher{
         return aListOfIdentificables.filter( obj => obj.name.toLowerCase().includes(aPartialName.toLowerCase()));
     }
 }
+
 module.exports = PartialSearcher;
 
