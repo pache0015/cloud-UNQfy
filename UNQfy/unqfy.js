@@ -3,11 +3,33 @@ const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
 const PartialSearcher = require('./model/src/Searcher.js');
 
+function alreadyExist(aHash, aEntityID){
+  return aEntityID in aHash;
+}
+
+function getEntity(aHash, aKey){
+  return aHash[aKey];
+}
+
+function addEntity(obj, id, aHash){
+  aHash[id] = obj
+}
+
+function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
+  if(alreayExist || alreadyExist(alreayExist, aHash, aEntityID)){
+    throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe")
+  }
+  else{
+    addEntity(aEntity, aEntityID, aHash);
+  }
+}
+
 
 class UNQfy {
 
   constructor(){
     this.searcher = new PartialSearcher();
+    this._artists = {};
   
   }
 
@@ -21,8 +43,15 @@ class UNQfy {
     - una propiedad name (string)
     - una propiedad country (string)
   */
+    newArtist = new Artist(artistData.name, artistData.country);
+    existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
+    try{
+      evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
+    }
+    catch(e){
+      throw e
+    }
   }
-
 
   // albumData: objeto JS con los datos necesarios para crear un album
   //   albumData.name (string)
@@ -52,7 +81,7 @@ class UNQfy {
   }
 
   getArtistById(id) {
-
+    return getEntity(this._artist, id);
   }
 
   getAlbumById(id) {
@@ -93,6 +122,14 @@ class UNQfy {
   */
   }
 
+  
+
+  try {
+    num.toPrecision(500);   // A number cannot have 500 significant digits
+  }
+  catch(err) {
+    document.getElementById("demo").innerHTML = err.name;
+  }
 
   //Busqueda:
 
