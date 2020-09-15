@@ -1,12 +1,10 @@
 const Identificable = require('./Identificable.js')
-
 class Album extends Identificable{
     constructor(anID, aName, aYear, anAuthor){
+        super(anID, aName);
         this.author = anAuthor;
         this.year = aYear;
-        super(anID);
-        this.name = aName;
-        tracks = [];
+        this.tracks = [];
     }
 
     addTrack(aTrack){

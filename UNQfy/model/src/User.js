@@ -1,10 +1,8 @@
 const Identificable = require('./Identificable.js')
-
 class User extends Identificable{
-    constructor(anID, aNickname){
-        this.name = aNickname;
-        super(anID);
-        played = [];
+    constructor(anID, aName){
+        super(anID, aName);
+        this.played = [];
     }
 
     listen(aTrack){
