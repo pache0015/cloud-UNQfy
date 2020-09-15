@@ -3,7 +3,7 @@ const Identificable = require('./Identificable.js')
 class PlayList extends Identificable{
     constructor(anID, aName, aListOfTracks){
         super(anID, aName);
-        this._tracks = aListOfTracks;
+        this._tracks = aListOfTracks; 
     }
 
     get tracks(){ return this._tracks; }
