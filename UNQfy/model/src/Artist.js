@@ -1,7 +1,8 @@
 const Identificable = require('./Identificable.js')
+
 class Artist extends Identificable{
-    constructor(anID,  aName, aCountry){
-        super(anID, aName);
+    constructor(aName, aCountry){
+        super(aName);
         this.country = aCountry;
         this.albums = [];
     }
@@ -12,3 +13,4 @@ class Artist extends Identificable{
         null
     }
 }
+module.exports = Artist;

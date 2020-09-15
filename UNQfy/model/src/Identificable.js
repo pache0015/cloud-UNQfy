@@ -1,6 +1,7 @@
+const Singleton = require('../src/IDGenerator.js');
 class Identificable{
-    constructor(anID, aName){
-        this._id = anID;
+    constructor(aName){
+        this._id = Singleton.getInstance().newId();
         this._name = aName;
     }
 
