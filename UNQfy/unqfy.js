@@ -18,7 +18,7 @@ function addEntity(obj, id, aHash){
 }
 
 function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
-  if(alreayExist || alreadyExist(alreayExist, aHash, aEntityID)){
+  if(!(alreayExist || alreadyExist(alreayExist, aHash, aEntityID))){
     throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe");
   }
   else{
@@ -53,6 +53,7 @@ class UNQfy {
     catch(e){
       throw e;
     }
+    return newArtist;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album

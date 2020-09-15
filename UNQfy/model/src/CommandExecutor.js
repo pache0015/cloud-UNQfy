@@ -1,5 +1,5 @@
-function isAdd(command){
-    return ["addArtist", "addAlbum", "addTrack"].includes(command);
+function isAdd(command, aHash){
+    return command in aHash;
 }
 
 class CommandExecutor{
@@ -24,16 +24,15 @@ class CommandExecutor{
         };
     }
 
-
     evaluateCommand(listOfCommandAndArguments, aUNQUIfy){
         const command = listOfCommandAndArguments[2];
         let args = listOfCommandAndArguments.slice(3);   
         const unquifyFunction = eval(`aUNQUIfy.${command}`);
         if(this.hasEnoughArguments(args.length, unquifyFunction)){
-            if(isAdd(command)){
+            if(isAdd(command, this._handlers)){
                 args = this._handlers[command](args);
             }
-            eval(`aUNQUIfy.${command}(...args)`);
+                eval(`aUNQUIfy.${command}(...args)`);
         }
         else{
             throw new Error("Eh ñery");
@@ -41,7 +40,7 @@ class CommandExecutor{
     }
 
     hasEnoughArguments(aNumberOfArguments, aFunction){
-        return aFunction.length <= aNumberOfArguments;
+        return aNumberOfArguments >= aFunction.lengt;
     }
 }
 

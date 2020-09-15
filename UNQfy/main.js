@@ -57,12 +57,12 @@ function main() {
   try{
     new CommandExecutor().evaluateCommand(listOfCommandAndArguments, aUNQUIfy)
   }
+  catch(e){
+    throw e
+  }
   if(isDestructiveFunction(command)){
     saveUnfiyfy(unquify);
   }
 }
 
 main();
-eval(`${process.argv[2]}(${process.argv[3]}, ${process.argv[4]})`)
-
-process.argv[2] + '(' + process.argv[3] + ', '+process.argv[4] +')'
