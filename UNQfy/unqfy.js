@@ -2,6 +2,8 @@
 const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
 const PartialSearcher = require('./model/src/Searcher.js');
+const Artist = require('./model/src/Artist.js');
+const AlreadyExistEntity = require('./model/src/exceptions.js');
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -12,12 +14,12 @@ function getEntity(aHash, aKey){
 }
 
 function addEntity(obj, id, aHash){
-  aHash[id] = obj
+  aHash[id] = obj;
 }
 
 function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
   if(alreayExist || alreadyExist(alreayExist, aHash, aEntityID)){
-    throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe")
+    throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe");
   }
   else{
     addEntity(aEntity, aEntityID, aHash);
@@ -43,13 +45,13 @@ class UNQfy {
     - una propiedad name (string)
     - una propiedad country (string)
   */
-    newArtist = new Artist(artistData.name, artistData.country);
-    existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
+    const newArtist = new Artist(artistData.name, artistData.country);
+    const existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
     try{
       evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
     }
     catch(e){
-      throw e
+      throw e;
     }
   }
 
@@ -124,13 +126,7 @@ class UNQfy {
 
   
 
-  try {
-    num.toPrecision(500);   // A number cannot have 500 significant digits
-  }
-  catch(err) {
-    document.getElementById("demo").innerHTML = err.name;
-  }
-
+  
   //Busqueda:
 
   changeSearcher(aSearcher){
