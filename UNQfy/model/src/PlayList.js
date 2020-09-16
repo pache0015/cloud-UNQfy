@@ -1,4 +1,5 @@
-const Identificable = require('./Identificable.js')
+const Identificable = require('./Identificable.js');
+
 class PlayList extends Identificable{
     constructor(aName, aListOfTracks){
         super(aName);
@@ -7,6 +8,7 @@ class PlayList extends Identificable{
     get tracks(){ return this._tracks; }
     duration(){ return this._tracks.reduce((sum, track) =>  sum + track.duration, 0); }
     hasTrack(aTrack){
+        console.log(this._tracks);
         return this._tracks.some(track => track.id === aTrack.id );
     }
     addTrack(anTrack){
