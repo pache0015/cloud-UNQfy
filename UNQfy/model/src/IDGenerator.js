@@ -5,6 +5,9 @@ class IDGenerator{
     newId(){
         return this.idCounter++
     }
+    static getInstance(){
+        return Singleton.getInstance();
+    }
 }
 
 let Singleton = (function () {
