@@ -1,36 +1,45 @@
-
 const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
-const PartialSearcher = require('./model/src/Searcher.js');
 
-function alreadyExist(aHash, aEntityID){
-  return aEntityID in aHash;
-}
+const Artist = require('./model/src/Artist.js');
+const Album = require('./model/src/Album.js');
+const Track = require('./model/src/Track.js');
+const User = require('./model/src/User.js');
+const PlayList = require('./model/src/PlayList.js');
+const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
-function getEntity(aHash, aKey){
-  return aHash[aKey];
-}
+const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-function addEntity(obj, id, aHash){
-  aHash[id] = obj
-}
-
-function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
-  if(alreayExist || alreadyExist(alreayExist, aHash, aEntityID)){
-    throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe")
-  }
-  else{
-    addEntity(aEntity, aEntityID, aHash);
-  }
-}
-
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
+const _instance = require('./model/src/IDGenerator.js');
 
 class UNQfy {
 
   constructor(){
     this.searcher = new PartialSearcher();
     this._artists = {};
+    this._playList = {};
+  }
+
+  alreadyExist(aHash, aEntityID){
+    return aEntityID in aHash;
+  }
   
+  getEntity(aHash, aKey){
+    return aHash[aKey];
+  }
+  
+  addEntity(obj, id, aHash){
+    aHash[id] = obj;
+  }
+  
+  evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
+    if(this.alreadyExist(aHash, aEntityID)){
+      throw new AlreadyExistIDEntity(aEntity);
+    }
+    else{
+      this.addEntity(aEntity, aEntityID, aHash);
+    }
   }
 
   // artistData: objeto JS con los datos necesarios para crear un artista
@@ -43,14 +52,20 @@ class UNQfy {
     - una propiedad name (string)
     - una propiedad country (string)
   */
-    newArtist = new Artist(artistData.name, artistData.country);
-    existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
-    try{
-      evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
+    const newArtist = new Artist(artistData.name, artistData.country);
+    const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
+    if(!existName){
+      try{
+        this.evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
+      }
+      catch(e){
+        throw e;
+      } 
     }
-    catch(e){
-      throw e
+    else{
+      throw new ArtistNameAlreadyInUse(artistData.name);
     }
+    return newArtist;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album
@@ -81,7 +96,7 @@ class UNQfy {
   }
 
   getArtistById(id) {
-    return getEntity(this._artist, id);
+    return this.getEntity(this._artists, id);
   }
 
   getAlbumById(id) {
@@ -124,13 +139,7 @@ class UNQfy {
 
   
 
-  try {
-    num.toPrecision(500);   // A number cannot have 500 significant digits
-  }
-  catch(err) {
-    document.getElementById("demo").innerHTML = err.name;
-  }
-
+  
   //Busqueda:
 
   changeSearcher(aSearcher){
@@ -163,7 +172,7 @@ class UNQfy {
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
     //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy];
+    const classes = [UNQfy]//, Artist, Album, Track, User, PlayList, PartialSearcher, PlayListGenerator, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
