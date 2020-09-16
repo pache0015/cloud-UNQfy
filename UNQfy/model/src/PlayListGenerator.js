@@ -11,7 +11,7 @@ function tracksOfGenres(aListOfTracks, aListOfGenres){
 class PlayListGenerator{
 
     generatePlayList(aListOfTracks, aName, aMaxDuration, aListOfGenres){
-        let generatedPlayList = new PlayList();
+        const generatedPlayList = new PlayList();
         return generatedPlayList;
     }
     
