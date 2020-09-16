@@ -1,4 +1,5 @@
-const Identificable = require('./Identificable.js')
+const Identificable = require('./Identificable.js');
+
 class PlayList extends Identificable{
     constructor(aName, aListOfTracks){
         super(aName);

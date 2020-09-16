@@ -15,7 +15,7 @@ function saveUNQfy(unqfy, filename = 'data.json') {
 }
 
 function isDestructiveFunction(aStringCommand){
-  return ["add","create"].some( str => str.includes(aStringCommand));
+  return ["add","create"].some( str => aStringCommand.includes(str));
 }
 
 /*
@@ -56,11 +56,11 @@ function main() {
     new CommandExecutor().evaluateCommand(commandAndArguments, unquify);
   }
   catch(e){
-    e.message;
+    console.log(e.message);
   }
   if(isDestructiveFunction(command)){
     saveUNQfy(unquify);
   }
 }
 
-main();
+main(`node main.js addArtist  "Julian" "La Quiaca"`);

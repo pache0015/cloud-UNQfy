@@ -21,6 +21,9 @@ class UNQfy {
     this._artists = {};
     this._playLists = {};
   }
+  
+  get artists() { return this._artists; }
+  get playlists() { return this._playlists; }
 
   alreadyExist(aHash, aEntityID){
     return aEntityID in aHash;
@@ -55,18 +58,19 @@ class UNQfy {
   */
     const newArtist = new Artist(artistData.name, artistData.country);
     const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
+    console.log("Condicion" + existName);
     if(!existName){
       try{
         this.evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
       }
       catch(e){
-        throw e;
+        console.log(e);
       } 
     }
     else{
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
-    return newArtist;
+    return artistData;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album

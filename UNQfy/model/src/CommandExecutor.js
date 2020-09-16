@@ -36,7 +36,7 @@ class CommandExecutor{
                 eval(`aUNQUIfy.${command}(...args)`);
             }
             catch(e){
-                e.message;
+                console.log(e.message);
             }
         }
         else{
