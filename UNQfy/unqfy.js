@@ -8,7 +8,7 @@ const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
 const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
-const PartialSearcher = require('./model/src/Searcher.js');
+const PartialSearcher = require('./model/src/PartialSearcher.js');
 
 const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
