@@ -1,8 +1,6 @@
-
-
 const fs = require('fs'); // necesitado para guardar/cargar unqfy
 const unqmod = require('./unqfy'); // importamos el modulo unqfy
-
+const CommandExecutor = require('./model/src/CommandExecutor.js');
 // Retorna una instancia de UNQfy. Si existe filename, recupera la instancia desde el archivo.
 function getUNQfy(filename = 'data.json') {
   let unqfy = new unqmod.UNQfy();
@@ -17,7 +15,7 @@ function saveUNQfy(unqfy, filename = 'data.json') {
 }
 
 function isDestructiveFunction(aStringCommand){
-  return ["add","create"].some( str => asd.includes(aStringCommand);
+  return ["add","create"].some( str => str.includes(aStringCommand));
 }
 
 /*
@@ -51,14 +49,14 @@ function isDestructiveFunction(aStringCommand){
 */
 
 function main() {
-  const unquify = getUnfiyfy()
-  const commandAndArguments = process.argv
+  const unquify = getUNQfy();
+  const commandAndArguments = process.argv;
   const command = commandAndArguments[2];
   try{
-    new CommandExecutor().evaluateCommand(listOfCommandAndArguments, aUNQUIfy)
+    new CommandExecutor().evaluateCommand(commandAndArguments, unquify);
   }
   catch(e){
-    throw e
+    e.message;
   }
   if(isDestructiveFunction(command)){
     saveUNQfy(unquify);

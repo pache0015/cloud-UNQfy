@@ -16,9 +16,10 @@ const _instance = require('./model/src/IDGenerator.js');
 class UNQfy {
 
   constructor(){
-    this.searcher = new PartialSearcher();
+    this._searcher = new PartialSearcher();
+    this._playListGenerator = new PlayListGenerator();
     this._artists = {};
-    this._playList = {};
+    this._playLists = {};
   }
 
   alreadyExist(aHash, aEntityID){
@@ -172,7 +173,7 @@ class UNQfy {
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
     //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy]//, Artist, Album, Track, User, PlayList, PartialSearcher, PlayListGenerator, _instance];
+    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator];//, , Album, Track, User, PlayList, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
