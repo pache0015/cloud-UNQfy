@@ -13,34 +13,33 @@ const PartialSearcher = require('./model/src/PartialSearcher.js');
 const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
-function alreadyExist(aHash, aEntityID){
-  return aEntityID in aHash;
-}
-
-function getEntity(aHash, aKey){
-  return aHash[aKey];
-}
-
-function addEntity(obj, id, aHash){
-  aHash[id] = obj;
-}
-
-function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
-  if(alreadyExist(aHash, aEntityID)){
-    throw new AlreadyExistIDEntity(aEntity);
-  }
-  else{
-    addEntity(aEntity, aEntityID, aHash);
-  }
-}
-
-
 class UNQfy {
 
   constructor(){
     this.searcher = new PartialSearcher();
     this._artists = {};
+    this._playList = {};
+  }
+
+  alreadyExist(aHash, aEntityID){
+    return aEntityID in aHash;
+  }
   
+  getEntity(aHash, aKey){
+    return aHash[aKey];
+  }
+  
+  addEntity(obj, id, aHash){
+    aHash[id] = obj;
+  }
+  
+  evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
+    if(this.alreadyExist(aHash, aEntityID)){
+      throw new AlreadyExistIDEntity(aEntity);
+    }
+    else{
+      this.addEntity(aEntity, aEntityID, aHash);
+    }
   }
 
   // artistData: objeto JS con los datos necesarios para crear un artista
@@ -57,7 +56,7 @@ class UNQfy {
     const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
     if(!existName){
       try{
-        evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
+        this.evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
       }
       catch(e){
         throw e;
@@ -66,7 +65,7 @@ class UNQfy {
     else{
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
-    return artistData;
+    return newArtist;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album
@@ -97,7 +96,7 @@ class UNQfy {
   }
 
   getArtistById(id) {
-    return getEntity(this._artist, id);
+    return this.getEntity(this._artists, id);
   }
 
   getAlbumById(id) {

@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const PartialSearcher = require('../src/Searcher.js');
+const PartialSearcher = require('../src/PartialSearcher.js');
 
 class DummyIdentificable{
   constructor(aName){

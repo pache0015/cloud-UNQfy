@@ -3,7 +3,6 @@
 const assert = require('chai').assert;
 const libunqfy = require('./unqfy');
 
-
 function createAndAddArtist(unqfy, artistName, country) {
   const artist = unqfy.addArtist({ name: artistName, country });
   return artist;
@@ -15,6 +14,10 @@ function createAndAddAlbum(unqfy, artistId, albumName, albumYear) {
 
 function createAndAddTrack(unqfy, albumId, trackName, trackDuraction, trackGenres) {
   return unqfy.addTrack(albumId, { name: trackName, duration: trackDuraction, genres: trackGenres });
+}
+
+function getArtist(unqfy, anID){
+  return unqfy.getArtistById(anID);
 }
 
 
@@ -29,6 +32,15 @@ describe('Add, remove and filter data', () => {
     const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
 
     assert.equal(artist.name, 'Guns n\' Roses');
+    assert.equal(artist.country, 'USA');
+
+  });
+
+  it('should get an artist by id', () => {
+    createAndAddArtist(unqfy, 'Led\' Zepellin', 'USA');
+    const artist = getArtist(unqfy, 1);
+
+    assert.equal(artist.name, 'Led\' Zepellin');
     assert.equal(artist.country, 'USA');
 
   });
