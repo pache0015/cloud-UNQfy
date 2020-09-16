@@ -1,15 +1,17 @@
-
 const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
+
 const Artist = require('./model/src/Artist.js');
 const Album = require('./model/src/Album.js');
 const Track = require('./model/src/Track.js');
 const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
 const PlayListGenerator = require('./model/src/PlayListGenerator.js');
+
 const PartialSearcher = require('./model/src/Searcher.js');
-const _instance = require('./model/src/IDGenerator.js');
+
 const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
+const _instance = require('./model/src/IDGenerator.js');
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -171,7 +173,7 @@ class UNQfy {
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
     //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy, Artist, Album, Track, User, PlayList, PartialSearcher, PlayListGenerator, _instance];
+    const classes = [UNQfy]//, Artist, Album, Track, User, PlayList, PartialSearcher, PlayListGenerator, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
