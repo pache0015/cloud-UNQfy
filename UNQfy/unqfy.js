@@ -1,17 +1,15 @@
 
 const picklify = require('picklify'); // para cargar/guarfar unqfy
 const fs = require('fs'); // para cargar/guarfar unqfy
-const PartialSearcher = require('./model/src/Searcher.js');
 const Artist = require('./model/src/Artist.js');
 const Album = require('./model/src/Album.js');
 const Track = require('./model/src/Track.js');
 const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
 const PlayListGenerator = require('./model/src/PlayListGenerator.js');
-const PartialSearcher = require('./model/src/PartialSearcher.js');
+const PartialSearcher = require('./model/src/Searcher.js');
 const _instance = require('./model/src/IDGenerator.js');
-const AlreadyExistEntity = require('./model/src/exceptions.js');
-const _instance = require('./model/src/IDGenerator.js');
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -25,9 +23,9 @@ function addEntity(obj, id, aHash){
   aHash[id] = obj;
 }
 
-function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity, alreayExist=false){
-  if(!(alreayExist || alreadyExist(aHash, aEntityID))){
-    throw new AlreadyExistEntity("El identificador " + aEntityID + " ya existe");
+function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
+  if(alreadyExist(aHash, aEntityID)){
+    throw new AlreadyExistIDEntity(aEntity);
   }
   else{
     addEntity(aEntity, aEntityID, aHash);
@@ -54,13 +52,19 @@ class UNQfy {
     - una propiedad country (string)
   */
     const newArtist = new Artist(artistData.name, artistData.country);
-    const existName = Object.keys(this._artists).some(artist => artist.name === newArtist.name);
-    try{
-      return evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist, existName);
+    const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
+    if(!existName){
+      try{
+        evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
+      }
+      catch(e){
+        throw e;
+      } 
     }
-    catch(e){
-      throw e;
+    else{
+      throw new ArtistNameAlreadyInUse(artistData.name);
     }
+    return artistData;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album
