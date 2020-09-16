@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const PartialSearcher = require('../src/PartialSearcher.js');
+const PlayListGenerator = require('../src/PlayListGenerator.js');
 
 class DummyIdentificable{
   constructor(aName){
@@ -9,24 +9,16 @@ class DummyIdentificable{
   }
 }
 
-describe('Search entities with a partial name', () => {
-  let my_search = null;
-  let uniq_identificable = null;
-  let list_with_a_uniq_identificable = null;
-  let list_witH_a_uniq_identificable_with_others = null;
-  let list_witH_diferent_identificables = null;
+describe('Generation of playlists', () => {
+  let myPlayListGenerator = null;
 
   beforeEach(() => {
-    my_search = new PartialSearcher();
-    uniq_identificable = new DummyIdentificable("Sarasa");
-    list_with_a_uniq_identificable = [uniq_identificable];
-    list_witH_a_uniq_identificable_with_others = [uniq_identificable, new DummyIdentificable("A"), new DummyIdentificable("B"), new DummyIdentificable("C"), new DummyIdentificable("D")]
-    list_witH_diferent_identificables = [new DummyIdentificable("Pepe"), new DummyIdentificable("Pepe y sus amigos"), new DummyIdentificable("Regalame un sentimiento"), new DummyIdentificable("Pepemania")]
+    myPlayListGenerator = new PlayListGenerator();
   });
 
   it('should return a empty list when search in a empty list', () => {
-    const searchInAEmptyList = my_search.searchAllWithPartialName([],"Sarasa");
-    assert.lengthOf(searchInAEmptyList, 0);
+    const playList = myPlayListGenerator.generatePlayList([], []);
+    
   });
 
   it('should return a list with an unique object when the list has a uniq element and its name matchs exactly  with the argument', () => {

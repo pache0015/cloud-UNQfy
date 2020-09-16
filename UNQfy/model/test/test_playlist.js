@@ -3,18 +3,7 @@
 const assert = require('chai').assert;
 const PlayList = require('../src/PlayList.js');
 const Track = require('../src/Track.js');
-//    get tracks(){ return this._tracks; }
-//    duration(){ return this._tracks.reduce((sum, track) =>  sum + track.duration, 0); }
-//    hasTrack(aTrack){
-//        return this._tracks.some(track => track.id === aTrack.id );
-//    }
-//    addTrack(anTrack){
-//        this.tracks.push(anTrack);
-//    }
-//    removeTrack(aTrackID){
-//        null
-//    }
-//}
+
 
 describe('Test about playlist', () => {
     let myPlayList = null;
