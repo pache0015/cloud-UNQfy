@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert;
 const PlayList = require('../src/PlayList.js');
-const Track = require('../src/Track.js');
+const {Track, TrackNotFoundException} = require('../src/Track.js');
 
 
 describe('Test about playlist', () => {
@@ -52,9 +52,14 @@ describe('Test about playlist', () => {
 
     it('a playlist has a track when add it', () => {
       const track0 = new Track("", 1, []);
-      console.log("ID: " + track0.id);
       myPlayList.addTrack(track0);
       assert.isTrue(myPlayList.hasTrack(track0));
+    });
+
+    it('remove a track from a playlist throw a TrackNotFoundException', () => {
+      const track0 = new Track("Asd", 42, ["jazz"]);
+      myPlayList.removeTrack(track0);
+      assert.throws(TrackNotFoundException);
     });
 });
   
