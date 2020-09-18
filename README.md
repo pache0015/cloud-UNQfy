@@ -28,6 +28,7 @@ Los *requisitos* necesarios para correr el proyecto:_
 
 - [nodejs](https://nodejs.org/) >= v10.x. 
 - [npm](https://www.npmjs.com/) >= 6.x.y 
+- [mocha](https://mochajs.org/) >= 13.x.y
 - **FALTA?**
 
 
@@ -40,6 +41,7 @@ Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
   definiendo clases con la sintaxis [ECMA Script 6](https://www.w3schools.com/Js/js_es6.asp).
 - [Javascript](https://www.javascript.com/)
 - [nodejs](https://nodejs.org/) - Para el back-end (Utilizamos la version 12.8.x).
+- [mocha](https://mochajs.org/) - Para el TDD
 **Falta?**
 
 
@@ -69,7 +71,8 @@ Una vez clonado el repositorio, se interactúa con el programa desde la línea d
 
 ## Despliegue 📦
 
-Ejecutar `npm test` para correr los tests del proyecto.
+Ejecutar `npm test`desde la carpeta **FALTA** para correr los tests del proyecto.
+**Falta**
 
 
 
