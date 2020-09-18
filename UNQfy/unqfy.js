@@ -58,7 +58,6 @@ class UNQfy {
   */
     const newArtist = new Artist(artistData.name, artistData.country);
     const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
-    console.log("Condicion" + existName);
     if(!existName){
       try{
         this.evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);

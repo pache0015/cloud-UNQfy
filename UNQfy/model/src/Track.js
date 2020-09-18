@@ -1,4 +1,12 @@
 const Identificable = require('./Identificable.js');
+
+class TrackNotFoundException extends Error {
+    constructor(aTrack){
+        super(`No se encuentra el track ${aTrack.name}!`);
+        this.name = TrackNotFoundException;
+      }
+}
+
 class Track extends Identificable{
     constructor(aName, aDuration, aListOfGenres){
         super(aName);
@@ -9,3 +17,9 @@ class Track extends Identificable{
     get genres(){ return this._genres; }
 }
 module.exports = Track;
+
+
+module.exports = {
+    Track : Track,
+    ArtistNameAlreadyInUse : TrackNotFoundException
+  };
