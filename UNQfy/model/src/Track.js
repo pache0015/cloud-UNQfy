@@ -15,9 +15,11 @@ class Track extends Identificable{
     }
     get duration(){ return this._duration; }
     get genres(){ return this._genres; }
-}
-module.exports = Track;
 
+    hasGenre(aGenre){
+        return this._genres.includes(aGenre);
+    }
+}
 
 module.exports = {
     Track : Track,

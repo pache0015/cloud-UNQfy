@@ -6,7 +6,7 @@ const Album = require('./model/src/Album.js');
 const Track = require('./model/src/Track.js');
 const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
-const PlayListGenerator = require('./model/src/PlayListGenerator.js');
+const {PlayListGenerator} = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
