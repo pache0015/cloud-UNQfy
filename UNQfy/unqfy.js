@@ -13,6 +13,36 @@ const PartialSearcher = require('./model/src/PartialSearcher.js');
 const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
+
+function flatten(aList){
+  return aList.reduce((acc, list) => acc.concat(list), []);
+}
+
+function alreadyExist(aHash, aEntityID){
+  return aEntityID in aHash;
+}
+
+function getEntity(aHash, aKey){
+  return aHash[aKey];
+}
+
+function addEntity(obj, id, aHash){
+  aHash[id] = obj;
+}
+
+function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
+  if(alreadyExist(aHash, aEntityID)){
+    throw new AlreadyExistIDEntity(aEntity);
+  }
+  else{
+    addEntity(aEntity, aEntityID, aHash);
+  }
+}
+
+function allFromHash(aHash){
+  Object.values(aHash);
+}
+
 class UNQfy {
 
   constructor(){
@@ -20,30 +50,7 @@ class UNQfy {
     this._playListGenerator = new PlayListGenerator();
     this._artists = {};
     this._playLists = {};
-  }
-  
-  get artists() { return this._artists; }
-  get playlists() { return this._playlists; }
-
-  alreadyExist(aHash, aEntityID){
-    return aEntityID in aHash;
-  }
-  
-  getEntity(aHash, aKey){
-    return aHash[aKey];
-  }
-  
-  addEntity(obj, id, aHash){
-    aHash[id] = obj;
-  }
-  
-  evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
-    if(this.alreadyExist(aHash, aEntityID)){
-      throw new AlreadyExistIDEntity(aEntity);
-    }
-    else{
-      this.addEntity(aEntity, aEntityID, aHash);
-    }
+    this._users = {};
   }
 
   // artistData: objeto JS con los datos necesarios para crear un artista
@@ -60,10 +67,10 @@ class UNQfy {
     const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
     if(!existName){
       try{
-        this.evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
+        evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
       }
       catch(e){
-        console.log(e);
+        throw e;
       } 
     }
     else{
@@ -100,7 +107,7 @@ class UNQfy {
   }
 
   getArtistById(id) {
-    return this.getEntity(this._artists, id);
+    return getEntity(this._artists, id);
   }
 
   getAlbumById(id) {
@@ -127,7 +134,29 @@ class UNQfy {
 
   }
 
+  getArtists(){
+    return allFromHash(this._artists);
+  }
 
+  getTracks(){
+    const listOfListOfTracks = this.allArtists().map(artist => this.getTracksMatchingArtist(artist.name));
+    const tracks = flatten(listOfListOfTracks);
+    return tracks;
+  }
+
+  getPlayLists(){
+    return allFromHash(this._playLists);
+  }
+
+  getUsers(){
+    return allFromHash(this._users);
+  }
+
+  getAlbums(){
+    //FALTA
+    return [];
+  }
+  
   // name: nombre de la playlist
   // genresToInclude: array de generos
   // maxDuration: duración en segundos
@@ -139,9 +168,15 @@ class UNQfy {
       * un metodo duration() que retorne la duración de la playlist.
       * un metodo hasTrack(aTrack) que retorna true si aTrack se encuentra en la playlist.
   */
+    let playList = null;
+    try{
+      playList = this._playListGenerator.generatePlayList(this.allTracks(), name, maxDuration, genresToInclude);
+    }
+    catch(e){
+      throw e;
+    }
+    return playList;
   }
-
-  
 
   
   //Busqueda:
@@ -151,19 +186,19 @@ class UNQfy {
   }
 
   searchTracksWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+    this.searcher.searchAllWithPartialName(this.getTracks(), partialStringToSearch);
   }
 
   searchAlbumsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+    this.searcher.searchAllWithPartialName(this.getAlbums(), partialStringToSearch);
   }
 
   searchArtistsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+    this.searcher.searchAllWithPartialName(this.getArtists(), partialStringToSearch);
   }
 
   searchPlaylistsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName([], partialStringToSearch);
+    this.searcher.searchAllWithPartialName(this.getPlayLists(), partialStringToSearch);
   }
 
   //Persistencia:

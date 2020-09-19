@@ -2,6 +2,8 @@ class Searcher{
     searchAllWithPartialName(aListOfIdentificables, aStringName){
         throw Error("This should be implemented");
     }
+
+    
 }
 
 class PartialSearcher extends Searcher{
