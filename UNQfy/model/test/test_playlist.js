@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const PlayList = require('../src/PlayList.js');
+const {PlayList} = require('../src/PlayList.js');
 const {Track, TrackNotFoundException} = require('../src/Track.js');
 
 
@@ -58,8 +58,8 @@ describe('Test about playlist', () => {
 
     it('remove a track from a playlist throw a TrackNotFoundException', () => {
       const track0 = new Track("Asd", 42, ["jazz"]);
-      myPlayList.removeTrack(track0);
-      assert.throws(TrackNotFoundException);
+      const exercise = () => myPlayList.removeTrack(track0);
+      assert.throws(exercise, TrackNotFoundException);
     });
 });
   
