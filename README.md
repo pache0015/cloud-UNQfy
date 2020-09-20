@@ -16,7 +16,7 @@ Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Esto
 
 | Integrante |   Legajo  |   email   | github user |
 | :------:   | :-------: | :------:  |  :-------:  |
-|  - **Facundo Pacheco** | Leg. ????? | [pache.facundo@gmail.com ](pache.facundo@gmail.com) | [pache0015](https://github.com/pache0015) |
+|  - **Facundo Pacheco** | Leg. 40340 | [pache.facundo@gmail.com ](pache.facundo@gmail.com) | [pache0015](https://github.com/pache0015) |
 |- **Horacio Valenzuela** | Leg. 38613 | [valenzuelahoracioe@gmail.com](valenzuelahoracioe@gmail.com) | [UnderABloodySky](https://github.com/UnderABloodySky) |
 
 ------
