@@ -2,19 +2,17 @@ const Identificable = require('./Identificable.js')
 class User extends Identificable{
     constructor(aName){
         super(aName);
-        this.played = [];
+        this.trackPlayed = [];
     }
     listen(aTrack){
-        this.played.push(aTrack);
+        this.trackPlayed.push(aTrack);
     }
-    listenedTracks(){
-        let tracks = [] 
-        this.played.forEach(played => tracks.push(played.track));
-        return tracks;
+    listenedTracks(){ 
+        return this.trackPlayed;
     }
-    timesUserListenedTrack(aTrackID){
-        let trackPlayed = this.played.filter(played => played.id === aTrackID);
-        return trackPlayed.length == 0 ? 0 : trackPlayed.length * trackPlayed[0].duration;
+    timesUserListenedTrack(aTrack){
+        const aTrackPlayed = this.trackPlayed.filter(played => played.id === aTrack.id);
+        return aTrackPlayed.length;
     }
 }
 module.exports = User;

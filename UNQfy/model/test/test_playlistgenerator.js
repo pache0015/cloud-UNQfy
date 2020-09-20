@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert;
 const {PlayListGenerator, NoGenresMatchException, NoGenresException} = require('../src/PlayListGenerator.js');
-const {Track} = require('../src/Track.js');
+const Track = require('../src/Track.js');
 
 describe('Generation of playlists', () => {
   const myPlayListGenerator = new PlayListGenerator();

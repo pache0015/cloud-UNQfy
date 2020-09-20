@@ -2,7 +2,8 @@
 
 const assert = require('chai').assert;
 const {PlayList} = require('../src/PlayList.js');
-const {Track, TrackNotFoundException} = require('../src/Track.js');
+const Track = require('../src/Track.js');
+const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/exceptions.js');
 
 
 describe('Test about playlist', () => {
@@ -60,6 +61,13 @@ describe('Test about playlist', () => {
       const track0 = new Track("Asd", 42, ["jazz"]);
       const exercise = () => myPlayList.removeTrack(track0);
       assert.throws(exercise, TrackNotFoundException);
+    });
+
+    it('Add Track throw a TrackAlreadyExistInPlayList', () => {
+      const track0 = new Track("Asd", 42, ["jazz"]);
+      myPlayList.addTrack(track0);
+      const exercise = () => myPlayList.addTrack(track0);
+      assert.throws(exercise, TrackAlreadyExistInPlayList);
     });
 });
   

@@ -1,4 +1,5 @@
 const PlayList = require('./PlayList.js');
+const Track = require('../src/Track.js');
 
 class NoGenresMatchException extends Error {
     constructor(listOfGenres){

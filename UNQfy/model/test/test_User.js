@@ -11,7 +11,7 @@ class DummyIdentificable{
   }
 }
 
-describe('Search entities with a partial name', () => {
+describe('User', () => {
     
   beforeEach(() => {
     aUser = new User("Jose");
@@ -28,14 +28,14 @@ describe('Search entities with a partial name', () => {
     aUser.listen(aOtherTrack);
     assert.lengthOf(aUser.listenedTracks(), 2);
   });
-  it('Duration of listenedTrack by Track.Id', () => {
+  it('Duration of listenedTrack by Track', () => {
     aUser.listen(aTrack);
     aUser.listen(aTrack);
     aUser.listen(aOtherTrack);
-    assert.equal(aUser.timesUserListenedTrack(aTrack.id), 240);
+    assert.equal(aUser.timesUserListenedTrack(aTrack), 2);
   });
   it('Track not heard by the user', () => {
     aUser.listen(aTrack);
-    assert.equal(aUser.timesUserListenedTrack(aOtherTrack.id), 0);
+    assert.equal(aUser.timesUserListenedTrack(aOtherTrack), 0);
   });
 });
