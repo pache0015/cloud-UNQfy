@@ -8,10 +8,13 @@ class User extends Identificable{
         this.played.push(aTrack);
     }
     listenedTracks(){
-        return this.played;
+        let tracks = [] 
+        this.played.forEach(played => tracks.push(played.track));
+        return tracks;
     }
     timesUserListenedTrack(aTrackID){
-        null
+        let trackPlayed = this.played.filter(played => played.id === aTrackID);
+        return trackPlayed.length == 0 ? 0 : trackPlayed.length * trackPlayed[0].duration;
     }
 }
 module.exports = User;
