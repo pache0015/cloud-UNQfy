@@ -15,9 +15,9 @@ class AlreadyExist extends Error {
 }
 
 class Adder extends Identificable{
-    constructor(aName){
+    constructor(aName, aList = []){
         super(aName);
-        this._myElements = [];
+        this._myElements = aList;
     }
 
     get myElements() { return this._myElements; }
@@ -37,10 +37,8 @@ class Adder extends Identificable{
         if(!this.belongsElement(anIdentificable)){
             throw anException;
         }
-        this._myElements.remove(anIdentificable);    
+        this._myElements = this._myElements.filter(identificable => identificable.id === anIdentificable.id);    
     }
 }
 
-module.exports = {  Adder : Adder,
-                    AlreadyExist : AlreadyExist, 
-                    NotFoundElement : NotFoundElement };
+module.exports = {  Adder , AlreadyExist, NotFoundElement };

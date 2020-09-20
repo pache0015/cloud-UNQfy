@@ -47,7 +47,7 @@ class PlayListGenerator{
         catch (e){
             throw e;
         }
-        const generatedPlayList = new PlayList(aName, listsOftracks);
+        const generatedPlayList = new PlayList.PlayList(aName, listsOftracks);
         return generatedPlayList;
     }
 }
