@@ -26,7 +26,7 @@ class PlayListGenerator{
                 const tracks = tuple[0];
                 const duration = tuple[1];
                 if(this.haveElementInCommon(aListOfGenres, aTrack)
-                && duration < aMaxDuration){
+                 && duration < aMaxDuration && aTrack.duration < aMaxDuration){
                     tracks.push(aTrack);
                 } 
                 return [tracks, duration+aTrack.duration];}, [[], 0]);
