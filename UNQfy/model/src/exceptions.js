@@ -11,6 +11,12 @@ class ArtistNameAlreadyInUse extends Error {
         this.name = ArtistNameAlreadyInUse;
       }
 }
+class AlbumNotFoundException extends Error {
+  constructor(anAlbumID){
+      super(`No se pudo encontrar el album: ${anAlbumID}`);
+      this.name ="AlbumNotFoundException";
+  }
+}
 class TrackNotFoundException extends Error {
   constructor(aTrack){
       super(`No se pudo encontrar el track: ${aTrack}`);
@@ -26,6 +32,7 @@ class TrackAlreadyExistInPlayList extends Error {
 
 
 module.exports = {
+  AlbumNotFoundException : AlbumNotFoundException,
   TrackAlreadyExistInPlayList : TrackAlreadyExistInPlayList,
     TrackNotFoundException : TrackNotFoundException,
     AlreadyExistIDEntity : AlreadyExistIDEntity,

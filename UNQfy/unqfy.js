@@ -10,7 +10,7 @@ const {PlayListGenerator} = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {AlreadyExistIDEntity, ArtistNameAlreadyInUse} = require('./model/src/exceptions.js');
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, TrackNotFoundException, AlbumNotFoundException} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
 
@@ -40,7 +40,7 @@ function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
 }
 
 function allFromHash(aHash){
-  Object.values(aHash);
+  return Object.values(aHash);
 }
 
 class UNQfy {
@@ -76,7 +76,7 @@ class UNQfy {
     else{
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
-    return artistData;
+    return newArtist;
   }
 
   // albumData: objeto JS con los datos necesarios para crear un album
@@ -89,6 +89,16 @@ class UNQfy {
      - una propiedad name (string)
      - una propiedad year (number)
   */
+  let artist = null;
+    try{
+      artist = this.getArtistById(artistId);
+    }
+    catch(e){
+      throw e;
+    } 
+    const anAlbum = new Album(albumData.name, albumData.year, artist.name);
+    artist.addAlbum(anAlbum);
+    return anAlbum;
   }
 
 
@@ -104,6 +114,17 @@ class UNQfy {
       - una propiedad duration (number),
       - una propiedad genres (lista de strings)
   */
+    let album = null;
+    try{
+      album = this.getAlbumById(albumId);
+    }
+    catch(e){
+      throw e;
+    } 
+    const aTrack = new Track(trackData.name, trackData.duration, trackData.genres);
+    
+    album.addTrack(aTrack);
+    return aTrack;
   }
 
   getArtistById(id) {
@@ -111,15 +132,20 @@ class UNQfy {
   }
 
   getAlbumById(id) {
-
+    const albums = this.getAlbums().filter(album => album.id === id);
+    if (albums.length === 0){
+      throw new AlbumNotFoundException(id); 
+    }
+    return albums[0];
   }
 
   getTrackById(id) {
-
+    //let track = this.getTracks().filter(track => track.id === id);
+    //return track.length == 0 ?  : ;
   }
 
   getPlaylistById(id) {
-
+    return getEntity(this._playList, id);
   }
 
   // genres: array de generos(strings)
@@ -140,8 +166,7 @@ class UNQfy {
 
   getTracks(){
     const listOfListOfTracks = this.allArtists().map(artist => this.getTracksMatchingArtist(artist.name));
-    const tracks = flatten(listOfListOfTracks);
-    return tracks;
+    return listOfListOfTracks.flat();
   }
 
   getPlayLists(){
@@ -153,8 +178,8 @@ class UNQfy {
   }
 
   getAlbums(){
-    //FALTA
-    return [];
+    const albums = this.getArtists().map(artist => artist.albums);
+    return albums.flat();
   }
   
   // name: nombre de la playlist

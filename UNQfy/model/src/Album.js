@@ -3,9 +3,8 @@ const {Adder} = require('./Adder.js');
 const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/exceptions.js');
 
 class Album extends Adder{
-    constructor(aName, aYear, anAuthor){
+    constructor(aName, aYear){
         super(aName);
-        this.author = anAuthor;
         this.year = aYear;
     }
     get tracks(){ return this.myElements; }
