@@ -34,13 +34,13 @@ describe('Test about Adder', () => {
 
     it('remove a element when adder has none throw a NotFoundElement', () => {
       const anIdentificable = new Identificable("");
-      const exercise = () => myAdder.removeElements(anIdentificable);
+      const exercise = () => myAdder.removeElement(anIdentificable);
       assert.throws(exercise, NotFoundElement);
     });
 
     it('remove a element when adder has none throw a CustomException in the argment', () => {
       const anIdentificable = new Identificable("");
-      const exercise = () => myAdder.removeElements(anIdentificable, new CustomException());
+      const exercise = () => myAdder.removeElement(anIdentificable, new CustomException());
       assert.throws(exercise, CustomException);
     });
 
@@ -63,6 +63,15 @@ describe('Test about Adder', () => {
       const exercise = () => myAdder.addElement(anIdentificable, new CustomException());
       assert.throws(exercise, CustomException);
     });
+
+  it('radd a element when adder already it throw a  a CustomException in the argment', () => {
+    const anIdentificable = new Identificable("");
+    myAdder.addElement(anIdentificable);
+    myAdder.removeElement(anIdentificable);
+    assert.isFalse(myAdder.belongsElement(anIdentificable));
+  });
+
+
 
 
 });

@@ -4,13 +4,6 @@ const assert = require('chai').assert;
 const User = require('../src/User.js');
 const Track = require('../src/Track.js');
 
-
-class DummyIdentificable{
-  constructor(aName){
-    this.name = aName;
-  }
-}
-
 describe('User', () => {
   let aUser = null;
   let aTrack = null;

@@ -69,5 +69,12 @@ describe('Test about playlist', () => {
       const exercise = () => myPlayList.addTrack(track0);
       assert.throws(exercise, TrackAlreadyExistInPlayList);
     });
+
+    it('remove a track from a playlist ', () => {
+        const track0 = new Track("Asd", 42, ["jazz"]);
+        myPlayList.addTrack(track0);
+        myPlayList.removeTrack(track0);
+        assert.isFalse(myPlayList.hasTrack(track0));
+    });
 });
   

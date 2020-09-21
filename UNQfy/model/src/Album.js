@@ -10,10 +10,10 @@ class Album extends Adder{
     get tracks(){ return this.myElements; }
 
     addTrack(aTrack){
-        super.addElement(aTrack, new  TrackAlreadyExistInPlayList(aTrack));
+        this.addElement(aTrack, new  TrackAlreadyExistInPlayList(aTrack));
     }
     removeTrack(aTrack){
-        super.removeElements(aTrack, new TrackNotFoundException(aTrack));
+        this.removeElement(aTrack, new TrackNotFoundException(aTrack));
     }
 }
 module.exports = Album;

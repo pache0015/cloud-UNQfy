@@ -1,14 +1,14 @@
 class AlreadyExistIDEntity extends Error {
     constructor(anIdentificable){
       super(`El identificador ${anIdentificable.id} ya existe!`);
-      this.name = AlreadyExistIDEntity;
+      this.name = "AlreadyExistIDEntity";
     }
 }
 
 class ArtistNameAlreadyInUse extends Error {
     constructor(aName){
         super(`Ya existe unx artista con el nombre ${aName}!`);
-        this.name = ArtistNameAlreadyInUse;
+        this.name = "ArtistNameAlreadyInUse";
       }
 }
 class ArtistNotFoundException extends Error {
@@ -36,12 +36,21 @@ class TrackAlreadyExistInPlayList extends Error {
   }
 }
 
+class AlbumAlreadyExistInPlayList extends Error {
+    constructor(anAlbum){
+        super(`El album ya pertenece al artista:  ${anAlbum}`);
+        this.name ="AlbumAlreadyExistInPlayList";
+    }
+}
+
+
 
 module.exports = {
-    ArtistNotFoundException : ArtistNotFoundException,
-  AlbumNotFoundException : AlbumNotFoundException,
-  TrackAlreadyExistInPlayList : TrackAlreadyExistInPlayList,
-    TrackNotFoundException : TrackNotFoundException,
-    AlreadyExistIDEntity : AlreadyExistIDEntity,
-    ArtistNameAlreadyInUse : ArtistNameAlreadyInUse
+    ArtistNotFoundException,
+    AlbumNotFoundException,
+    AlbumAlreadyExistInPlayList,
+    TrackAlreadyExistInPlayList,
+    TrackNotFoundException,
+    AlreadyExistIDEntity,
+    ArtistNameAlreadyInUse
   };

@@ -33,11 +33,11 @@ class Adder extends Identificable{
         this._myElements.push(anIdentificable);
     }
 
-    removeElements(anIdentificable, anException = new NotFoundElement(anIdentificable)){
+    removeElement(anIdentificable, anException = new NotFoundElement(anIdentificable)){
         if(!this.belongsElement(anIdentificable)){
             throw anException;
         }
-        this._myElements = this._myElements.filter(identificable => identificable.id === anIdentificable.id);    
+        this._myElements = this._myElements.filter(identificable => identificable.id !== anIdentificable.id);
     }
 }
 

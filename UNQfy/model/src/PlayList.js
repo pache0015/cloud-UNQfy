@@ -1,6 +1,5 @@
 const Adder = require('./Adder.js');
 const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/exceptions.js');
-const Track = require('../src/Track.js');
 
 class PlayList extends Adder.Adder{
     constructor(aName, aListOfTracks){
@@ -20,7 +19,7 @@ class PlayList extends Adder.Adder{
     }
 
     removeTrack(aTrack){
-        this.removeElements(aTrack, new TrackNotFoundException(aTrack));
+        this.removeElement(aTrack, new TrackNotFoundException(aTrack));
     }
 }
 module.exports = {PlayList, TrackNotFoundException };
