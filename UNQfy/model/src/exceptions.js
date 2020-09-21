@@ -4,7 +4,19 @@ class AlreadyExistIDEntity extends Error {
       this.name = "AlreadyExistIDEntity";
     }
 }
+class NotFoundElement extends Error {
+    constructor(anIdentificable){
+        super(`El identificador ${anIdentificable.id} no existe!`);
+        this.name = "NotFoundElement";
+    }
+}
 
+class AlreadyExist extends Error {
+    constructor(anIdentificable){
+        super(`El identificador ${anIdentificable.id} ya existe!`);
+        this.name ="AlreadyExist";
+    }
+}
 class ArtistNameAlreadyInUse extends Error {
     constructor(aName){
         super(`Ya existe unx artista con el nombre ${aName}!`);
@@ -50,9 +62,24 @@ class UserNameAlreadyInUse extends Error {
         this.name = "UserNameAlreadyInUse";
     }
 }
-
+class NoGenresMatchException extends Error {
+    constructor(listOfGenres){
+        super(`No hay tracks que pertenezcan a estos generos: ${listOfGenres} `);
+        this.name = "NoGenresMatchException";
+    }
+}
+class NoGenresException extends Error {
+    constructor(){
+        super(`Al crear una PlayList, la lista de generos no pueden ser vacia`);
+        this.name = "NoGenresException";
+    }
+}
 
 module.exports = {
+    NoGenresMatchException,
+    NoGenresException,
+    AlreadyExist,
+    NotFoundElement,
     ArtistNotFoundException,
     AlbumNotFoundException,
     AlbumAlreadyExistInPlayList,
