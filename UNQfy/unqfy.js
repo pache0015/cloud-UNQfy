@@ -14,10 +14,6 @@ const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, TrackNotFoundException,Arti
 const _instance = require('./model/src/IDGenerator.js');
 
 
-function flatten(aList){
-  return aList.reduce((acc, list) => acc.concat(list), []);
-}
-
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
 }
@@ -64,7 +60,7 @@ class UNQfy {
     - una propiedad country (string)
   */
     const newArtist = new Artist(artistData.name, artistData.country);
-    const existName = Object.values(this._artists).some(artist => artist.name === newArtist.name);
+    const existName = this.getArtists().some(artist => artist.name === newArtist.name);
     if(!existName){
       try{
         evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
@@ -128,7 +124,11 @@ class UNQfy {
   }
 
   getArtistById(id) {
-    return getEntity(this._artists, id);
+    const artist = getEntity(this._artists, id);
+    if(artist === undefined){
+      throw new ArtistNotFoundException(id);
+    }
+    return artist;
   }
 
   getAlbumById(id) {

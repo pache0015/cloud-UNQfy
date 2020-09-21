@@ -3,13 +3,16 @@ const assert = require('chai').assert;
 const Artist = require('../src/Artist.js');
 
 describe('IDGenerator', () => {
-    let identificable_artista = null;
+    const identificable_artista0 = new Artist("Juan", "Quiaca");
+    const identificable_artista1 = new Artist("Pepe", "QuiacaSur");
+
     it('x', () => {
-        identificable_artista = new Artist("Juan", "Quiaca")
-        assert.isNotNull(identificable_artista.id);
+        assert.isNotNull(identificable_artista0.id);
     });
     it('x1', () => {
-        identificable_artista = new Artist("Pepe", "QuiacaSur")
-        assert.isNotNull(identificable_artista.id);
+        assert.isNotNull(identificable_artista1.id);
+    });
+    it('x1', () => {
+        assert.isTrue(identificable_artista0.id < identificable_artista1.id);
     });
 });

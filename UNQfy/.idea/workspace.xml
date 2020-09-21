@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test_IDGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_IDGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/exceptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/exceptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +47,11 @@
     <property name="javascript.nodejs.core.library.typings.version" value="12.12.62" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/model/test" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -71,6 +75,38 @@
       <test-names>
         <name value="Add, remove and filter data" />
         <name value="should add an album to an artist" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Add, remove and filter data.should add an artist" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test.js</test-file>
+      <test-names>
+        <name value="Add, remove and filter data" />
+        <name value="should add an artist" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Add, remove and filter data.should get an artist by id" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test.js</test-file>
+      <test-names>
+        <name value="Add, remove and filter data" />
+        <name value="should get an artist by id" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -106,9 +142,13 @@
       <item itemvalue="Mocha.model/test" />
       <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
       <item itemvalue="Mocha.Test about playlist" />
+      <item itemvalue="Mocha.Add, remove and filter data.should get an artist by id" />
+      <item itemvalue="Mocha.Add, remove and filter data.should add an artist" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.Add, remove and filter data.should add an artist" />
+        <item itemvalue="Mocha.Add, remove and filter data.should get an artist by id" />
         <item itemvalue="Mocha.Test about playlist" />
         <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
       </list>
@@ -123,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600652526117</updated>
       <workItem from="1600652527768" duration="1100000" />
-      <workItem from="1600653659775" duration="395000" />
+      <workItem from="1600653659775" duration="5111000" />
     </task>
     <servers />
   </component>
@@ -151,22 +191,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1315" height="182" key="GridCell.Tab.0.bottom" timestamp="1600653629225">
+    <state width="1315" height="268" key="GridCell.Tab.0.bottom" timestamp="1600659356302">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="182" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600653629225" />
-    <state width="1315" height="182" key="GridCell.Tab.0.center" timestamp="1600653629224">
+    <state width="1315" height="268" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600659356302" />
+    <state width="1315" height="268" key="GridCell.Tab.0.center" timestamp="1600659356301">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="182" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600653629224" />
-    <state width="1315" height="182" key="GridCell.Tab.0.left" timestamp="1600653629224">
+    <state width="1315" height="268" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
+    <state width="1315" height="268" key="GridCell.Tab.0.left" timestamp="1600659356301">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="182" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600653629224" />
-    <state width="1315" height="182" key="GridCell.Tab.0.right" timestamp="1600653629225">
+    <state width="1315" height="268" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
+    <state width="1315" height="268" key="GridCell.Tab.0.right" timestamp="1600659356301">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="182" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629225" />
+    <state width="1315" height="268" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
     <state width="1315" height="180" key="GridCell.Tab.1.bottom" timestamp="1600653629211">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
@@ -215,17 +255,5 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state width="1315" height="180" key="GridCell.Tab.3.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/model/test/test.js</url>
-          <line>38</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

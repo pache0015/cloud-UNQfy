@@ -13,7 +13,7 @@ class ArtistNameAlreadyInUse extends Error {
 }
 class ArtistNotFoundException extends Error {
     constructor(artistThing){
-        super(`No se pudo encontrar el artist: ${anAlbumID}`);
+        super(`No se pudo encontrar el artista: ${artistThing}`);
         this.name ="ArtistNotFoundException";
     }
 }

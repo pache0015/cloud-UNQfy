@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const libunqfy = require('../../unqfy');
+const libunqfy = require('./unqfy');
 
 function createAndAddArtist(unqfy, artistName, country) {
   const artist = unqfy.addArtist({ name: artistName, country });
@@ -32,15 +32,15 @@ describe('Add, remove and filter data', () => {
     const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
     assert.equal(artist.name, 'Guns n\' Roses');
     assert.equal(artist.country, 'USA');
-
+    assert.equal(unqfy.getArtists().length, 1);
   });
 
   it('should get an artist by id', () => {
-    createAndAddArtist(unqfy, 'Led\' Zepellin', 'USA');
-    const artist = getArtist(unqfy, 1);
+    const artist = createAndAddArtist(unqfy, 'Led\' Zepellin', 'USA');
+    const getArtist = getArtist(unqfy, 1);
 
-    assert.equal(artist.name, 'Led\' Zepellin');
-    assert.equal(artist.country, 'USA');
+    assert.equal(getArtist.name, 'Led\' Zepellin');
+    assert.equal(getArtist.country, 'USA');
 
   });
 

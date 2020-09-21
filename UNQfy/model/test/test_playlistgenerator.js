@@ -58,7 +58,7 @@ describe('Generation of playlists', () => {
     const track3 = new Track("", 1, ["cumbion"]);
     const track4 = new Track("", 42, ["tango"]);
     const otherTracks = list.concat([track3, track4]);
-    const playList = myPlayListGenerator.generatePlayList(list.concat(otherTracks), "CumbionRemix", 3, ["cumbion"]);
+    const playList = myPlayListGenerator.generatePlayList(otherTracks, "CumbionRemix", 3, ["cumbion"]);
     assert.equal(playList.name, "CumbionRemix");
     assert.isTrue(playList.hasTrack(aTrack1));
     assert.isFalse(playList.hasTrack(aTrack0));
