@@ -212,8 +212,8 @@ class UNQfy {
     let playList = null;
     try{
       const listOfTracks = this.getTracks();
-      console.log(listOfTracks)
       playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
+      evaluateThrowExceptionOrAdd(this._playLists, playList.id, playList);
     }
     catch(e){
       throw e;
@@ -223,25 +223,33 @@ class UNQfy {
 
   
   //Busqueda:
-
   changeSearcher(aSearcher){
-    this.searcher = aSearcher;
+    this._searcher = aSearcher;
   }
 
   searchTracksWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName(this.getTracks(), partialStringToSearch);
+    return this._searcher.searchAllWithPartialName(this.getTracks(), partialStringToSearch);
   }
 
   searchAlbumsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName(this.getAlbums(), partialStringToSearch);
+    return this._searcher.searchAllWithPartialName(this.getAlbums(), partialStringToSearch);
   }
 
   searchArtistsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName(this.getArtists(), partialStringToSearch);
+    return this._searcher.searchAllWithPartialName(this.getArtists(), partialStringToSearch);
   }
 
   searchPlaylistsWithPartialName(partialStringToSearch){
-    this.searcher.searchAllWithPartialName(this.getPlayLists(), partialStringToSearch);
+    return this._searcher.searchAllWithPartialName(this.getPlayLists(), partialStringToSearch);
+  }
+
+  searchByName(aName){
+    return {
+      artists: this.searchArtistsWithPartialName(aName),
+      albums: this.searchAlbumsWithPartialName(aName),
+      tracks: this.searchTracksWithPartialName(aName),
+      playlists: this.searchPlaylistsWithPartialName(aName)
+    };
   }
 
   //Persistencia:
