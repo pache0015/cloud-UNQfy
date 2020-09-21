@@ -4,7 +4,19 @@ class AlreadyExistIDEntity extends Error {
       this.name = "AlreadyExistIDEntity";
     }
 }
+class NotFoundElement extends Error {
+    constructor(anIdentificable){
+        super(`El identificador ${anIdentificable.id} no existe!`);
+        this.name = "NotFoundElement";
+    }
+}
 
+class AlreadyExist extends Error {
+    constructor(anIdentificable){
+        super(`El identificador ${anIdentificable.id} ya existe!`);
+        this.name ="AlreadyExist";
+    }
+}
 class ArtistNameAlreadyInUse extends Error {
     constructor(aName){
         super(`Ya existe unx artista con el nombre ${aName}!`);
@@ -53,6 +65,8 @@ class UserNameAlreadyInUse extends Error {
 
 
 module.exports = {
+    AlreadyExist,
+    NotFoundElement,
     ArtistNotFoundException,
     AlbumNotFoundException,
     AlbumAlreadyExistInPlayList,

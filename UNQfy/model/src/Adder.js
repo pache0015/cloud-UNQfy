@@ -1,18 +1,5 @@
 const Identificable = require('./Identificable.js');
-
-class NotFoundElement extends Error {
-    constructor(anIdentificable){
-      super(`El identificador ${anIdentificable.id} no existe!`);
-      this.name = "NotFoundElement";
-    }
-}
-
-class AlreadyExist extends Error {
-    constructor(anIdentificable){
-        super(`El identificador ${anIdentificable.id} ya existe!`);
-        this.name ="AlreadyExist";
-    }
-}
+const {AlreadyExist, NotFoundElement} = require('./exceptions.js');
 
 class Adder extends Identificable{
     constructor(aName, aList = []){
