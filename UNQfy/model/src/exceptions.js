@@ -62,9 +62,22 @@ class UserNameAlreadyInUse extends Error {
         this.name = "UserNameAlreadyInUse";
     }
 }
-
+class NoGenresMatchException extends Error {
+    constructor(listOfGenres){
+        super(`No hay tracks que pertenezcan a estos generos: ${listOfGenres} `);
+        this.name = "NoGenresMatchException";
+    }
+}
+class NoGenresException extends Error {
+    constructor(){
+        super(`Al crear una PlayList, la lista de generos no pueden ser vacia`);
+        this.name = "NoGenresException";
+    }
+}
 
 module.exports = {
+    NoGenresMatchException,
+    NoGenresException,
     AlreadyExist,
     NotFoundElement,
     ArtistNotFoundException,

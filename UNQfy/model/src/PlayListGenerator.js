@@ -1,19 +1,6 @@
 const PlayList = require('./PlayList.js');
-const Track = require('../src/Track.js');
-
-class NoGenresMatchException extends Error {
-    constructor(listOfGenres){
-      super(`No hay tracks que pertenezcan a estos generos: ${listOfGenres} `);
-      this.name = "NoGenresMatchException";
-    }
-}
-
-class NoGenresException extends Error {
-    constructor(){
-      super(`Al crear una PlayList, la lista de generos no pueden ser vacia`);
-      this.name = "NoGenresException";
-    }
-}
+const Track = require('./Track.js');
+const {NoGenresMatchException, NoGenresException} = require('./exceptions.js');
 
 class PlayListGenerator{
 
