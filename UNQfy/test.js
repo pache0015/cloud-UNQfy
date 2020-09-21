@@ -16,7 +16,7 @@ function createAndAddTrack(unqfy, albumId, trackName, trackDuraction, trackGenre
   return unqfy.addTrack(albumId, { name: trackName, duration: trackDuraction, genres: trackGenres });
 }
 
-function getArtist(unqfy, anID){
+function getMyArtist(unqfy, anID){
   return unqfy.getArtistById(anID);
 }
 
@@ -37,7 +37,7 @@ describe('Add, remove and filter data', () => {
 
   it('should get an artist by id', () => {
     const artist = createAndAddArtist(unqfy, 'Led\' Zepellin', 'USA');
-    const getArtist = getArtist(unqfy, 1);
+    const getArtist = getMyArtist(unqfy, artist.id);
 
     assert.equal(getArtist.name, 'Led\' Zepellin');
     assert.equal(getArtist.country, 'USA');

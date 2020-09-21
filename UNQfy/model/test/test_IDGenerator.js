@@ -6,13 +6,11 @@ describe('IDGenerator', () => {
     const identificable_artista0 = new Artist("Juan", "Quiaca");
     const identificable_artista1 = new Artist("Pepe", "QuiacaSur");
 
-    it('x', () => {
+    it('to intance an identificable has a ID', () => {
         assert.isNotNull(identificable_artista0.id);
+        assert.isNumber(identificable_artista0.id);
     });
-    it('x1', () => {
-        assert.isNotNull(identificable_artista1.id);
-    });
-    it('x1', () => {
+    it('the ID of identificables is incremental', () => {
         assert.isTrue(identificable_artista0.id < identificable_artista1.id);
     });
 });

@@ -22,8 +22,8 @@
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/exceptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/exceptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/test/test_IDGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_IDGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +61,8 @@
       <recent name="$PROJECT_DIR$/model/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.model/test">
-    <configuration name="Add, remove and filter data.should add an album to an artist" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Mocha.Add, remove and filter data.should find different things by name">
+    <configuration name="Add, remove and filter data.should find different things by name" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -71,46 +71,14 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test.js</test-file>
+      <test-file>$PROJECT_DIR$/test.js</test-file>
       <test-names>
         <name value="Add, remove and filter data" />
-        <name value="should add an album to an artist" />
+        <name value="should find different things by name" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Add, remove and filter data.should add an artist" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test.js</test-file>
-      <test-names>
-        <name value="Add, remove and filter data" />
-        <name value="should add an artist" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Add, remove and filter data.should get an artist by id" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test.js</test-file>
-      <test-names>
-        <name value="Add, remove and filter data" />
-        <name value="should get an artist by id" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test about playlist" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="IDGenerator" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -119,9 +87,41 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test_playlist.js</test-file>
+      <test-file>$PROJECT_DIR$/model/test/test_IDGenerator.js</test-file>
       <test-names>
-        <name value="Test about playlist" />
+        <name value="IDGenerator" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="IDGenerator.x" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test_IDGenerator.js</test-file>
+      <test-names>
+        <name value="IDGenerator" />
+        <name value="x" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="IDGenerator.x1" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test_IDGenerator.js</test-file>
+      <test-names>
+        <name value="IDGenerator" />
+        <name value="x1" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -138,19 +138,33 @@
       <recursive>false</recursive>
       <method v="2" />
     </configuration>
+    <configuration name="test.js" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST_FILE</test-kind>
+      <test-file>$PROJECT_DIR$/test.js</test-file>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Mocha.model/test" />
-      <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
-      <item itemvalue="Mocha.Test about playlist" />
-      <item itemvalue="Mocha.Add, remove and filter data.should get an artist by id" />
-      <item itemvalue="Mocha.Add, remove and filter data.should add an artist" />
+      <item itemvalue="Mocha.IDGenerator.x" />
+      <item itemvalue="Mocha.IDGenerator.x1" />
+      <item itemvalue="Mocha.IDGenerator" />
+      <item itemvalue="Mocha.test.js" />
+      <item itemvalue="Mocha.Add, remove and filter data.should find different things by name" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Mocha.Add, remove and filter data.should add an artist" />
-        <item itemvalue="Mocha.Add, remove and filter data.should get an artist by id" />
-        <item itemvalue="Mocha.Test about playlist" />
-        <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
+        <item itemvalue="Mocha.Add, remove and filter data.should find different things by name" />
+        <item itemvalue="Mocha.test.js" />
+        <item itemvalue="Mocha.IDGenerator" />
+        <item itemvalue="Mocha.IDGenerator.x" />
+        <item itemvalue="Mocha.IDGenerator.x1" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +178,9 @@
       <updated>1600652526117</updated>
       <workItem from="1600652527768" duration="1100000" />
       <workItem from="1600653659775" duration="5111000" />
+      <workItem from="1600661537307" duration="955000" />
+      <workItem from="1600668270707" duration="2301000" />
+      <workItem from="1600670606759" duration="445000" />
     </task>
     <servers />
   </component>
@@ -187,73 +204,178 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="141" y="0" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.735@0.0.1366.735" timestamp="1600652845242" />
+    <state width="457" height="539" key="DebuggerActiveHint" timestamp="1600670338336">
+      <screen x="0" y="0" width="1366" height="735" />
+    </state>
+    <state width="457" height="539" key="DebuggerActiveHint/0.0.1366.735@0.0.1366.735" timestamp="1600670338336" />
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl" timestamp="1600652841806">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1315" height="268" key="GridCell.Tab.0.bottom" timestamp="1600659356302">
+    <state width="1325" height="324" key="GridCell.Tab.0.bottom" timestamp="1600670751793">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="268" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600659356302" />
-    <state width="1315" height="268" key="GridCell.Tab.0.center" timestamp="1600659356301">
+    <state width="1325" height="324" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600670751793" />
+    <state width="1325" height="324" key="GridCell.Tab.0.center" timestamp="1600670751792">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="268" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
-    <state width="1315" height="268" key="GridCell.Tab.0.left" timestamp="1600659356301">
+    <state width="1325" height="324" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600670751792" />
+    <state width="1325" height="324" key="GridCell.Tab.0.left" timestamp="1600670751791">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="268" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
-    <state width="1315" height="268" key="GridCell.Tab.0.right" timestamp="1600659356301">
+    <state width="1325" height="324" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600670751791" />
+    <state width="1325" height="324" key="GridCell.Tab.0.right" timestamp="1600670751792">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="268" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600659356301" />
-    <state width="1315" height="180" key="GridCell.Tab.1.bottom" timestamp="1600653629211">
+    <state width="1325" height="324" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600670751792" />
+    <state width="1325" height="324" key="GridCell.Tab.1.bottom" timestamp="1600670734363">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.1.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600653629211" />
-    <state width="1315" height="180" key="GridCell.Tab.1.center" timestamp="1600653629210">
+    <state width="1325" height="324" key="GridCell.Tab.1.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600670734363" />
+    <state width="1325" height="324" key="GridCell.Tab.1.center" timestamp="1600670734362">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.1.center/0.0.1366.735@0.0.1366.735" timestamp="1600653629210" />
-    <state width="1315" height="180" key="GridCell.Tab.1.left" timestamp="1600653629210">
+    <state width="1325" height="324" key="GridCell.Tab.1.center/0.0.1366.735@0.0.1366.735" timestamp="1600670734362" />
+    <state width="1325" height="324" key="GridCell.Tab.1.left" timestamp="1600670734361">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.1.left/0.0.1366.735@0.0.1366.735" timestamp="1600653629210" />
-    <state width="1315" height="180" key="GridCell.Tab.1.right" timestamp="1600653629211">
+    <state width="1325" height="324" key="GridCell.Tab.1.left/0.0.1366.735@0.0.1366.735" timestamp="1600670734361" />
+    <state width="1325" height="324" key="GridCell.Tab.1.right" timestamp="1600670734362">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.1.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629211" />
-    <state width="1315" height="180" key="GridCell.Tab.2.bottom" timestamp="1600653629214">
+    <state width="1325" height="324" key="GridCell.Tab.1.right/0.0.1366.735@0.0.1366.735" timestamp="1600670734362" />
+    <state width="1325" height="2" key="GridCell.Tab.2.bottom" timestamp="1600670730099">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.2.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
-    <state width="1315" height="180" key="GridCell.Tab.2.center" timestamp="1600653629213">
+    <state width="1325" height="2" key="GridCell.Tab.2.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600670730099" />
+    <state width="1325" height="2" key="GridCell.Tab.2.center" timestamp="1600670730097">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.2.center/0.0.1366.735@0.0.1366.735" timestamp="1600653629213" />
-    <state width="1315" height="180" key="GridCell.Tab.2.left" timestamp="1600653629212">
+    <state width="1325" height="2" key="GridCell.Tab.2.center/0.0.1366.735@0.0.1366.735" timestamp="1600670730097" />
+    <state width="1325" height="2" key="GridCell.Tab.2.left" timestamp="1600670730097">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.2.left/0.0.1366.735@0.0.1366.735" timestamp="1600653629212" />
-    <state width="1315" height="180" key="GridCell.Tab.2.right" timestamp="1600653629213">
+    <state width="1325" height="2" key="GridCell.Tab.2.left/0.0.1366.735@0.0.1366.735" timestamp="1600670730097" />
+    <state width="1325" height="2" key="GridCell.Tab.2.right" timestamp="1600670730098">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.2.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629213" />
-    <state width="1315" height="180" key="GridCell.Tab.3.bottom" timestamp="1600653629215">
+    <state width="1325" height="2" key="GridCell.Tab.2.right/0.0.1366.735@0.0.1366.735" timestamp="1600670730098" />
+    <state width="1325" height="2" key="GridCell.Tab.3.bottom" timestamp="1600670730100">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.3.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600653629215" />
-    <state width="1315" height="180" key="GridCell.Tab.3.center" timestamp="1600653629214">
+    <state width="1325" height="2" key="GridCell.Tab.3.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600670730100" />
+    <state width="1325" height="2" key="GridCell.Tab.3.center" timestamp="1600670730099">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.3.center/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
-    <state width="1315" height="180" key="GridCell.Tab.3.left" timestamp="1600653629214">
+    <state width="1325" height="2" key="GridCell.Tab.3.center/0.0.1366.735@0.0.1366.735" timestamp="1600670730099" />
+    <state width="1325" height="2" key="GridCell.Tab.3.left" timestamp="1600670730099">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.3.left/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
-    <state width="1315" height="180" key="GridCell.Tab.3.right" timestamp="1600653629214">
+    <state width="1325" height="2" key="GridCell.Tab.3.left/0.0.1366.735@0.0.1366.735" timestamp="1600670730099" />
+    <state width="1325" height="2" key="GridCell.Tab.3.right" timestamp="1600670730100">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1315" height="180" key="GridCell.Tab.3.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
+    <state width="1325" height="2" key="GridCell.Tab.3.right/0.0.1366.735@0.0.1366.735" timestamp="1600670730100" />
+    <state x="231" y="56" width="910" height="620" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600670301671">
+      <screen x="0" y="0" width="1366" height="735" />
+    </state>
+    <state x="231" y="56" width="910" height="620" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.735@0.0.1366.735" timestamp="1600670301671" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>23</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>24</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>25</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>27</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>31</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>29</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/src/PlayListGenerator.js</url>
+          <line>36</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>215</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>213</line>
+          <log-expression expression="this.getTracks()" language="JavaScript" />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>214</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>184</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>166</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>173</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>175</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>174</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>178</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/unqfy.js</url>
+          <line>159</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

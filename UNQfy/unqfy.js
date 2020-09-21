@@ -151,14 +151,13 @@ class UNQfy {
   // genres: array de generos(strings)
   // retorna: los tracks que contenga alguno de los generos en el parametro genres
   getTracksMatchingGenres(genres) {
-    return this.getTracks().filter(track => track)
 
   }
 
   // artistName: nombre de artista(string)
   // retorna: los tracks interpredatos por el artista con nombre artistName
   getTracksMatchingArtist(artistName) {
-    let artist = null;
+    let artist = null
     try{
       artist = this.getArtistByName(artistName);
     }
@@ -181,8 +180,9 @@ class UNQfy {
   }
 
   getTracks(){
-    const listOfListOfTracks = this.getArtists().map(artist => this.getTracksMatchingArtist(artist.name));
-    return listOfListOfTracks.flat();
+    const albums = this.getAlbums();
+    const tracks = albums.map(album => album.tracks);
+    return tracks.flat();
   }
 
   getPlayLists(){
@@ -212,6 +212,7 @@ class UNQfy {
     let playList = null;
     try{
       const listOfTracks = this.getTracks();
+      console.log(listOfTracks)
       playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
     }
     catch(e){
