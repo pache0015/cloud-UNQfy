@@ -78,30 +78,30 @@ describe('Add, remove and filter data', () => {
       playlists: [playlist],
     });
   });
-//
-//  it('should get all tracks matching genres', () => {
-//    const artist1 = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
-//    const album1 = createAndAddAlbum(unqfy, artist1.id, 'Appetite for Destruction', 1987);
-//    const t0 = createAndAddTrack(unqfy, album1.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
-//    const t1 = createAndAddTrack(unqfy, album1.id, 'Sweet Child o\' Mine', 500, ['rock', 'hard rock', 'pop', 'movie']);
-//
-//    const artist2 = createAndAddArtist(unqfy, 'Michael Jackson', 'USA');
-//    const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
-//    const t2 = createAndAddTrack(unqfy, album2.id, 'Trhiller', 200, ['pop', 'movie']);
-//    createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['classic']);
-//    const t3 = createAndAddTrack(unqfy, album2.id, 'Another song II', 500, ['movie']);
-//
-//    const tracksMatching = unqfy.getTracksMatchingGenres(['pop', 'movie']);
-//
-//    // assert.equal(tracks.matching.constructor.name, Array);
-//    assert.isArray(tracksMatching);
-//    assert.lengthOf(tracksMatching, 4);
-//    assert.equal(tracksMatching.includes(t0), true);
-//    assert.equal(tracksMatching.includes(t1), true);
-//    assert.equal(tracksMatching.includes(t2), true);
-//    assert.equal(tracksMatching.includes(t3), true);
-//  });
-//
+
+  it('should get all tracks matching genres', () => {
+    const artist1 = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
+    const album1 = createAndAddAlbum(unqfy, artist1.id, 'Appetite for Destruction', 1987);
+    const t0 = createAndAddTrack(unqfy, album1.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
+    const t1 = createAndAddTrack(unqfy, album1.id, 'Sweet Child o\' Mine', 500, ['rock', 'hard rock', 'pop', 'movie']);
+
+    const artist2 = createAndAddArtist(unqfy, 'Michael Jackson', 'USA');
+    const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    const t2 = createAndAddTrack(unqfy, album2.id, 'Trhiller', 200, ['pop', 'movie']);
+    createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['classic']);
+    const t3 = createAndAddTrack(unqfy, album2.id, 'Another song II', 500, ['movie']);
+
+    const tracksMatching = unqfy.getTracksMatchingGenres(['pop', 'movie']);
+
+    assert.isArray(tracksMatching);
+    assert.equal(tracksMatching.includes(t0), true);
+    //assert.equal(tracks.matching.constructor.name, Array);
+    assert.lengthOf(tracksMatching, 4);
+    assert.equal(tracksMatching.includes(t1), true);
+    assert.equal(tracksMatching.includes(t2), true);
+    assert.equal(tracksMatching.includes(t3), true);
+});
+
 //  it('should get all tracks matching artist', () => {
 //    const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
 //    const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);

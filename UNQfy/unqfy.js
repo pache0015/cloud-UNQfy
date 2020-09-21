@@ -151,7 +151,7 @@ class UNQfy {
   // genres: array de generos(strings)
   // retorna: los tracks que contenga alguno de los generos en el parametro genres
   getTracksMatchingGenres(genres) {
-
+    return this.getTracks().filter( track=> genres.some(genre => track.hasGenre(genre)));
   }
 
   // artistName: nombre de artista(string)
