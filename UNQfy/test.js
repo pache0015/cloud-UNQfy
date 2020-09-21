@@ -20,7 +20,6 @@ function getMyArtist(unqfy, anID){
   return unqfy.getArtistById(anID);
 }
 
-
 describe('Add, remove and filter data', () => {
   let unqfy = null;
 
@@ -51,7 +50,6 @@ describe('Add, remove and filter data', () => {
     assert.equal(album.name, 'Appetite for Destruction');
     assert.equal(album.year, 1987);
   });
-
   
   it('should add a track to an album', () => {
     const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
@@ -152,8 +150,8 @@ describe('Playlist Creation and properties', () => {
     assert.isAtMost(playlist.duration(), 1400);
     assert.isTrue(playlist.hasTrack(t1));
     assert.isTrue(playlist.hasTrack(t2));
-    //assert.isTrue(playlist.hasTrack(t3));
-    //assert.isTrue(playlist.hasTrack(t4));
-   // assert.lengthOf(playlist.tracks, 4);
+    assert.isTrue(playlist.hasTrack(t3));
+    assert.isTrue(playlist.hasTrack(t4));
+    assert.lengthOf(playlist.tracks, 4);
   });
 });

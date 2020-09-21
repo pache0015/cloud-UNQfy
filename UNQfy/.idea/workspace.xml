@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Adder.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Adder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Album.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Artist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/PlayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/PlayList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/exceptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/exceptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test_User.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test_adder.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_adder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test_playlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_playlist.js" afterDir="false" />
-    </list>
+    <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +61,7 @@
       <recent name="$PROJECT_DIR$/model/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.model/test">
+  <component name="RunManager" selected="Mocha.User (1)">
     <configuration name="IDGenerator" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -132,7 +122,7 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="User" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="User (1)" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -141,7 +131,7 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test_User.js</test-file>
+      <test-file>$PROJECT_DIR$/model/test/test_track.js</test-file>
       <test-names>
         <name value="User" />
       </test-names>
@@ -163,18 +153,18 @@
     <list>
       <item itemvalue="Mocha.model/test" />
       <item itemvalue="Mocha.IDGenerator" />
-      <item itemvalue="Mocha.User" />
       <item itemvalue="Mocha.Test about Artist class s behavior" />
       <item itemvalue="Mocha.Test about playlist" />
       <item itemvalue="Mocha.Test about Adder" />
+      <item itemvalue="Mocha.User (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.User (1)" />
         <item itemvalue="Mocha.Test about Adder" />
         <item itemvalue="Mocha.Test about playlist" />
         <item itemvalue="Mocha.Test about Artist class s behavior" />
         <item itemvalue="Mocha.IDGenerator" />
-        <item itemvalue="Mocha.User" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +181,7 @@
       <workItem from="1600661537307" duration="955000" />
       <workItem from="1600668270707" duration="2301000" />
       <workItem from="1600670606759" duration="8829000" />
-      <workItem from="1600680109143" duration="3156000" />
+      <workItem from="1600680109143" duration="3782000" />
     </task>
     <servers />
   </component>
@@ -227,22 +217,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1325" height="197" key="GridCell.Tab.0.bottom" timestamp="1600683009493">
+    <state width="1325" height="197" key="GridCell.Tab.0.bottom" timestamp="1600683828303">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600683009493" />
-    <state width="1325" height="197" key="GridCell.Tab.0.center" timestamp="1600683009492">
+    <state width="1325" height="197" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
+    <state width="1325" height="197" key="GridCell.Tab.0.center" timestamp="1600683828303">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600683009492" />
-    <state width="1325" height="197" key="GridCell.Tab.0.left" timestamp="1600683009491">
+    <state width="1325" height="197" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
+    <state width="1325" height="197" key="GridCell.Tab.0.left" timestamp="1600683828301">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600683009491" />
-    <state width="1325" height="197" key="GridCell.Tab.0.right" timestamp="1600683009492">
+    <state width="1325" height="197" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600683828301" />
+    <state width="1325" height="197" key="GridCell.Tab.0.right" timestamp="1600683828303">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600683009492" />
+    <state width="1325" height="197" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
     <state width="1325" height="18" key="GridCell.Tab.1.bottom" timestamp="1600680056813">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
