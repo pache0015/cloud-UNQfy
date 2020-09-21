@@ -36,7 +36,7 @@ class Usermanager{
             throw e;
         }
         const tracks = anArtist.tracks;
-        const playedTracks = aUNQfy.playedTracks();
+        const playedTracks = aUNQfy.getPlayedTracks();
 
 
     }
