@@ -22,4 +22,4 @@ class PlayList extends Adder.Adder{
         this.removeElement(aTrack, new TrackNotFoundException(aTrack));
     }
 }
-module.exports = {PlayList, TrackNotFoundException };
+module.exports = {PlayList};

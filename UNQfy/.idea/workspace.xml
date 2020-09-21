@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="" />
+    <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/model/src/PlayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/PlayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,8 +64,8 @@
       <recent name="$PROJECT_DIR$/model/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.User (1)">
-    <configuration name="IDGenerator" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Mocha.model/test">
+    <configuration name="Add, remove and filter data" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -71,9 +74,24 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test_IDGenerator.js</test-file>
+      <test-file>$PROJECT_DIR$/test.js</test-file>
       <test-names>
-        <name value="IDGenerator" />
+        <name value="Add, remove and filter data" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Playlist Creation and properties" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test.js</test-file>
+      <test-names>
+        <name value="Playlist Creation and properties" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -89,21 +107,6 @@
       <test-file>$PROJECT_DIR$/model/test/test_adder.js</test-file>
       <test-names>
         <name value="Test about Adder" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Test about Artist class s behavior" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test_artist.js</test-file>
-      <test-names>
-        <name value="Test about Artist class s behavior" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -152,19 +155,19 @@
     </configuration>
     <list>
       <item itemvalue="Mocha.model/test" />
-      <item itemvalue="Mocha.IDGenerator" />
-      <item itemvalue="Mocha.Test about Artist class s behavior" />
       <item itemvalue="Mocha.Test about playlist" />
       <item itemvalue="Mocha.Test about Adder" />
       <item itemvalue="Mocha.User (1)" />
+      <item itemvalue="Mocha.Add, remove and filter data" />
+      <item itemvalue="Mocha.Playlist Creation and properties" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.Playlist Creation and properties" />
+        <item itemvalue="Mocha.Add, remove and filter data" />
         <item itemvalue="Mocha.User (1)" />
         <item itemvalue="Mocha.Test about Adder" />
         <item itemvalue="Mocha.Test about playlist" />
-        <item itemvalue="Mocha.Test about Artist class s behavior" />
-        <item itemvalue="Mocha.IDGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +184,7 @@
       <workItem from="1600661537307" duration="955000" />
       <workItem from="1600668270707" duration="2301000" />
       <workItem from="1600670606759" duration="8829000" />
-      <workItem from="1600680109143" duration="3782000" />
+      <workItem from="1600680109143" duration="4696000" />
     </task>
     <servers />
   </component>
@@ -217,22 +220,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1325" height="197" key="GridCell.Tab.0.bottom" timestamp="1600683828303">
+    <state width="1325" height="232" key="GridCell.Tab.0.bottom" timestamp="1600684718612">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
-    <state width="1325" height="197" key="GridCell.Tab.0.center" timestamp="1600683828303">
+    <state width="1325" height="232" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600684718612" />
+    <state width="1325" height="232" key="GridCell.Tab.0.center" timestamp="1600684718611">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
-    <state width="1325" height="197" key="GridCell.Tab.0.left" timestamp="1600683828301">
+    <state width="1325" height="232" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600684718611" />
+    <state width="1325" height="232" key="GridCell.Tab.0.left" timestamp="1600684718611">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600683828301" />
-    <state width="1325" height="197" key="GridCell.Tab.0.right" timestamp="1600683828303">
+    <state width="1325" height="232" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600684718611" />
+    <state width="1325" height="232" key="GridCell.Tab.0.right" timestamp="1600684718611">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="197" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600683828303" />
+    <state width="1325" height="232" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600684718611" />
     <state width="1325" height="18" key="GridCell.Tab.1.bottom" timestamp="1600680056813">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
@@ -295,67 +298,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>248</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>247</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>249</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>250</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>242</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>241</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>238</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>237</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>234</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>233</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>230</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>229</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/unqfy.js</url>
-          <line>188</line>
+          <line>159</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>

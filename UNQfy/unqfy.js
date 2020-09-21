@@ -7,10 +7,11 @@ const Track = require('./model/src/Track.js');
 const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
 const {PlayListGenerator} = require('./model/src/PlayListGenerator.js');
+const {Adder} = require('./model/src/Adder.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, TrackNotFoundException,ArtistNotFoundException , AlbumNotFoundException} = require('./model/src/exceptions.js');
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, ArtistNotFoundException , AlbumNotFoundException, TrackNotFoundException} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
 
@@ -49,16 +50,7 @@ class UNQfy {
     this._users = {};
   }
 
-  // artistData: objeto JS con los datos necesarios para crear un artista
-  //   artistData.name (string)
-  //   artistData.country (string)
-  // retorna: el nuevo artista creado
   addArtist(artistData) {
-  /* Crea un artista y lo agrega a unqfy.
-  El objeto artista creado debe soportar (al menos):
-    - una propiedad name (string)
-    - una propiedad country (string)
-  */
     const newArtist = new Artist(artistData.name, artistData.country);
     const existName = this.getArtists().some(artist => artist.name === newArtist.name);
     if(!existName){
@@ -75,16 +67,7 @@ class UNQfy {
     return newArtist;
   }
 
-  // albumData: objeto JS con los datos necesarios para crear un album
-  //   albumData.name (string)
-  //   albumData.year (number)
-  // retorna: el nuevo album creado
   addAlbum(artistId, albumData) {
-  /* Crea un album y lo agrega al artista con id artistId.
-    El objeto album creado debe tener (al menos):
-     - una propiedad name (string)
-     - una propiedad year (number)
-  */
   let artist = null;
     try{
       artist = this.getArtistById(artistId);
@@ -97,19 +80,7 @@ class UNQfy {
     return anAlbum;
   }
 
-
-  // trackData: objeto JS con los datos necesarios para crear un track
-  //   trackData.name (string)
-  //   trackData.duration (number)
-  //   trackData.genres (lista de strings)
-  // retorna: el nuevo track creado
   addTrack(albumId, trackData) {
-  /* Crea un track y lo agrega al album con id albumId.
-  El objeto track creado debe tener (al menos):
-      - una propiedad name (string),
-      - una propiedad duration (number),
-      - una propiedad genres (lista de strings)
-  */
     let album = null;
     try{
       album = this.getAlbumById(albumId);
@@ -132,16 +103,19 @@ class UNQfy {
   }
 
   getAlbumById(id) {
-    const albums = this.getAlbums().filter(album => album.id === id);
-    if (albums.length === 0){
+    const album = this.getAlbums().filter(album => album.id === id);
+    if (album === undefined){
       throw new AlbumNotFoundException(id); 
     }
-    return albums[0];
+    return album[0];
   }
 
   getTrackById(id) {
-    //let track = this.getTracks().filter(track => track.id === id);
-    //return track.length == 0 ?  : ;
+    let track = this.getTracks().filter(track => track.id === id);
+    if (track === undefined){
+      throw new TrackNotFoundException(id);
+    }
+    return track[0];
   }
 
   getPlaylistById(id) {
@@ -262,7 +236,7 @@ class UNQfy {
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
     //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator];//, , Album, Track, User, PlayList, _instance];
+    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator, Album, Track, User, PlayList.PlayList, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
