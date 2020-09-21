@@ -24,6 +24,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/src/Artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Artist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/src/PlayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/PlayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/test/test_User.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/test/test_User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
     </list>
@@ -65,7 +66,7 @@
       <recent name="$PROJECT_DIR$/model/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Mocha.test.js">
+  <component name="RunManager" selected="Mocha.User">
     <configuration name="Add, remove and filter data.should find different things by name" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -113,7 +114,7 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="IDGenerator.x1" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="User" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -121,11 +122,10 @@
       <pass-parent-env>true</pass-parent-env>
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/model/test/test_IDGenerator.js</test-file>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test_User.js</test-file>
       <test-names>
-        <name value="IDGenerator" />
-        <name value="x1" />
+        <name value="User" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -157,18 +157,18 @@
     <list>
       <item itemvalue="Mocha.model/test" />
       <item itemvalue="Mocha.IDGenerator.x" />
-      <item itemvalue="Mocha.IDGenerator.x1" />
       <item itemvalue="Mocha.IDGenerator" />
       <item itemvalue="Mocha.test.js" />
       <item itemvalue="Mocha.Add, remove and filter data.should find different things by name" />
+      <item itemvalue="Mocha.User" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.User" />
         <item itemvalue="Mocha.test.js" />
         <item itemvalue="Mocha.Add, remove and filter data.should find different things by name" />
         <item itemvalue="Mocha.IDGenerator" />
         <item itemvalue="Mocha.IDGenerator.x" />
-        <item itemvalue="Mocha.IDGenerator.x1" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +184,7 @@
       <workItem from="1600653659775" duration="5111000" />
       <workItem from="1600661537307" duration="955000" />
       <workItem from="1600668270707" duration="2301000" />
-      <workItem from="1600670606759" duration="8264000" />
+      <workItem from="1600670606759" duration="8829000" />
     </task>
     <servers />
   </component>
@@ -220,22 +220,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1325" height="29" key="GridCell.Tab.0.bottom" timestamp="1600678569223">
+    <state width="1325" height="228" key="GridCell.Tab.0.bottom" timestamp="1600679576402">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="29" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600678569223" />
-    <state width="1325" height="29" key="GridCell.Tab.0.center" timestamp="1600678569223">
+    <state width="1325" height="228" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600679576402" />
+    <state width="1325" height="228" key="GridCell.Tab.0.center" timestamp="1600679576401">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="29" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600678569223" />
-    <state width="1325" height="29" key="GridCell.Tab.0.left" timestamp="1600678569222">
+    <state width="1325" height="228" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600679576401" />
+    <state width="1325" height="228" key="GridCell.Tab.0.left" timestamp="1600679576400">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="29" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600678569222" />
-    <state width="1325" height="29" key="GridCell.Tab.0.right" timestamp="1600678569223">
+    <state width="1325" height="228" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600679576400" />
+    <state width="1325" height="228" key="GridCell.Tab.0.right" timestamp="1600679576402">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="29" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600678569223" />
+    <state width="1325" height="228" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600679576402" />
     <state width="1325" height="18" key="GridCell.Tab.1.bottom" timestamp="1600678028781">
       <screen x="0" y="0" width="1366" height="735" />
     </state>

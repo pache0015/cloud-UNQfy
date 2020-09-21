@@ -11,30 +11,35 @@ class DummyIdentificable{
 }
 
 describe('Album', () => {
+    let anAlbum = null;
+    let aTrack = null;
+    let otherTrack = null;
     
     beforeEach(() => {
       anAlbum = new Album("Album", 2010, "Jose");
       aTrack = new Track("unTema", 120, ["Rock"]);
-      anOtherTrack = new Track("unTema", 120, ["Rock"]);
+      otherTrack = new Track("unTema", 120, ["Rock"]);
     });
   
     it('Add track to album', () => {
       anAlbum.addTrack(aTrack);
       assert.lengthOf(anAlbum.tracks, 1);
     });
+
     it('Remove track to album', () => {
       anAlbum.addTrack(aTrack);
-      anAlbum.addTrack(anOtherTrack);
+      anAlbum.addTrack(otherTrack);
       anAlbum.removeTrack(aTrack)
       assert.lengthOf(anAlbum.tracks, 1);
     });
+
     it('Remove Track throw a TrackNotFoundException', () => {
-      const exercise = () => anAlbum.removeTrack(anOtherTrack)
+      const exercise = () => anAlbum.removeTrack(otherTrack)
       assert.throws(exercise, TrackNotFoundException);
     });
     it('Add Track throw a TrackAlreadyExistInPlayList', () => {
-      anAlbum.addTrack(anOtherTrack);
-      const exercise = () => anAlbum.addTrack(anOtherTrack);
+      anAlbum.addTrack(otherTrack);
+      const exercise = () => anAlbum.addTrack(otherTrack);
       assert.throws(exercise, TrackAlreadyExistInPlayList);
     });
 });
