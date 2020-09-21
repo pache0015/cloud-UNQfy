@@ -1,7 +1,8 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const {PlayListGenerator, NoGenresMatchException, NoGenresException} = require('../src/PlayListGenerator.js');
+const PlayListGenerator = require('../src/PlayListGenerator.js');
+const {NoGenresMatchException, NoGenresException} = require('../src/exceptions.js');
 const Track = require('../src/Track.js');
 
 describe('Generation of playlists', () => {

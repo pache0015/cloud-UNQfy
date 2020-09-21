@@ -28,4 +28,4 @@ class Adder extends Identificable{
     }
 }
 
-module.exports = {  Adder , AlreadyExist, NotFoundElement };
+module.exports = Adder;

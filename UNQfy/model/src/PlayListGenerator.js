@@ -35,10 +35,8 @@ class PlayListGenerator{
         catch (e){
             throw e;
         }
-        const generatedPlayList = new PlayList.PlayList(aName, listsOftracks);
+        const generatedPlayList = new PlayList(aName, listsOftracks);
         return generatedPlayList;
     }
 }
-module.exports = {  PlayListGenerator : PlayListGenerator, 
-                    NoGenresMatchException : NoGenresMatchException, 
-                    NoGenresException : NoGenresException   };
+module.exports = PlayListGenerator;

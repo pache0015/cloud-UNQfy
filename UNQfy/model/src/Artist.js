@@ -1,5 +1,5 @@
 const Identificable = require('./Identificable.js')
-const {Adder} = require('./Adder.js');
+const Adder = require('./Adder.js');
 const {AlbumNotFoundException, AlbumAlreadyExistInPlayList} = require('../src/exceptions.js');
 class Artist extends Adder{
     constructor(aName, aCountry){

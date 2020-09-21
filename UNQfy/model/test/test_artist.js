@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const Track = require('../src/Track.js');
 const Album = require('../src/Album.js');
-const Artist = require('../src/Artist.js')
+const Artist = require('../src/Artist.js');
 const {AlbumNotFoundException, AlbumAlreadyExistInPlayList} = require('../src/exceptions.js');
 
 

@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 
 const assert = require('chai').assert;
-const {PlayList} = require('../src/PlayList.js');
+const PlayList = require('../src/PlayList.js');
 const Track = require('../src/Track.js');
 const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/exceptions.js');
 
