@@ -165,7 +165,7 @@ class UNQfy {
       throw e;
     }
     const albums = artist.albums;
-    return albums.map(album => album.track).flat();
+    return albums.map(album => album.tracks).flat();
   }
 
   getArtists(){
