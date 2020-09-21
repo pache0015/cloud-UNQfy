@@ -1,6 +1,6 @@
 const fs = require('fs'); // necesitado para guardar/cargar unqfy
 const unqmod = require('./unqfy'); // importamos el modulo unqfy
-const CommandExecutor = require('./model/src/CommandExecutor.js');
+const CommandExecutor = require('./model/src/CommandExecutorEval.js');
 // Retorna una instancia de UNQfy. Si existe filename, recupera la instancia desde el archivo.
 function getUNQfy(filename = 'data.json') {
   let unqfy = new unqmod.UNQfy();

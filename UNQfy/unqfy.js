@@ -7,33 +7,15 @@ const Track = require('./model/src/Track.js');
 const User = require('./model/src/User.js');
 const PlayList = require('./model/src/PlayList.js');
 const {PlayListGenerator} = require('./model/src/PlayListGenerator.js');
-const {Adder} = require('./model/src/Adder.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, ArtistNotFoundException , AlbumNotFoundException, TrackNotFoundException} = require('./model/src/exceptions.js');
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, ArtistNotFoundException, UserNameAlreadyInUse, AlbumNotFoundException, TrackNotFoundException} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
 
-function alreadyExist(aHash, aEntityID){
-  return aEntityID in aHash;
-}
-
 function getEntity(aHash, aKey){
   return aHash[aKey];
-}
-
-function addEntity(obj, id, aHash){
-  aHash[id] = obj;
-}
-
-function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
-  if(alreadyExist(aHash, aEntityID)){
-    throw new AlreadyExistIDEntity(aEntity);
-  }
-  else{
-    addEntity(aEntity, aEntityID, aHash);
-  }
 }
 
 function allFromHash(aHash){
@@ -51,21 +33,16 @@ class UNQfy {
   }
 
   addArtist(artistData) {
-    const newArtist = new Artist(artistData.name, artistData.country);
-    const existName = this.getArtists().some(artist => artist.name === newArtist.name);
-    if(!existName){
-      try{
-        evaluateThrowExceptionOrAdd(this._artists, newArtist.id, newArtist);
-      }
-      catch(e){
-        throw e;
-      } 
-    }
-    else{
+    const existName = this.getArtists().some(artist => artist.name === artistData.name);
+    if(existName){
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
+    const newArtist = new Artist(artistData.name, artistData.country);
+    this._artists[newArtist.id] = newArtist;
     return newArtist;
   }
+
+
 
   addAlbum(artistId, albumData) {
   let artist = null;
@@ -89,7 +66,6 @@ class UNQfy {
       throw e;
     } 
     const aTrack = new Track(trackData.name, trackData.duration, trackData.genres);
-    
     album.addTrack(aTrack);
     return aTrack;
   }
@@ -119,17 +95,30 @@ class UNQfy {
   }
 
   getPlaylistById(id) {
-    return getEntity(this._playList, id);
+    return getEntity(this._playLists, id);
   }
 
-  // genres: array de generos(strings)
-  // retorna: los tracks que contenga alguno de los generos en el parametro genres
+  addUser(userData){
+    const existName = this.getArtists().some(artist => artist.name === userData.name);
+    if(existName){
+      throw new UserNameAlreadyInUse(userData.name);
+    }
+    const newUser = new User(userData.name);
+    this._users[newUser.id] = newUser;
+  }
+
+  getUserById(id){
+    return getEntity(this._users, id);
+  }
+
+  getUsers(){
+    return getEntity(this._users);
+  }
+
   getTracksMatchingGenres(genres) {
     return this.getTracks().filter( track=> genres.some(genre => track.hasGenre(genre)));
   }
 
-  // artistName: nombre de artista(string)
-  // retorna: los tracks interpredatos por el artista con nombre artistName
   getTracksMatchingArtist(artistName) {
     let artist = null
     try{
@@ -145,6 +134,7 @@ class UNQfy {
   getArtists(){
     return allFromHash(this._artists);
   }
+
   getArtistByName(nameArtist){
     const list = this.getArtists().filter(artist => artist.name === nameArtist);
     if(list.length === 0){
@@ -163,26 +153,12 @@ class UNQfy {
     return allFromHash(this._playLists);
   }
 
-  getUsers(){
-    return allFromHash(this._users);
-  }
-
   getAlbums(){
     const albums = this.getArtists().map(artist => artist.albums);
     return albums.flat();
   }
   
-  // name: nombre de la playlist
-  // genresToInclude: array de generos
-  // maxDuration: duración en segundos
-  // retorna: la nueva playlist creada
   createPlaylist(name, genresToInclude, maxDuration) {
-  /*** Crea una playlist y la agrega a unqfy. ***
-    El objeto playlist creado debe soportar (al menos):
-      * una propiedad name (string)
-      * un metodo duration() que retorne la duración de la playlist.
-      * un metodo hasTrack(aTrack) que retorna true si aTrack se encuentra en la playlist.
-  */
     let playList = null;
     try{
       const listOfTracks = this.getTracks();
@@ -191,11 +167,10 @@ class UNQfy {
     catch(e){
       throw e;
     }
-    evaluateThrowExceptionOrAdd(this._playLists, playList.id, playList);
+    this._playLists[playList.id] = playList;
     return playList;
   }
 
-  
   //Busqueda:
   changeSearcher(aSearcher){
     this._searcher = aSearcher;
@@ -226,6 +201,39 @@ class UNQfy {
     };
   }
 
+  //Usuarios:
+
+  userListenTrack(aUserID, aTrackID){
+    let aUser = null;
+    let aTrack = null;
+    try{
+      aUser = this.getArtistById(aUserID);
+      aTrack = this.getTrackById(aTrackID);
+    }
+    catch(e){
+      throw e;
+    }
+    aUser.listen(aTrack);
+  }
+
+  timesUserListenedTrack(aUserID, aTrackID){
+    let aUser = null;
+    let aTrack = null;
+    try{
+      aUser = this.getUserById(aUserID);
+      aTrack = this.getTrackById(aTrackID);
+    }
+    catch(e){
+      throw e;
+    }
+    aUser.timesUserListenedTrack(aTrack);
+  }
+
+  top3TracksFromArtist(artistId){
+
+  }
+
+
   //Persistencia:
 
   save(filename) {
@@ -235,13 +243,11 @@ class UNQfy {
 
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
-    //COMPLETAR POR EL ALUMNO: Agregar a la lista todas las clases que necesitan ser instanciadas
-    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator, Album, Track, User, PlayList.PlayList, _instance];
+    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator, Album, Track, User,PlayList, _instance];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }
 
-// COMPLETAR POR EL ALUMNO: exportar todas las clases que necesiten ser utilizadas desde un modulo cliente
 module.exports = {
   UNQfy: UNQfy
 };

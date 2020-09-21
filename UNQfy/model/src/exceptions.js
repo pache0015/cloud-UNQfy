@@ -11,6 +11,7 @@ class ArtistNameAlreadyInUse extends Error {
         this.name = "ArtistNameAlreadyInUse";
       }
 }
+
 class ArtistNotFoundException extends Error {
     constructor(artistThing){
         super(`No se pudo encontrar el artista: ${artistThing}`);
@@ -43,6 +44,12 @@ class AlbumAlreadyExistInPlayList extends Error {
     }
 }
 
+class UserNameAlreadyInUse extends Error {
+    constructor(aName){
+        super(`Ya existe unx user con el nombre ${aName}!`);
+        this.name = "UserNameAlreadyInUse";
+    }
+}
 
 
 module.exports = {
@@ -52,5 +59,6 @@ module.exports = {
     TrackAlreadyExistInPlayList,
     TrackNotFoundException,
     AlreadyExistIDEntity,
-    ArtistNameAlreadyInUse
+    ArtistNameAlreadyInUse,
+    UserNameAlreadyInUse
   };

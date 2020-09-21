@@ -15,5 +15,9 @@ class Album extends Adder{
     removeTrack(aTrack){
         this.removeElement(aTrack, new TrackNotFoundException(aTrack));
     }
+
+    hasTrack(aTrack){
+        this.belongsElement(aTrack);
+    }
 }
 module.exports = Album;

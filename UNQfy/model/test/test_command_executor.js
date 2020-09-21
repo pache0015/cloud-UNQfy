@@ -1,4 +1,4 @@
-const CommandExecutor = require('../src/CommandExecutor.js');
+const CommandExecutor = require('../src/CommandExecutorEval.js');
 
 class A{
     a(){

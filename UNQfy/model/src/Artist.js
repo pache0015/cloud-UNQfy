@@ -16,6 +16,10 @@ class Artist extends Adder{
     removeAlbum(anAlbum){
         this.removeElement(anAlbum, new AlbumNotFoundException(anAlbum));
     }
+
+    is_author(aTrack){
+        this.albums.some(album => album.hasTrack(aTrack));
+    }
 }
 
 module.exports = Artist;

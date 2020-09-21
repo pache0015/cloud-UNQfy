@@ -1,4 +1,4 @@
-class CommandExecutor{
+class CommandExecutorEval{
     constructor(){
         this._handlers = {
                 addArtist : function (args){
@@ -49,4 +49,4 @@ class CommandExecutor{
     }
 }
 
-module.exports = CommandExecutor;
+module.exports = CommandExecutorEval;

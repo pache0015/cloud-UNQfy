@@ -11,7 +11,7 @@ class PlayList extends Adder.Adder{
     duration(){ return this.tracks.reduce((sum, track) =>  sum + track.duration, 0); }
     
     hasTrack(aTrack){
-        return this.tracks.some(track => track.id === aTrack.id );
+        return this.belongsElement(aTrack);
     }
 
     addTrack(aTrack){
