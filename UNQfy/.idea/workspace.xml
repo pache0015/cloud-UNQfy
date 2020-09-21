@@ -74,6 +74,21 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="Test about playlist" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/model/test/test_playlist.js</test-file>
+      <test-names>
+        <name value="Test about playlist" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="model/test" type="mocha-javascript-test-runner" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -90,9 +105,11 @@
     <list>
       <item itemvalue="Mocha.model/test" />
       <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
+      <item itemvalue="Mocha.Test about playlist" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Mocha.Test about playlist" />
         <item itemvalue="Mocha.Add, remove and filter data.should add an album to an artist" />
       </list>
     </recent_temporary>
@@ -106,6 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600652526117</updated>
       <workItem from="1600652527768" duration="1100000" />
+      <workItem from="1600653659775" duration="395000" />
     </task>
     <servers />
   </component>
@@ -122,6 +140,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="141" y="0" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600652845242">
@@ -196,5 +215,17 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state width="1315" height="180" key="GridCell.Tab.3.right/0.0.1366.735@0.0.1366.735" timestamp="1600653629214" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/model/test/test.js</url>
+          <line>38</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
