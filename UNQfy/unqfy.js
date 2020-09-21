@@ -10,7 +10,7 @@ const {PlayListGenerator} = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, TrackNotFoundException, AlbumNotFoundException} = require('./model/src/exceptions.js');
+const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, TrackNotFoundException,ArtistNotFoundException , AlbumNotFoundException} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 
 
@@ -157,15 +157,24 @@ class UNQfy {
   // artistName: nombre de artista(string)
   // retorna: los tracks interpredatos por el artista con nombre artistName
   getTracksMatchingArtist(artistName) {
-
+    const artist = this.getArtistByName(artistName);
+    const albums = artist.albums;
+    return albums.map(album => album.track).flat();
   }
 
   getArtists(){
     return allFromHash(this._artists);
   }
+  getArtistByName(nameArtist){
+    const list = this.getArtists().filter(artist => artist.name === nameArtist);
+    if(list.length === 0){
+      throw new ArtistNotFoundException(nameArtist);
+    }
+    return list[0];
+  }
 
   getTracks(){
-    const listOfListOfTracks = this.allArtists().map(artist => this.getTracksMatchingArtist(artist.name));
+    const listOfListOfTracks = this.getArtists().map(artist => this.getTracksMatchingArtist(artist.name));
     return listOfListOfTracks.flat();
   }
 
@@ -195,10 +204,11 @@ class UNQfy {
   */
     let playList = null;
     try{
-      playList = this._playListGenerator.generatePlayList(this.allTracks(), name, maxDuration, genresToInclude);
+      const listOfTracks = this.getTracks();
+      playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
     }
     catch(e){
-      throw e;
+
     }
     return playList;
   }
