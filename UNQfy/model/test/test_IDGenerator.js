@@ -6,10 +6,10 @@ describe('IDGenerator', () => {
     let identificable_artista = null;
     it('x', () => {
         identificable_artista = new Artist("Juan", "Quiaca")
-        assert.equal(identificable_artista.id, 0);
+        assert.isNotNull(identificable_artista.id);
     });
     it('x1', () => {
         identificable_artista = new Artist("Pepe", "QuiacaSur")
-        assert.equal(identificable_artista.id, 1);
+        assert.isNotNull(identificable_artista.id);
     });
 });

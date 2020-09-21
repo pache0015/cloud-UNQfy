@@ -151,6 +151,7 @@ class UNQfy {
   // genres: array de generos(strings)
   // retorna: los tracks que contenga alguno de los generos en el parametro genres
   getTracksMatchingGenres(genres) {
+    return this.getTracks().filter(track => track)
 
   }
 
@@ -214,7 +215,7 @@ class UNQfy {
       playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
     }
     catch(e){
-
+      throw e;
     }
     return playList;
   }
