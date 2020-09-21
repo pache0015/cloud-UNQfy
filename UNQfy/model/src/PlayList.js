@@ -16,11 +16,11 @@ class PlayList extends Adder.Adder{
     }
 
     addTrack(aTrack){
-        super.addElement(aTrack, new  TrackAlreadyExistInPlayList(aTrack));
+        this.addElement(aTrack, new  TrackAlreadyExistInPlayList(aTrack));
     }
 
     removeTrack(aTrack){
-        super.removeElements(aTrack, new TrackNotFoundException(aTrack));
+        this.removeElements(aTrack, new TrackNotFoundException(aTrack));
     }
 }
 module.exports = {PlayList, TrackNotFoundException };

@@ -213,11 +213,11 @@ class UNQfy {
     try{
       const listOfTracks = this.getTracks();
       playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
-      evaluateThrowExceptionOrAdd(this._playLists, playList.id, playList);
     }
     catch(e){
       throw e;
     }
+    evaluateThrowExceptionOrAdd(this._playLists, playList.id, playList);
     return playList;
   }
 
