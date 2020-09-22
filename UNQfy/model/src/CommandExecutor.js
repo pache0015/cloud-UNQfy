@@ -1,3 +1,5 @@
+const Printer = require("./Printer");
+
 class InvalidCommandException extends Error {
     constructor(aCommandName){
         super(`EL COMANDO ${aCommandName} NO ES UN COMANDO VALIDO. PRUEBE DE NUEVO>> `);
@@ -139,9 +141,14 @@ class CommandExecutor {
                 return ["Se ha borrado al album: ", unquify.removeAlbum(id)];
             },
         };
+        this._printer = new Printer();
     }
 
     get handlers() { return this._handlers; }
+    get printer() { return this._printer; }
+    set printer(aNewPrinter) {
+        this._printer = aNewPrinter;
+    }
 
     isValidCommand(aCommandName){
         return aCommandName in this._handlers;
@@ -157,7 +164,16 @@ class CommandExecutor {
         if (!amountOGivenArguments >= amountOfNeededArguments) {
             throw new NotEnoughArguments(amountOfNeededArguments);
         }
-        this.handlers[aCommandName](unquify, args);
+        let result = null;
+        try {
+            result = this.handlers[aCommandName](unquify, args);
+        }
+        catch(e){
+            this.printer.printException(e);
+        }
+        const header = result[0];
+        const entity = result[1];
+        this.printer.printEntity(header, entity);
     }
 }
 

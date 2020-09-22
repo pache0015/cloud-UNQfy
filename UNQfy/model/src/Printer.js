@@ -1,10 +1,5 @@
 class Printer {
-    printMessage(message) {
-      console.log(message);
-    }
-  
-    printArray(header, array) {
-      console.log(header);
+    printArray(array) {
       console.log('<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>');
       array.forEach((element) => {
         console.log();
@@ -17,9 +12,13 @@ class Printer {
     printEntity(header, entity) {
       console.log(`${header}:`);
       console.log('<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>');
-      console.log(entity);
+      if(entity instanceof Array){
+          this.printArray()
+      }
+      else {
+          console.log(entity);
+      }
     }
-  
     printException(exception) {
       console.error(`Ups! [${exception.name}]: ${exception.message}`);
     }
