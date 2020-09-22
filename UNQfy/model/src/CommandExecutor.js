@@ -26,7 +26,7 @@ class CommandExecutor {
                 const name = args[1];
                 const year = args[0];
                 const albumData = {name, year};
-                return unquify.addAlbum(artistId, albumData)
+                return unquify.addAlbum(artistId, albumData);
             },
             addTrack : function (unquify, args){
                 const albumId = args[0];
@@ -116,7 +116,7 @@ class CommandExecutor {
                 const aUserID = args[0];
                 const aTrackID = args[1];
                 unquify.userListenTrack(aUserID, aTrackID);
-                return "Algo"
+                return "Listed"
             },
             timesUserListenedTrack : function (unquify, args){
                 const aUserID = args[0];
@@ -149,3 +149,5 @@ class CommandExecutor {
         this.handlers[aCommandName](unquify, args);
     }
 }
+
+module.exports = CommandExecutor;
