@@ -11,12 +11,15 @@ class PlayListGenerator{
     tracksOfGenres(aMaxDuration, aListOfTracks, aListOfGenres){"Asd".to
         const result =  aListOfTracks.reduce((tuple, aTrack) => {
                 const tracks = tuple[0];
-                const duration = tuple[1];
+                let duration = tuple[1];
                 if(this.haveElementInCommon(aListOfGenres, aTrack) && duration + aTrack.duration <= aMaxDuration){
                     tracks.push(aTrack);
+                    duration += aTrack.duration
                 } 
-                return [tracks, duration+aTrack.duration];}, [[], 0]);
+                return [tracks, duration];}, [[], 0]);
 
+        console.log("result")
+        console.log(result)
         if(result[0].length === 0){
             throw new NoGenresMatchException(aListOfGenres);
         }  
