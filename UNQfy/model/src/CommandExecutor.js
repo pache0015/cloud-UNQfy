@@ -19,14 +19,14 @@ class CommandExecutor {
                 const name = args[0];
                 const country = args[1];
                 const artistData = {name, country};
-                return unquify.addArtist(artistData);
+                return ["Se creo al artista: ", unquify.addArtist(artistData)];
             },
             addAlbum : function (unquify, args){
                 const artistId = args[0];
                 const name = args[1];
                 const year = eval(args[0]);
                 const albumData = {name, year};
-                return unquify.addAlbum(artistId, albumData);
+                return ["Se creo al album: ", unquify.addAlbum(artistId, albumData)];
             },
             addTrack : function (unquify, args){
                 const albumId = eval(args[0]);
@@ -34,112 +34,110 @@ class CommandExecutor {
                 const duration = eval(args[2]);
                 const genres = args[3];
                 const trackData = {name, duration, genres};
-                return unquify.addTrack(albumId, trackData);
+                return ["Se creo el track: ", unquify.addTrack(albumId, trackData)];
             },
             getArtistById : function (unquify, args){
                 const id = eval(args[0]);
-                return unquify.getArtistById(id);
+                return ["El artista solictado es: ", unquify.getArtistById(id)];
             },
             getAlbumById :  function (unquify, args){
                 const id = eval(args[0]);
-                return unquify.getAlbumById(id);
+                return ["El album solictado es: ", unquify.getAlbumById(id)];
             },
             getTrackById : function (unquify, args){
                 const id = eval(args[0]);
-                return unquify.getTrackById(id);
+                return ["El track solicitado es: ", unquify.getTrackById(id)];
             },
             getPlaylistById : function (unquify, args){
                 const id = eval(args[0]);
-                return unquify.getPlaylistById(id);
+                return ["La PlayList solictada es: ", unquify.getPlaylistById(id)];
             },
             addUser: function (unquify, args){
                 const name = args[0];
-                return unquify.addUser(name);
+                return ["Se ha agregado el usuario: ", unquify.addUser(name)];
             },
             getUserById : function (unquify, args){
                 const name = args[0];
-                return unquify.getUserById(name);
+                return ["El usuario solicitado fue: ", unquify.getUserById(name)];
             },
             getUsers : function (unquify){
-                return unquify.getUsers();
+                return ["Los usuarios son: ", unquify.getUsers()];
             },
             getTracksMatchingGenres : function (unquify, args){
-                return unquify.getTracksMatchingGenres(args);
+                return ["Los tracks de los generos ingresados son: ", unquify.getTracksMatchingGenres(args)];
             },
             getTracksMatchingArtist : function (unquify, args){
                 const artistName = args[0];
-                return unquify.getTracksMatchingArtist(artistName);
+                return ["Los tracks del artista ingresados son: ", unquify.getTracksMatchingArtist(artistName)];
             },
             getArtists : function (unquify){
-                return unquify.getArtists();
+                return ["Los artistas son: ",unquify.getArtists()];
             },
             getArtistByName : function (unquify, args){
                 const nameArtist = args[0];
-                unquify.getArtistByName(nameArtist);
+                return ["El artista del nombre ingresado son: ", unquify.getArtistByName(nameArtist)];
             },
             getTracks : function (unquify){
-                return unquify.getTracks();
+                return ["Los tracks son: ", unquify.getTracks()];
             },
             getPlayLists : function (unquify){
-                return unquify.getPlayLists();
+                return ["Las playlists son: ", unquify.getPlayLists()];
             },
             getAlbums : function (unquify){
-                return unquify.getAlbums();
+                return ["Los albums son: ", unquify.getAlbums()];
             },
             createPlaylist: function (unquify, args){
                 const name = args[0];
                 const maxDuration = eval(args[1]);
                 const genresToInclude = args.slice(2);
-                return unquify.createPlaylist(name, maxDuration, genresToInclude);
+                return ["Se ha creado la PayList: ", unquify.createPlaylist(name, maxDuration, genresToInclude)];
             },
             searchTracksWithPartialName : function (unquify, args){
                 const name = args[0];
-                return unquify.searchTracksWithPartialName(name);
+                return ["El resultado de la busqueda fue: ", unquify.searchTracksWithPartialName(name)];
             },
             searchAlbumsWithPartialName : function (unquify, args){
                 const name = args[0];
-                return unquify.searchAlbumsWithPartialName(name);
+                return ["El resultado de la busqueda fue: ", unquify.searchAlbumsWithPartialName(name)];
             },
             searchArtistsWithPartialName : function (unquify, args){
                 const name = args[0];
-                return unquify.searchArtistsWithPartialName(name);
+                return ["El resultado de la busqueda fue: ", unquify.searchArtistsWithPartialName(name)];
             },
             searchPlaylistsWithPartialName : function (unquify, args){
                 const name = args[0];
-                return unquify.searchPlaylistsWithPartialName(name);
+                return ["El resultado de la busqueda fue: ", unquify.searchPlaylistsWithPartialName(name)];
             },
             searchByName : function (unquify, args){
                 const name = args[0];
-                return unquify.searchByName(name);
+                return ["El resultado de la busqueda fue: ", unquify.searchByName(name)];
             },
             userListenTrack : function (unquify, args){
                 const aUserID = eval(args[0]);
                 const aTrackID = eval(args[1]);
-                unquify.userListenTrack(aUserID, aTrackID);
-                return "Listed";
+                return ["El usuario ha escuchado el track", unquify.userListenTrack(aUserID, aTrackID)];
             },
             timesUserListenedTrack : function (unquify, args){
                 const aUserID = eval(args[0]);
                 const aTrackID = args[1];
-                return unquify.timesUserListenedTrack(aUserID, aTrackID);
+                return ["El usuario ha escuchado el tema: ",unquify.timesUserListenedTrack(aUserID, aTrackID)];
             },
             top3TracksFromArtist : function (unquify, args){
                 const artistId = eval(args[0]);
-                return unquify.top3TracksFromArtist(artistId);
+                return ["This is: ",unquify.top3TracksFromArtist(artistId)];
             },
             removeArtist : function(unquify, args){
                 const id = eval(args[0]);
-                return unquify.removeArtist(id);
+                return ["Se ha borrado al artista: ", unquify.removeArtist(id)];
             },
             removeTrack : function(unquify, args){
                 const id = eval(args[0]);
-                return unquify.removeTrack(id);
+                return ["Se ha borrado al track: ", unquify.removeTrack(id)];
             },
             removeAlbum : function(unquify, args){
                 const id = eval(args[0]);
-                return unquify.removeAlbum(id);
+                return ["Se ha borrado al album: ", unquify.removeAlbum(id)];
             },
-            
         };
     }
 

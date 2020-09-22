@@ -162,12 +162,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Mocha.model/test" />
       <item itemvalue="Mocha.Add, remove and filter data" />
-      <item itemvalue="Mocha.Playlist Creation and properties.should create a playlist as requested" />
-      <item itemvalue="Mocha.Playlist Creation and properties.should create a playlist as requested (1)" />
-      <item itemvalue="Mocha.Generation of playlists.should return a consistent play list" />
       <item itemvalue="Mocha.Generation of playlists. A should return a consistent play list" />
+      <item itemvalue="Mocha.Generation of playlists.should return a consistent play list" />
+      <item itemvalue="Mocha.Playlist Creation and properties.should create a playlist as requested (1)" />
+      <item itemvalue="Mocha.Playlist Creation and properties.should create a playlist as requested" />
+      <item itemvalue="Mocha.model/test" />
     </list>
     <recent_temporary>
       <list>
@@ -244,22 +244,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1309" height="123" key="GridCell.Tab.0.bottom" timestamp="1600788181037">
+    <state width="1309" height="123" key="GridCell.Tab.0.bottom" timestamp="1600810759013">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1309" height="123" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600788181037" />
-    <state width="1309" height="123" key="GridCell.Tab.0.center" timestamp="1600788181037">
+    <state width="1309" height="123" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600810759013" />
+    <state width="1309" height="123" key="GridCell.Tab.0.center" timestamp="1600810759012">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1309" height="123" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600788181037" />
-    <state width="1309" height="123" key="GridCell.Tab.0.left" timestamp="1600788181036">
+    <state width="1309" height="123" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600810759012" />
+    <state width="1309" height="123" key="GridCell.Tab.0.left" timestamp="1600810759011">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1309" height="123" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600788181036" />
-    <state width="1309" height="123" key="GridCell.Tab.0.right" timestamp="1600788181037">
+    <state width="1309" height="123" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600810759011" />
+    <state width="1309" height="123" key="GridCell.Tab.0.right" timestamp="1600810759012">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1309" height="123" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600788181037" />
+    <state width="1309" height="123" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600810759012" />
     <state width="1325" height="69" key="GridCell.Tab.1.bottom" timestamp="1600777481124">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
