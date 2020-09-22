@@ -225,11 +225,11 @@ class UNQfy {
   //Usuarios:
 
   userListenTrack(aUserID, aTrackID){
-    this._userManager.userListenTrack(this, aUserID, aTrackID);
+    return this._userManager.userListenTrack(this, aUserID, aTrackID);
   }
 
   timesUserListenedTrack(aUserID, aTrackID){
-    this._userManager.userListenTrack(this, aUserID, aTrackID);
+    return this._userManager.userListenTrack(this, aUserID, aTrackID);
   }
 
   top3TracksFromArtist(artistId){

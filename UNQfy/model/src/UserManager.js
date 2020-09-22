@@ -12,6 +12,7 @@ class UserManager{
             throw e;
         }
         aUser.listen(aTrack);
+        return aUser;
     }
 
     timesUserListenedTrack(aUNQfy, aUserID, aTrackID){
