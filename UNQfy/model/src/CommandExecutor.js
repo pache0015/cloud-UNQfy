@@ -126,7 +126,16 @@ class CommandExecutor {
             top3TracksFromArtist : function (unquify, args){
                 const artistId = eval(args[0]);
                 return unquify.top3TracksFromArtist(artistId);
-            }
+            },
+            removeArtist : function(unquify, args){
+
+            },
+            removeTrack : function(unquify, args){
+
+            },
+            removeAlbum : function(unquify, args){
+
+            },
         };
     }
 

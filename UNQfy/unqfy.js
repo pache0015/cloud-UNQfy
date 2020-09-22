@@ -187,26 +187,6 @@ class UNQfy {
     return playList;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //Busqueda:
   changeSearcher(aSearcher){
     this._searcher = aSearcher;
@@ -250,6 +230,33 @@ class UNQfy {
   top3TracksFromArtist(artistId){
     //FALTA
   }
+
+  removeArtist(id){
+    const artist = this.getAlbumById(id);
+    const albums = artist.albums;
+    albums.forEach(album => this.removeAlbum(album.id));
+    delete this._artists[id];
+    return artist;
+  }
+
+  removeAlbum(id){
+    const album = this.getAlbumById(id);
+    const tracks = album.tracks;
+    tracks.forEach(track => this.removeTrack(track.id))
+    return album;
+  }
+
+  removeTrack(id){
+    const track = this.getTrackById(id);
+    const conteiners = this.getAlbums().concat(this.getPlayLists()).filter(container => container.hasTrack(track));
+    conteiners.forEach(conteiner => conteiner.removeTrack(track))
+    return track;
+  }
+
+  removePlayList(id){
+    delete this._playLists[id];
+  }
+
 
 
   //Persistencia:

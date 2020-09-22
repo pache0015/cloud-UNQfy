@@ -20,7 +20,7 @@ class Album extends Adder{
     }
 
     hasTrack(aTrack){
-        this.belongsElement(aTrack);
+        return this.belongsElement(aTrack);
     }
 }
 module.exports = Album;
