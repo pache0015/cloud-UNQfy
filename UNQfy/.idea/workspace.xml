@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/src/CommandExecutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/CommandExecutor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Printer.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Printer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -14,24 +14,13 @@ function saveUNQfy(unqfy, filename = 'data.json') {
   unqfy.save(filename);
 }
 
-function isDestructiveFunction(aStringCommand){
-  return ["add","create", "remove"].some( str => aStringCommand.includes(str.toLowerCase()));
-}
-
 function main() {
   const unquify = getUNQfy();
   const commandAndArguments = process.argv;
   const command = commandAndArguments[2];
   const args = commandAndArguments.slice(3);
-  try{
-    new CommandExecutor().evaluateCommand(command, args, unquify);
-  }
-  catch(e){
-    console.log(e.message);
-  }
-  if(isDestructiveFunction(command)){
-    saveUNQfy(unquify);
-  }
+  new CommandExecutor().evaluateCommand(command, args, unquify);
+  saveUNQfy(unquify);
 }
 
 main();

@@ -1,5 +1,4 @@
-const Printer = require("./Printer");
-
+const Printer = require("./Printer.js");
 class InvalidCommandException extends Error {
     constructor(aCommandName){
         super(`EL COMANDO ${aCommandName} NO ES UN COMANDO VALIDO. PRUEBE DE NUEVO>> `);
@@ -169,7 +168,7 @@ class CommandExecutor {
             result = this.handlers[aCommandName](unquify, args);
         }
         catch(e){
-            this.printer.printException(e);
+            new Printer().printException(e);
         }
         const header = result[0];
         const entity = result[1];
