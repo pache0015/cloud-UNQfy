@@ -47,8 +47,8 @@ node main.js addTrack 4 "Genesis" 4 266 Pop Alternativo
 
 # PLAYLISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js generatePlaylist "Insomio" 3000 Rap
-node main.js generatePlaylist "Relaxing Music" 1400 Blues Clasica
+node main.js createPlaylist "Insomio" 3000 Rap
+node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica
 
 
 # USERS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
