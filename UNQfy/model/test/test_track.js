@@ -3,7 +3,7 @@
 const assert = require('chai').assert;
 const Track = require('../src/Track.js');
 
-describe('User', () => {
+describe('Track', () => {
     let aTrack = null;
 
     beforeEach(() => {

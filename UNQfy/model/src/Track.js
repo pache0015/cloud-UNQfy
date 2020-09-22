@@ -10,7 +10,8 @@ class Track extends Identificable{
     get genres(){ return this._genres; }
 
     hasGenre(aGenre){
-        return this._genres.includes(aGenre);
+        const genres = this.genres.map(genre => genre.toLowerCase());
+        return genres.includes(aGenre.toLowerCase());
     }
 }
 

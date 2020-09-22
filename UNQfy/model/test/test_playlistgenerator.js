@@ -57,14 +57,15 @@ describe('Generation of playlists', () => {
   });
 
   it('COMPLETE FLOW should return a consistent play list', () => {
-    const track3 = new Track("", 1, ["cumbion"]);
-    const track4 = new Track("", 42, ["tango"]);
-    const otherTracks = list.concat([track3, track4]);
-    const playList = myPlayListGenerator.generatePlayList(otherTracks, "CumbionRemix", 3, ["cumbion"]);
+    const aTrack3 = new Track("", 1, ["cumbion"]);
+    const aTrack4 = new Track("", 42, ["tango"]);
+    const otherTracks = list.concat([aTrack3, aTrack4]);
+    const playList = myPlayListGenerator.generatePlayList(otherTracks, "CumbionRemix", 42, ["cumbion"]);
     assert.equal(playList.name, "CumbionRemix");
     assert.isTrue(playList.hasTrack(aTrack1));
     assert.isFalse(playList.hasTrack(aTrack0));
-    assert.isFalse(playList.hasTrack(aTrack2));
+    assert.isTrue(playList.hasTrack(aTrack2));;
+    assert.isTrue(playList.hasTrack(aTrack3));
   });
 
   it(' A should return a consistent play list', () => {
@@ -72,11 +73,11 @@ describe('Generation of playlists', () => {
     const album = new Album(artist1.id, 'Appetite for Destruction', 1987);
     const t1 = new Track(album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
     const artist2 = new Artist('Michael Jackson', 'USA');
-    const album2 = new Album(artist2.id, 'Thriller', 1987);
-    const t2 = new Track(album2.id, 'Thriller', 200, ['pop', 'movie']);
-    const t3 = new Track(album2.id, 'Another song', 500, ['pop']);
-    const t4 = new Track(album2.id, 'Another song II', 500, ['pop']);
-    const t5 = new Track(album.id, 'Sweet Child o\' Mine', 1500, ['rock', 'hard rock', 'pop', 'movie']);
+    const album2 = new Album('Thriller', 1987);
+    const t2 = new Track('Thriller', 200, ['pop', 'movie']);
+    const t3 = new Track('Another song', 500, ['pop']);
+    const t4 = new Track('Another song II', 500, ['pop']);
+    const t5 = new Track('Sweet Child o\' Mine', 1500, ['rock', 'hard rock', 'pop', 'movie']);
     const lista = [t1,t2,t3,t4,t5];
     const playlist = myPlayListGenerator.generatePlayList(lista, "Asd", 1400, ['pop', 'rock']);
     assert.equal(playlist.name, 'Asd');

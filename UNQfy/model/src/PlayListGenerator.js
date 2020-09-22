@@ -5,15 +5,14 @@ const {NoGenresMatchException, NoGenresException} = require('./exceptions.js');
 class PlayListGenerator{
 
     haveElementInCommon(aListOfGenres, aTrack){
-        return aListOfGenres.some(genre => aTrack.hasGenre(genre));
+        return aListOfGenres.some(aGenre => aTrack.hasGenre(aGenre));
     }
 
-    tracksOfGenres(aMaxDuration, aListOfTracks, aListOfGenres){
+    tracksOfGenres(aMaxDuration, aListOfTracks, aListOfGenres){"Asd".to
         const result =  aListOfTracks.reduce((tuple, aTrack) => {
                 const tracks = tuple[0];
                 const duration = tuple[1];
-                if(this.haveElementInCommon(aListOfGenres, aTrack)
-                 && duration < aMaxDuration){
+                if(this.haveElementInCommon(aListOfGenres, aTrack) && duration + aTrack.duration <= aMaxDuration){
                     tracks.push(aTrack);
                 } 
                 return [tracks, duration+aTrack.duration];}, [[], 0]);
