@@ -69,11 +69,7 @@ describe('Generation of playlists', () => {
   });
 
   it(' A should return a consistent play list', () => {
-    const artist1 = new Artist('Guns n\' Roses', 'USA');
-    const album = new Album(artist1.id, 'Appetite for Destruction', 1987);
-    const t1 = new Track(album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
-    const artist2 = new Artist('Michael Jackson', 'USA');
-    const album2 = new Album('Thriller', 1987);
+    const t1 = new Track('Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
     const t2 = new Track('Thriller', 200, ['pop', 'movie']);
     const t3 = new Track('Another song', 500, ['pop']);
     const t4 = new Track('Another song II', 500, ['pop']);
