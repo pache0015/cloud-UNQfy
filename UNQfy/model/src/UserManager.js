@@ -36,9 +36,17 @@ class UserManager{
         catch(e){
             throw e;
         }
-        const tracks = anArtist.tracks;
+        const uniqueTracks = [...new Set(anArtist.tracks)];
         const playedTracks = aUNQfy.getPlayedTracks();
+        const counts = uniqueTracks.reduce((obj, aTrack) => {
+            obj[aTrack.id] = playedTracks.filter(playedTrack => playedTrack === aTrack).length
+            return obj;}, {});
+        return Object.keys(counts).sort((a,b) => counts[a] > counts[b]).slice(0, 3);
+
     }
+
 }
 
 module.exports = UserManager;
+
+

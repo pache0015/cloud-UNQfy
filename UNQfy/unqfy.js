@@ -174,6 +174,11 @@ class UNQfy {
     return albums.flat();
   }
 
+  getPlayedTracks(){
+    const played = this.getUsers().map(user => user.trackPlayed).flat();
+    return played;
+  }
+
   createPlaylist(name, genresToInclude, maxDuration) {
     let playList = null;
     const listOfTracks = this.getTracks();

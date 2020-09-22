@@ -21,10 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Album.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Artist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/Administrator.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/src/CommandExecutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/CommandExecutor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Printer.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Printer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/UserManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/UserManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +196,7 @@
       <workItem from="1600680109143" duration="13112000" />
       <workItem from="1600718176773" duration="4489000" />
       <workItem from="1600737134886" duration="6055000" />
-      <workItem from="1600777535477" duration="7409000" />
+      <workItem from="1600777535477" duration="10031000" />
     </task>
     <servers />
   </component>
@@ -309,6 +308,10 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state width="1325" height="69" key="GridCell.Tab.3.right/0.0.1366.735@0.0.1366.735" timestamp="1600777481125" />
+    <state x="290" y="0" width="776" height="732" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600786548466">
+      <screen x="0" y="0" width="1366" height="735" />
+    </state>
+    <state x="290" y="0" width="776" height="732" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.735@0.0.1366.735" timestamp="1600786548466" />
     <state x="231" y="56" width="910" height="620" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600670301671">
       <screen x="0" y="0" width="1366" height="735" />
     </state>

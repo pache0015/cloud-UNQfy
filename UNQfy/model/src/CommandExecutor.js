@@ -128,13 +128,16 @@ class CommandExecutor {
                 return unquify.top3TracksFromArtist(artistId);
             },
             removeArtist : function(unquify, args){
-
+                const id = args[0];
+                return unquify.removeArtist(id);
             },
             removeTrack : function(unquify, args){
-
+                const id = args[0];
+                return unquify.removeTrack(id);
             },
             removeAlbum : function(unquify, args){
-
+                const id = args[0];
+                return unquify.removeAlbum(id);
             },
         };
     }
@@ -149,7 +152,7 @@ class CommandExecutor {
         if (!this.isValidCommand(aCommandName)) {
             throw new InvalidCommandException(aCommandName);
         }
-        const unquifyFunction = eval(`aUNQUIfy.${aCommandName}`);
+        const unquifyFunction = eval(`unquify.${aCommandName}`);
         const amountOfNeededArguments = unquifyFunction.length;
         const amountOGivenArguments = args.length;
         if (!amountOGivenArguments >= amountOfNeededArguments) {
