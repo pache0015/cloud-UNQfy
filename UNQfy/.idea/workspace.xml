@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/script/script_ejercicio_modelo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/model/script/script_ejercicio_modelo.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/Administrator.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Administrator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/CommandExecutorEval.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,10 +230,10 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="413" y="164" width="546" height="403" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.735@0.0.1366.735" timestamp="1600689107587" />
-    <state x="421" y="115" width="530" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600763973665">
+    <state x="421" y="115" width="530" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600775536171">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state x="421" y="115" width="530" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.735@0.0.1366.735" timestamp="1600763973665" />
+    <state x="421" y="115" width="530" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.735@0.0.1366.735" timestamp="1600775536171" />
     <state width="457" height="539" key="DebuggerActiveHint" timestamp="1600670338336">
       <screen x="0" y="0" width="1366" height="735" />
     </state>

@@ -20,6 +20,12 @@ Para operar con **UNQfy** vamos a usar, en principio, la línea de comando. Esto
 |- **Horacio Valenzuela** | Leg. 38613 | [valenzuelahoracioe@gmail.com](valenzuelahoracioe@gmail.com) | [UnderABloodySky](https://github.com/UnderABloodySky) |
 
 ------
+### UML
+
+
+# Falta PNG DEL UML
+
+
 
 
 ### Pre-requisitos 📋
@@ -29,8 +35,6 @@ Los *requisitos* necesarios para correr el proyecto:_
 - [nodejs](https://nodejs.org/) >= v10.x. 
 - [npm](https://www.npmjs.com/) >= 6.x.y 
 - [mocha](https://mochajs.org/) >= 13.x.y
-- **FALTA?**
-
 
 
 ## Construido con 🛠️
@@ -41,18 +45,7 @@ Se menciona brevemente las herramientas que se utilizon para crear el proyecto_
   definiendo clases con la sintaxis [ECMA Script 6](https://www.w3schools.com/Js/js_es6.asp).
 - [Javascript](https://www.javascript.com/)
 - [nodejs](https://nodejs.org/) - Para el back-end (Utilizamos la version 12.8.x).
-- [mocha](https://mochajs.org/) - Para el TDD
-**Falta?**
-
-
-## Patrones utilizados:
-
-| **Patrón** |   **Documentacion/Agentes**   |
-| :------:   |            :-------:          |
-| - [Facade](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |                   |
-| - [Strategy](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |                 |
-| - [Template method](https://es.wikipedia.org/wiki/Facade_(patr%C3%B3n_de_dise%C3%B1o)): |          |
-**Falta**
+- [mocha](https://mochajs.org/) - Para los tests.
 
 
 ### Instalación 🔧
@@ -62,18 +55,25 @@ Más allá de la instalación de los pre-requisitos, el proyecto no necesita de 
 
 ## Comenzando 🚀
 
-Una vez clonado el repositorio, se interactúa con el programa desde la línea de comandos (*CLI*), para esto se debe contar con [`nodejs`](https://nodejs.org/) instalado y ejecutar `npm install` en una terminal desde la carpeta **falta**.
+Una vez clonado el repositorio, se interactúa con el programa desde la línea de comandos (*CLI*), para esto se debe contar con [`nodejs`](https://nodejs.org/) instalado y ejecutar `npm install` en una terminal desde la carpeta **/unquify**.
 
-**Aclaración**: Todos los comandos se deben correr desde la carpeta *FALTA**
-
+**Aclaración**: Todos los comandos se deben correr desde la carpeta **/unquify**
 
 
 
 ## Despliegue 📦
 
-Ejecutar `npm test`desde la carpeta **FALTA** para correr los tests del proyecto.
-**Falta**
+Ejecutar `npm test`desde la carpeta **/unquify** para correr los tests del proyecto.
 
+Para ejercitar el modelo, se recomienda ejecutar el script de la carpeta **./script** el archivo **script_ejercicio_modelo.sh**.
+
+# REVISAR ESTO
+
+```bash
+chmod +x script_ejercicio_modelo.sh
+./script_ejercicio_modelo.sh
+  
+```
 
 
 
@@ -136,7 +136,7 @@ Links a tipos de comandos:
 5. **Generar un playlist con duración máxima y de ciertos géneros**
 
   ```bash
-  node main.js generatePlaylist <name> <maxDuration> <genre1> <genre2> .. <genreN>
+  node main.js createPlaylist <name> <maxDuration> <genre1> <genre2> .. <genreN>
   ```
 
   Reemplazar `aName` por el nombre del _playlist_, `aMaxDuration` por la duración máxima de la misma, y `genre1`, `genre2`,etc, hasta `genreN` para los posibles géneros para sus _tracks_.
@@ -282,7 +282,7 @@ Links a tipos de comandos:
 1. **Buscar todas las entidades por nombre parcial (artistas, albumes, tracks y playlists)**
 
   ```bash
-  node main.js searchAllWithPartialName <stringToSearch>
+  node main.js searchByName <stringToSearch>
   ```
 
   Reemplazar `stringToSearch` por el nombre parcial a buscar.
