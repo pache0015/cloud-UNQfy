@@ -3,8 +3,8 @@ cd ..
 
 # ARTISTS >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js addArtist "Canserbero" "Venezuela"
 node main.js addArtist "Louis Amstrong" "USA"
+node main.js addArtist "Canserbero" "Venezuela"
 node main.js addArtist "Led Zeppelin" "USA"
 node main.js addArtist "Astor Piazzolla" "Argentina"
 

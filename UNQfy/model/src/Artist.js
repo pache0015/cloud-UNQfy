@@ -8,7 +8,7 @@ class Artist extends Adder{
     }
 
     get country() { return this._country; }
-
+    set country(aCountry) {this.country == aCountry};
     get albums(){ return this.myElements; }
 
     addAlbum(anAlbum){
