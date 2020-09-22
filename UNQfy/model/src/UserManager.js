@@ -27,7 +27,6 @@ class UserManager{
         return aUser.timesUserListenedTrack(aTrack);
     }
 
-    //Esto no va aca
     top3TracksFromArtist(aUNQfy, artistId){
         let anArtist = null;
         try{
@@ -41,10 +40,9 @@ class UserManager{
         const counts = uniqueTracks.reduce((obj, aTrack) => {
             obj[aTrack.id] = playedTracks.filter(playedTrack => playedTrack === aTrack).length
             return obj;}, {});
-        return Object.keys(counts).sort((a,b) => counts[a] > counts[b]).slice(0, 3);
-
+        const sorted = Object.keys(counts).sort((a,b) => counts[a] > counts[b])
+        return sorted.slice(0, 3);
     }
-
 }
 
 module.exports = UserManager;

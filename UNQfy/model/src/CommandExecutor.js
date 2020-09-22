@@ -24,32 +24,32 @@ class CommandExecutor {
             addAlbum : function (unquify, args){
                 const artistId = args[0];
                 const name = args[1];
-                const year = args[0];
+                const year = eval(args[0]);
                 const albumData = {name, year};
                 return unquify.addAlbum(artistId, albumData);
             },
             addTrack : function (unquify, args){
-                const albumId = args[0];
+                const albumId = eval(args[0]);
                 const name = args[1];
-                const duration = args[2];
+                const duration = eval(args[2]);
                 const genres = args[3];
                 const trackData = {name, duration, genres};
                 return unquify.addTrack(albumId, trackData);
             },
             getArtistById : function (unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.getArtistById(id);
             },
             getAlbumById :  function (unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.getAlbumById(id);
             },
             getTrackById : function (unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.getTrackById(id);
             },
             getPlaylistById : function (unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.getPlaylistById(id);
             },
             addUser: function (unquify, args){
@@ -60,35 +60,35 @@ class CommandExecutor {
                 const name = args[0];
                 return unquify.getUserById(name);
             },
-            getUsers : function (unquify, args){
+            getUsers : function (unquify){
                 return unquify.getUsers();
             },
             getTracksMatchingGenres : function (unquify, args){
                 return unquify.getTracksMatchingGenres(args);
             },
             getTracksMatchingArtist : function (unquify, args){
-                const artistName = args[0]
+                const artistName = args[0];
                 return unquify.getTracksMatchingArtist(artistName);
             },
-            getArtists : function (unquify, args){
+            getArtists : function (unquify){
                 return unquify.getArtists();
             },
             getArtistByName : function (unquify, args){
-                const nameArtist = args[0]
+                const nameArtist = args[0];
                 unquify.getArtistByName(nameArtist);
             },
-            getTracks : function (unquify, args){
+            getTracks : function (unquify){
                 return unquify.getTracks();
             },
-            getPlayLists : function (unquify, args){
+            getPlayLists : function (unquify){
                 return unquify.getPlayLists();
             },
-            getAlbums : function (unquify, args){
+            getAlbums : function (unquify){
                 return unquify.getAlbums();
             },
             createPlaylist: function (unquify, args){
                 const name = args[0];
-                const maxDuration = args[1];
+                const maxDuration = eval(args[1]);
                 const genresToInclude = args.slice(2);
                 return unquify.createPlaylist(name, maxDuration, genresToInclude);
             },
@@ -113,13 +113,13 @@ class CommandExecutor {
                 return unquify.searchByName(name);
             },
             userListenTrack : function (unquify, args){
-                const aUserID = args[0];
-                const aTrackID = args[1];
+                const aUserID = eval(args[0]);
+                const aTrackID = eval(args[1]);
                 unquify.userListenTrack(aUserID, aTrackID);
-                return "Listed"
+                return "Listed";
             },
             timesUserListenedTrack : function (unquify, args){
-                const aUserID = args[0];
+                const aUserID = eval(args[0]);
                 const aTrackID = args[1];
                 return unquify.timesUserListenedTrack(aUserID, aTrackID);
             },
@@ -128,17 +128,18 @@ class CommandExecutor {
                 return unquify.top3TracksFromArtist(artistId);
             },
             removeArtist : function(unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.removeArtist(id);
             },
             removeTrack : function(unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.removeTrack(id);
             },
             removeAlbum : function(unquify, args){
-                const id = args[0];
+                const id = eval(args[0]);
                 return unquify.removeAlbum(id);
             },
+            
         };
     }
 

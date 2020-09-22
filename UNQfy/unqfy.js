@@ -233,7 +233,10 @@ class UNQfy {
   }
 
   top3TracksFromArtist(artistId){
-    //FALTA
+    const topThree = this._userManager.top3TracksFromArtist(this, artistId);
+    const thisIs = new PlayList("This is...", topThree);
+    return thisIs;
+
   }
 
   removeArtist(id){
