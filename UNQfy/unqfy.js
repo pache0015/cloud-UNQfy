@@ -12,6 +12,7 @@ const PartialSearcher = require('./model/src/PartialSearcher.js');
 
 const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, ArtistNotFoundException, UserNameAlreadyInUse, AlbumNotFoundException, TrackNotFoundException} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
+const UserManager = require("./model/src/UserManager");
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -43,6 +44,7 @@ class UNQfy {
   constructor(){
     this._searcher = new PartialSearcher();
     this._playListGenerator = new PlayListGenerator();
+    this._userManager = new UserManager();
     this._artists = {};
     this._playLists = {};
     this._users = {};
@@ -57,8 +59,6 @@ class UNQfy {
     this._artists[newArtist.id] = newArtist;
     return newArtist;
   }
-
-
 
   addAlbum(artistId, albumData) {
   let artist = null;
@@ -176,14 +176,14 @@ class UNQfy {
 
   createPlaylist(name, genresToInclude, maxDuration) {
     let playList = null;
+    const listOfTracks = this.getTracks();
     try{
-      const listOfTracks = this.getTracks();
       playList = this._playListGenerator.generatePlayList(listOfTracks, name, maxDuration, genresToInclude);
     }
     catch(e){
       throw e;
     }
-    evaluateThrowExceptionOrAdd(this._playLists, playList.id, playList);
+    this._playLists[playList.id] = playList;
     return playList;
   }
 
@@ -220,33 +220,15 @@ class UNQfy {
   //Usuarios:
 
   userListenTrack(aUserID, aTrackID){
-    let aUser = null;
-    let aTrack = null;
-    try{
-      aUser = this.getArtistById(aUserID);
-      aTrack = this.getTrackById(aTrackID);
-    }
-    catch(e){
-      throw e;
-    }
-    aUser.listen(aTrack);
+    this._userManager.userListenTrack(this, aUserID, aTrackID);
   }
 
   timesUserListenedTrack(aUserID, aTrackID){
-    let aUser = null;
-    let aTrack = null;
-    try{
-      aUser = this.getUserById(aUserID);
-      aTrack = this.getTrackById(aTrackID);
-    }
-    catch(e){
-      throw e;
-    }
-    aUser.timesUserListenedTrack(aTrack);
+    this._userManager.userListenTrack(this, aUserID, aTrackID);
   }
 
   top3TracksFromArtist(artistId){
-
+    //FALTA
   }
 
 
@@ -259,7 +241,7 @@ class UNQfy {
 
   static load(filename) {
     const serializedData = fs.readFileSync(filename, {encoding: 'utf-8'});
-    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator, Album, Track, User,PlayList, _instance];
+    const classes = [UNQfy, Artist, PartialSearcher, PlayListGenerator, Album, Track, User,PlayList, _instance, UserManager];
     return picklify.unpicklify(JSON.parse(serializedData), classes);
   }
 }

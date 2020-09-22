@@ -1,5 +1,5 @@
 
-class Usermanager{
+class UserManager{
 
     userListenTrack(aUNQfy, aUserID, aTrackID){
         let aUser = null;
@@ -24,9 +24,10 @@ class Usermanager{
         catch(e){
             throw e;
         }
-        aUser.timesUserListenedTrack(aTrack);
+        return aUser.timesUserListenedTrack(aTrack);
     }
 
+    //Esto no va aca
     top3TracksFromArtist(aUNQfy, artistId){
         let anArtist = null;
         try{
@@ -37,9 +38,7 @@ class Usermanager{
         }
         const tracks = anArtist.tracks;
         const playedTracks = aUNQfy.getPlayedTracks();
-
-
     }
-
-
 }
+
+module.exports = UserManager;
