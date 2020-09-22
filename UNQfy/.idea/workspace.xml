@@ -20,17 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18725daa-85a5-43e6-8d53-7d57789e4c60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/script/script_ejercicio_modelo.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/src/Administrator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/src/CommandExecutor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Album.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/Artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Artist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/PlayListGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/PlayListGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test/test_command_executor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/Administrator.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/Administrator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/CommandExecutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/CommandExecutor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unqfy.js" beforeDir="false" afterPath="$PROJECT_DIR$/unqfy.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,10 +47,13 @@
     <property name="javascript.nodejs.core.library.typings.version" value="12.12.62" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/model/test" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -218,6 +214,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="253" width="267" height="226" key="#ESLint" timestamp="1600772133168">
+      <screen x="0" y="0" width="1366" height="735" />
+    </state>
+    <state x="552" y="253" width="267" height="226" key="#ESLint/0.0.1366.735@0.0.1366.735" timestamp="1600772133168" />
     <state x="141" y="0" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600652845242">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
@@ -242,22 +242,22 @@
       <screen x="0" y="0" width="1366" height="735" />
     </state>
     <state x="466" y="136" width="430" height="481" key="FileChooserDialogImpl/0.0.1366.735@0.0.1366.735" timestamp="1600652841806" />
-    <state width="1325" height="123" key="GridCell.Tab.0.bottom" timestamp="1600764086418">
+    <state width="1325" height="123" key="GridCell.Tab.0.bottom" timestamp="1600769193394">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="123" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600764086418" />
-    <state width="1325" height="123" key="GridCell.Tab.0.center" timestamp="1600764086417">
+    <state width="1325" height="123" key="GridCell.Tab.0.bottom/0.0.1366.735@0.0.1366.735" timestamp="1600769193394" />
+    <state width="1325" height="123" key="GridCell.Tab.0.center" timestamp="1600769193393">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="123" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600764086417" />
-    <state width="1325" height="123" key="GridCell.Tab.0.left" timestamp="1600764086417">
+    <state width="1325" height="123" key="GridCell.Tab.0.center/0.0.1366.735@0.0.1366.735" timestamp="1600769193393" />
+    <state width="1325" height="123" key="GridCell.Tab.0.left" timestamp="1600769193393">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="123" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600764086417" />
-    <state width="1325" height="123" key="GridCell.Tab.0.right" timestamp="1600764086417">
+    <state width="1325" height="123" key="GridCell.Tab.0.left/0.0.1366.735@0.0.1366.735" timestamp="1600769193393" />
+    <state width="1325" height="123" key="GridCell.Tab.0.right" timestamp="1600769193393">
       <screen x="0" y="0" width="1366" height="735" />
     </state>
-    <state width="1325" height="123" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600764086417" />
+    <state width="1325" height="123" key="GridCell.Tab.0.right/0.0.1366.735@0.0.1366.735" timestamp="1600769193393" />
     <state width="1325" height="69" key="GridCell.Tab.1.bottom" timestamp="1600763959607">
       <screen x="0" y="0" width="1366" height="735" />
     </state>

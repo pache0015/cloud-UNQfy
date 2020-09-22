@@ -1,31 +1,151 @@
-
-
-class CommandExecutor {
-
-    evaluateCommand(listOfCommandAndArguments, aUNQUIfy){
-        const command = listOfCommandAndArguments[2];
-        let args = listOfCommandAndArguments.slice(3);
-        const unquifyFunction = eval(`aUNQUIfy.${command}`);
-        if(this.isAdd(command, this._handlers)){
-            args = [this._handlers[command](args)];
-        }
-        if(this.hasEnoughArguments(args, unquifyFunction)){
-            try{
-                eval(`aUNQUIfy.${command}(...args)`);
-            }
-            catch(e){
-                console.log(e.message);
-            }
-        }
-        else{
-            throw new Error("Eh ñery");
-        }
-    }
-
-    hasEnoughArguments(aListOfArguments, aFunction){
-        return aListOfArguments.length >= aFunction.length;
+class InvalidCommandException extends Error {
+    constructor(aCommandName){
+        super(`EL COMANDO ${aCommandName} NO ES UN COMANDO VALIDO. PRUEBE DE NUEVO>> `);
+        this.name = "InvalidCommandException";
     }
 }
 
+class NotEnoughArguments extends Error {
+    constructor(input, need){
+        super(`LA CANTIDAD DE ARGUMENTOS INGRESADA NO ES VALIDO, SE REQUIEREN ${need} Y FUERON DADOS ${input} `);
+        this.name = "InvalidCommandException";
+    }
+}
 
+class CommandExecutor {
+    constructor(){
+        this._handlers = {
+            addArtist : function (unquify, args){
+                const name = args[0];
+                const country = args[1];
+                const artistData = {name, country};
+                return unquify.addArtist(artistData);
+            },
+            addAlbum : function (unquify, args){
+                const artistId = args[0];
+                const name = args[1];
+                const year = args[0];
+                const albumData = {name, year};
+                return unquify.addAlbum(artistId, albumData)
+            },
+            addTrack : function (unquify, args){
+                const albumId = args[0];
+                const name = args[1];
+                const duration = args[2];
+                const genres = args[3];
+                const trackData = {name, duration, genres};
+                return unquify.addTrack(albumId, trackData);
+            },
+            getArtistById : function (unquify, args){
+                const id = args[0];
+                return unquify.getArtistById(id);
+            },
+            getAlbumById :  function (unquify, args){
+                const id = args[0];
+                return unquify.getAlbumById(id);
+            },
+            getTrackById : function (unquify, args){
+                const id = args[0];
+                return unquify.getTrackById(id);
+            },
+            getPlaylistById : function (unquify, args){
+                const id = args[0];
+                return unquify.getPlaylistById(id);
+            },
+            addUser: function (unquify, args){
+                const name = args[0];
+                return unquify.addUser(name);
+            },
+            getUserById : function (unquify, args){
+                const name = args[0];
+                return unquify.getUserById(name);
+            },
+            getUsers : function (unquify, args){
+                return unquify.getUsers();
+            },
+            getTracksMatchingGenres : function (unquify, args){
+                return unquify.getTracksMatchingGenres(args);
+            },
+            getTracksMatchingArtist : function (unquify, args){
+                const artistName = args[0]
+                return unquify.getTracksMatchingArtist(artistName);
+            },
+            getArtists : function (unquify, args){
+                return unquify.getArtists();
+            },
+            getArtistByName : function (unquify, args){
+                const nameArtist = args[0]
+                unquify.getArtistByName(nameArtist);
+            },
+            getTracks : function (unquify, args){
+                return unquify.getTracks();
+            },
+            getPlayLists : function (unquify, args){
+                return unquify.getPlayLists();
+            },
+            getAlbums : function (unquify, args){
+                return unquify.getAlbums();
+            },
+            createPlaylist: function (unquify, args){
+                const name = args[0];
+                const maxDuration = args[1];
+                const genresToInclude = args.slice(2);
+                return unquify.createPlaylist(name, maxDuration, genresToInclude);
+            },
+            searchTracksWithPartialName : function (unquify, args){
+                const name = args[0];
+                return unquify.searchTracksWithPartialName(name);
+            },
+            searchAlbumsWithPartialName : function (unquify, args){
+                const name = args[0];
+                return unquify.searchAlbumsWithPartialName(name);
+            },
+            searchArtistsWithPartialName : function (unquify, args){
+                const name = args[0];
+                return unquify.searchArtistsWithPartialName(name);
+            },
+            searchPlaylistsWithPartialName : function (unquify, args){
+                const name = args[0];
+                return unquify.searchPlaylistsWithPartialName(name);
+            },
+            searchByName : function (unquify, args){
+                const name = args[0];
+                return unquify.searchByName(name);
+            },
+            userListenTrack : function (unquify, args){
+                const aUserID = args[0];
+                const aTrackID = args[1];
+                unquify.userListenTrack(aUserID, aTrackID);
+                return "Algo"
+            },
+            timesUserListenedTrack : function (unquify, args){
+                const aUserID = args[0];
+                const aTrackID = args[1];
+                return unquify.timesUserListenedTrack(aUserID, aTrackID);
+            },
+            top3TracksFromArtist : function (unquify, args){
+                const artistId = eval(args[0]);
+                return unquify.top3TracksFromArtist(artistId);
+            }
+        };
+    }
 
+    get handlers() { return this._handlers; }
+
+    isValidCommand(aCommandName){
+        return aCommandName in this._handlers;
+    }
+
+    evaluateCommand(aCommandName, args, unquify) {
+        if (!this.isValidCommand(aCommandName)) {
+            throw new InvalidCommandException(aCommandName);
+        }
+        const unquifyFunction = eval(`aUNQUIfy.${aCommandName}`);
+        const amountOfNeededArguments = unquifyFunction.length;
+        const amountOGivenArguments = args.length;
+        if (!amountOGivenArguments >= amountOfNeededArguments) {
+            throw new NotEnoughArguments(amountOfNeededArguments);
+        }
+        this.handlers[aCommandName](unquify, args);
+    }
+}

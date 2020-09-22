@@ -68,7 +68,7 @@ class UNQfy {
     catch(e){
       throw e;
     }
-    const anAlbum = new Album(albumData.name, albumData.year, artist.name);
+    const anAlbum = new Album(albumData.name, albumData.year);
     artist.addAlbum(anAlbum);
     return anAlbum;
   }
