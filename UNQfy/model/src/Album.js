@@ -5,8 +5,11 @@ const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/ex
 class Album extends Adder{
     constructor(aName, aYear){
         super(aName);
-        this.year = aYear;
+        this._year = aYear;
     }
+
+    get year(){ return this._year; }
+
     get tracks(){ return this.myElements; }
 
     addTrack(aTrack){

@@ -18,8 +18,6 @@ class PlayListGenerator{
                 } 
                 return [tracks, duration];}, [[], 0]);
 
-        console.log("result")
-        console.log(result)
         if(result[0].length === 0){
             throw new NoGenresMatchException(aListOfGenres);
         }  

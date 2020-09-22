@@ -187,6 +187,26 @@ class UNQfy {
     return playList;
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //Busqueda:
   changeSearcher(aSearcher){
     this._searcher = aSearcher;

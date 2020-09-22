@@ -4,8 +4,10 @@ const {AlbumNotFoundException, AlbumAlreadyExistInPlayList} = require('../src/ex
 class Artist extends Adder{
     constructor(aName, aCountry){
         super(aName);
-        this.country = aCountry;
+        this._country = aCountry;
     }
+
+    get country() { return this._country; }
 
     get albums(){ return this.myElements; }
 

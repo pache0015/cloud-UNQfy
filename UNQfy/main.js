@@ -52,6 +52,7 @@ function main() {
   const unquify = getUNQfy();
   const commandAndArguments = process.argv;
   const command = commandAndArguments[2];
+  const arguments = commandAndArguments.slice()
   try{
     new CommandExecutor().evaluateCommand(commandAndArguments, unquify);
   }
@@ -63,4 +64,4 @@ function main() {
   }
 }
 
-main(`node main.js addArtist  "Julian" "La Quiaca"`);
+main();
