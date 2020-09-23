@@ -154,4 +154,9 @@ describe('Playlist Creation and properties', () => {
     assert.isTrue(playlist.hasTrack(t4));
     assert.lengthOf(playlist.tracks, 4);
   });
+  it('AddUser', () => {
+    const aUser = unqfy.addUser("name");
+    assert.equal(aUser.name, "name");
+
+  });
 });

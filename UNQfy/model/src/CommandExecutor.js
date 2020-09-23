@@ -25,15 +25,19 @@ class CommandExecutor {
             addAlbum : function (unquify, args){
                 const artistId = args[0];
                 const name = args[1];
-                const year = eval(args[0]);
+                const year = eval(args[2]);
                 const albumData = {name, year};
                 return ["Se creo al album: ", unquify.addAlbum(artistId, albumData)];
             },
             addTrack : function (unquify, args){
+                console.log('######## ' + args[0]);
                 const albumId = eval(args[0]);
+                console.log('######## ' + args[1]);
                 const name = args[1];
+                console.log('######## ' + args[2]);
                 const duration = eval(args[2]);
-                const genres = args[3];
+                console.log('######## ' + args.slice(3));
+                const genres = args.slice(3);
                 const trackData = {name, duration, genres};
                 return ["Se creo el track: ", unquify.addTrack(albumId, trackData)];
             },
@@ -55,6 +59,7 @@ class CommandExecutor {
             },
             addUser: function (unquify, args){
                 const name = args[0];
+                console.log(args[0]);
                 return ["Se ha agregado el usuario: ", unquify.addUser(name)];
             },
             getUserById : function (unquify, args){
@@ -91,6 +96,13 @@ class CommandExecutor {
                 const name = args[0];
                 const maxDuration = eval(args[1]);
                 const genresToInclude = args.slice(2);
+
+                console.log('###### ' + args[0]);
+                console.log('###### ' + eval(args[1]));
+                console.log('###### ' + (args.slice(2)));
+                console.log(genresToInclude instanceof Array);
+                const errorr = unquify.createPlaylist(name, maxDuration, genresToInclude);
+                console.log('####### ' + errorr + '######')
                 return ["Se ha creado la PayList: ", unquify.createPlaylist(name, maxDuration, genresToInclude)];
             },
             searchTracksWithPartialName : function (unquify, args){
@@ -166,13 +178,13 @@ class CommandExecutor {
         let result = null;
         try {
             result = this.handlers[aCommandName](unquify, args);
+            const header = result[0];
+            const entity = result[1];
+            this.printer.printEntity(header, entity);
         }
         catch(e){
             new Printer().printException(e);
         }
-        const header = result[0];
-        const entity = result[1];
-        this.printer.printEntity(header, entity);
     }
 }
 

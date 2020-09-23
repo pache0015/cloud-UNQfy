@@ -23,4 +23,4 @@ function main() {
   saveUNQfy(unquify);
 }
 
-main();
+main(["createPlaylist", "nombre", "Rap"]);

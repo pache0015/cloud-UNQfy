@@ -11,12 +11,12 @@ node main.js addArtist "Astor Piazzolla" "Argentina"
 
 # ALBUMS >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js addAlbum 1 "Vida" 2010
-node main.js addAlbum 1 "Muerte" 2012
-node main.js addAlbum 2 "Blue" 2006
-node main.js addAlbum 3 "Greater hits" 1974
-node main.js addAlbum 3 "A donde jugaran las niñas" 5 1997
-node main.js addAlbum 4 "Piazzolla Project" 2006
+node main.js addAlbum 0 "Vida" 2010
+node main.js addAlbum 0 "Muerte" 2012
+node main.js addAlbum 1 "Blue" 2006
+node main.js addAlbum 2 "Greater hits" 1974
+node main.js addAlbum 2 "A donde jugaran las niñas" 5 1997
+node main.js addAlbum 3 "Piazzolla Project" 2006
 
 
 # TRACKS: >>>>>>>>>>>>>>>>>>>>>>>>>>><
@@ -37,7 +37,7 @@ node main.js addTrack 3 "La ingrata" 212 Pop Jazz
 node main.js addTrack 4 "Black Dog" 255 Clasico Heavy Rock
 node main.js addTrack 4 "Since i have been loving you" 188 Pop Alternativo
 node main.js addTrack 4 "Dazed and confused" 246 Pop Clasico
-node main.js addTrack 6 "Adios nonino" 266 Blues Clasica
+node main.js addTrack 4 "Adios nonino" 266 Blues Clasica
 
 
 # PLAYLISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>><

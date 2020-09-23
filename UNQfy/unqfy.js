@@ -114,13 +114,15 @@ class UNQfy {
     return getEntity(this._playLists, id);
   }
 
-  addUser(userData){
-    const existName = this.getArtists().some(artist => artist.name === userData.name);
+  addUser(userName){
+    const users = this.getUsers();
+    const existName = users.some(user => user.name === userName);
     if(existName){
-      throw new UserNameAlreadyInUse(userData.name);
+      throw new UserNameAlreadyInUse(userName);
     }
-    const newUser = new User(userData.name);
+    const newUser = new User(userName);
     this._users[newUser.id] = newUser;
+    return newUser;
   }
 
   getUserById(id){
@@ -128,7 +130,7 @@ class UNQfy {
   }
 
   getUsers(){
-    return getEntity(this._users);
+    return allFromHash(this._users);
   }
 
   getTracksMatchingGenres(genres) {
@@ -179,7 +181,7 @@ class UNQfy {
     return played;
   }
 
-  createPlaylist(name, genresToInclude, maxDuration) {
+  createPlaylist(name, maxDuration, genresToInclude) {
     let playList = null;
     const listOfTracks = this.getTracks();
     try{
