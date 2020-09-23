@@ -132,7 +132,7 @@ class CommandExecutor {
             },
             timesUserListenedTrack : function (unquify, args){
                 const aUserID = eval(args[0]);
-                const aTrackID = args[1];
+                const aTrackID = eval(args[1]);
                 return ["El usuario ha escuchado el tema: ",unquify.timesUserListenedTrack(aUserID, aTrackID)];
             },
             top3TracksFromArtist : function (unquify, args){

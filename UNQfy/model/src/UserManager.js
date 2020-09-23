@@ -5,7 +5,7 @@ class UserManager{
         let aUser = null;
         let aTrack = null;
         try{
-            aUser = aUNQfy.getArtistById(aUserID);
+            aUser = aUNQfy.getUserById(aUserID);
             aTrack = aUNQfy.getTrackById(aTrackID);
         }
         catch(e){
@@ -18,13 +18,17 @@ class UserManager{
     timesUserListenedTrack(aUNQfy, aUserID, aTrackID){
         let aUser = null;
         let aTrack = null;
-        try{
+        //try{
             aUser = aUNQfy.getUserById(aUserID);
             aTrack = aUNQfy.getTrackById(aTrackID);
-        }
-        catch(e){
-            throw e;
-        }
+            console.log('#######');
+            console.log(aUser);
+            console.log(aTrack);
+            console.log('#######');
+        //}
+        //catch(e){
+        //    throw e;
+        //}
         return aUser.timesUserListenedTrack(aTrack);
     }
 

@@ -231,7 +231,7 @@ class UNQfy {
   }
 
   timesUserListenedTrack(aUserID, aTrackID){
-    return this._userManager.userListenTrack(this, aUserID, aTrackID);
+    return this._userManager.timesUserListenedTrack(this, aUserID, aTrackID);
   }
 
   top3TracksFromArtist(artistId){
