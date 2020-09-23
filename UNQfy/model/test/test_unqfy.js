@@ -157,6 +157,29 @@ describe('Playlist Creation and properties', () => {
   it('AddUser', () => {
     const aUser = unqfy.addUser("name");
     assert.equal(aUser.name, "name");
+  });
+  it('Top3', () => {
+    const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
+    const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);
+    const t1 = createAndAddTrack(unqfy, album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
+    createAndAddTrack(unqfy, album.id, 'Sweet Child o\' Mine', 1500, ['rock', 'hard rock', 'pop', 'movie']);
+    const artist2 = createAndAddArtist(unqfy, 'Michael Jackson', 'USA');
+    const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    const t2 = createAndAddTrack(unqfy, album2.id, 'Thriller', 200, ['pop', 'movie']);
+    const t3 = createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['pop']);
+    const t4 = createAndAddTrack(unqfy, album2.id, 'Another song II', 500, ['pop']);
+    const aUser = unqfy.addUser("pepe");
+    const aUser1 = unqfy.addUser("jose");
+    unqfy.userListenTrack(aUser.id,t1.id);
+    unqfy.userListenTrack(aUser.id,t2.id);
+    unqfy.userListenTrack(aUser1.id,t2.id);
+    unqfy.userListenTrack(aUser.id,t3.id);
+    unqfy.userListenTrack(aUser1.id,t3.id);
+    unqfy.userListenTrack(aUser.id,t4.id);
 
+   const pl = unqfy.top3TracksFromArtist(artist2.id);
+
+    assert.isTrue(pl.hasTrack(t4));
+    assert.isTrue(pl.hasTrack(t3));
   });
 });

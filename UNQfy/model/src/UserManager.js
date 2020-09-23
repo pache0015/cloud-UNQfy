@@ -31,7 +31,7 @@ class UserManager{
         //}
         return aUser.timesUserListenedTrack(aTrack);
     }
-
+// ####### REVISAR DONDE MOVER ######
     top3TracksFromArtist(aUNQfy, artistId){
         let anArtist = null;
         try{
@@ -43,8 +43,9 @@ class UserManager{
         const uniqueTracks = [...new Set(anArtist.tracks)];
         const playedTracks = aUNQfy.getPlayedTracks();
         const counts = uniqueTracks.reduce((obj, aTrack) => {
-            obj[aTrack.id] = playedTracks.filter(playedTrack => playedTrack === aTrack).length
+            obj[aTrack.id] = playedTracks.filter(playedTrack => playedTrack.id === aTrack.id).length
             return obj;}, {});
+
         const sorted = Object.keys(counts).sort((a,b) => counts[a] > counts[b])
         return sorted.slice(0, 3);
     }
