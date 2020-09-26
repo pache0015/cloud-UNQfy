@@ -186,9 +186,9 @@ describe('Playlist Creation and properties', () => {
    const playListTop3 = unqfy.top3TracksFromArtist(artist2.id);
     assert.equal(playListTop3.name, "This is...");
     assert.lengthOf(playListTop3.tracks,3);
-    //assert.isTrue(playListTop3.hasTrack(t2));
-    //assert.isTrue(playListTop3.hasTrack(t3));
-    //assert.isTrue(playListTop3.hasTrack(t4));
+    assert.isTrue(playListTop3.hasTrack(t2));
+    assert.isTrue(playListTop3.hasTrack(t3));
+    assert.isTrue(playListTop3.hasTrack(t4));
   });
 });
 
