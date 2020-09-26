@@ -13,7 +13,7 @@ class Printer {
       console.log(`${header}:`);
       console.log('<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>');
       if(entity instanceof Array){
-          this.printArray()
+          this.printArray(entity);
       }
       else {
           console.log(entity);
