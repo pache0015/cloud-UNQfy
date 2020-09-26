@@ -181,7 +181,7 @@ class UNQfy {
     return played;
   }
 
-  createPlaylist(name, maxDuration, genresToInclude) {
+  createPlaylist(name, genresToInclude, maxDuration) {
     let playList = null;
     const listOfTracks = this.getTracks();
     try{

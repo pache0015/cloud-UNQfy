@@ -183,7 +183,7 @@ class CommandExecutor {
             this.printer.printEntity(header, entity);
         }
         catch(e){
-            new Printer().printException(e);
+            this.printer.printException(e);
         }
     }
 }

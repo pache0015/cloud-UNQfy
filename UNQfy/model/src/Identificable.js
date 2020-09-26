@@ -1,4 +1,3 @@
-const Singleton = require('../src/IDGenerator.js');
 const _instance = require('../src/IDGenerator.js');
 class Identificable{
     constructor(aName){
