@@ -1,17 +1,5 @@
 const Printer = require("./Printer.js");
-class InvalidCommandException extends Error {
-    constructor(aCommandName){
-        super(`EL COMANDO ${aCommandName} NO ES UN COMANDO VALIDO. PRUEBE DE NUEVO>> `);
-        this.name = "InvalidCommandException";
-    }
-}
-
-class NotEnoughArguments extends Error {
-    constructor(input, need){
-        super(`LA CANTIDAD DE ARGUMENTOS INGRESADA NO ES VALIDO, SE REQUIEREN ${need} Y FUERON DADOS ${input} `);
-        this.name = "InvalidCommandException";
-    }
-}
+const {InvalidCommandException, NotEnoughArguments} = require('./exceptions.js');
 
 class CommandExecutor {
     constructor(){
