@@ -43,4 +43,12 @@ describe('Test about Artist class s behavior' , () => {
      const exercise = () => anArtist.addAlbum(anAlbum);
      assert.throws(exercise, AlbumAlreadyExistInPlayList);
     });
+    it('Remove track', () => {
+        anArtist.addAlbum(anAlbum);
+        assert.lengthOf(anAlbum.tracks, 2);
+        assert.isTrue(anArtist.hasTrack(aTrack));
+        anAlbum.removeTrack(aTrack);
+        assert.isFalse(anArtist.hasTrack(aTrack));
+        assert.lengthOf(anAlbum.tracks, 1);
+    });
 });

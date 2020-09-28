@@ -190,5 +190,42 @@ describe('Playlist Creation and properties', () => {
     assert.isTrue(playListTop3.hasTrack(t3));
     assert.isTrue(playListTop3.hasTrack(t4));
   });
+  it('Remove track', () => {
+    const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
+    const artist2 = createAndAddArtist(unqfy, 'Michael Jackson', 'USA');
+    const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);
+    const t1 = createAndAddTrack(unqfy, album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
+    const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    const t2 = createAndAddTrack(unqfy, album2.id, 'Thriller', 200, ['pop', 'movie']);
+    const t3 = createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['pop']);
+    const t4 = createAndAddTrack(unqfy, album2.id, 'Another song III', 500, ['pop']);
+
+    const playlist = unqfy.createPlaylist('my playlist', ['pop', 'rock'], 1400);
+    assert.lengthOf(playlist.tracks, 4);
+
+    unqfy.removeTrack(t1.id);
+
+    assert.isFalse(album.hasTrack(t1));
+    assert.lengthOf(playlist.tracks, 3);
+
+  });
+  it('Remove Album -> remove track', () => {
+    const artist = createAndAddArtist(unqfy, 'Guns n\' Roses', 'USA');
+    const artist2 = createAndAddArtist(unqfy, 'Michael Jackson', 'USA');
+    const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);
+    const t1 = createAndAddTrack(unqfy, album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
+    const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    const t2 = createAndAddTrack(unqfy, album2.id, 'Thriller', 200, ['pop', 'movie']);
+    const t3 = createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['pop']);
+    const t4 = createAndAddTrack(unqfy, album2.id, 'Another song III', 500, ['pop']);
+
+    const playlist = unqfy.createPlaylist('my playlist', ['pop', 'rock'], 1400);
+    assert.lengthOf(playlist.tracks, 4);
+
+    unqfy.removeAlbum(album.id);
+
+    assert.lengthOf(playlist.tracks, 3);
+    assert.isFalse(artist.hasTrack(t1));
+  });
 });
 
