@@ -66,14 +66,13 @@ Ejecutar `npm test`desde la carpeta **/unquify** para correr los tests del proye
 
 Para ejercitar el modelo, se recomienda ejecutar el script de la carpeta **./script** el archivo **script_ejercicio_modelo.sh**.
 
-# REVISAR ESTO
+Su ejecucion implica darle ciertos privilegios
 
 ```bash
 chmod +x script_ejercicio_modelo.sh
 ./script_ejercicio_modelo.sh
   
 ```
-
 
 
 ### Documentación de uso
@@ -96,7 +95,7 @@ Links a tipos de comandos:
 
 ### Instanciadores
 **Aclaración A:** Al ingresar _tracks, álbumes_ y _artistas_, hay que tener en cuenta que para dar de alta, por ejemplo, un _álbum_ el _artista_ debe existir, y para agregar un _track_ el _álbum_ al que pertenece debe existir.  Si los mismos, no existen entonces se reporta en la consola que no se pudo completar dicha operación, indicando el error correspondiente.
-**Aclaración B:** Todo dato ingresado debe ser válido. En caso contrario, se levantara la excepción correspondiente. 
+
 
 1. **Agregar artista** 
 
