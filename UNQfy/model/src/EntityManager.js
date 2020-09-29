@@ -1,7 +1,7 @@
 const Identificable = require('./Identificable.js');
 const {AlreadyExist} = require('./exceptions.js');
 
-class Adder extends Identificable{
+class EntityManager extends Identificable{
     constructor(aName, aList = []){
         super(aName);
         this._myElements = aList;
@@ -27,4 +27,4 @@ class Adder extends Identificable{
     }
 }
 
-module.exports = Adder;
+module.exports = EntityManager;

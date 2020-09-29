@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 const assert = require('chai').assert;
-const Adder = require('../src/Adder.js');
+const Adder = require('../src/EntityManager.js');
 const {AlreadyExist} = require('../src/exceptions.js');
 const Identificable = require('../src/Identificable.js');
 
