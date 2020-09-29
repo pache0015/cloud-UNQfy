@@ -2,7 +2,7 @@
 const assert = require('chai').assert;
 const Track = require('../src/Track.js');
 const Album = require('../src/Album.js');
-const {TrackNotFoundException, TrackAlreadyExistInPlayList} = require('../src/exceptions.js');
+const {AlreadyExist} = require('../src/exceptions.js');
 
 class DummyIdentificable{
   constructor(aName){
@@ -33,13 +33,9 @@ describe('Album', () => {
       assert.lengthOf(anAlbum.tracks, 1);
     });
 
-    it('Remove Track throw a TrackNotFoundException', () => {
-      const exercise = () => anAlbum.removeTrack(otherTrack)
-      assert.throws(exercise, TrackNotFoundException);
-    });
     it('Add Track throw a TrackAlreadyExistInPlayList', () => {
       anAlbum.addTrack(otherTrack);
       const exercise = () => anAlbum.addTrack(otherTrack);
-      assert.throws(exercise, TrackAlreadyExistInPlayList);
+      assert.throws(exercise, AlreadyExist);
     });
 });

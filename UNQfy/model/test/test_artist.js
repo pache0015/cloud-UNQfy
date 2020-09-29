@@ -3,7 +3,7 @@ const assert = require('chai').assert;
 const Track = require('../src/Track.js');
 const Album = require('../src/Album.js');
 const Artist = require('../src/Artist.js');
-const {AlbumNotFoundException, AlbumAlreadyExistInPlayList} = require('../src/exceptions.js');
+const {AlreadyExist} = require('../src/exceptions.js');
 
 
 describe('Test about Artist class s behavior' , () => {
@@ -33,15 +33,10 @@ describe('Test about Artist class s behavior' , () => {
       assert.lengthOf(anArtist.albums, 0);
     });
 
-    it('Remove Track throw a TrackNotFoundException', () => {
-      const exercise = () => anArtist.removeAlbum(otherTrack)
-      assert.throws(exercise, AlbumNotFoundException);
-    });
-
     it('Add Track throw a TrackAlreadyExistInPlayList', () => {
      anArtist.addAlbum(anAlbum);
      const exercise = () => anArtist.addAlbum(anAlbum);
-     assert.throws(exercise, AlbumAlreadyExistInPlayList);
+     assert.throws(exercise, AlreadyExist);
     });
     it('Remove track', () => {
         anArtist.addAlbum(anAlbum);

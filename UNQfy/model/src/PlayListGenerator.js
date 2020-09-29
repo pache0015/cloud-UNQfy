@@ -1,6 +1,6 @@
 const PlayList = require('./PlayList.js');
 const Track = require('./Track.js');
-const {NoGenresMatchException, NoGenresException} = require('./exceptions.js');
+const {NoGenresMatchException} = require('./exceptions.js');
 
 class PlayListGenerator{
 
@@ -25,9 +25,6 @@ class PlayListGenerator{
     }
 
     generatePlayList(aListOfTracks, aName, aMaxDuration, aListOfGenres){
-        if(aListOfGenres.length ===  0){
-            throw new NoGenresException();
-        }
         let listsOftracks = null;
         try{
             listsOftracks = this.tracksOfGenres(aMaxDuration,aListOfTracks, aListOfGenres);

@@ -10,7 +10,7 @@ const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {AlreadyExistIDEntity, ArtistNameAlreadyInUse, ArtistNotFoundException, UserNameAlreadyInUse, AlbumNotFoundException, TrackNotFoundException} = require('./model/src/exceptions.js');
+const {ArtistNameAlreadyInUse, UserNameAlreadyInUse} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
@@ -23,12 +23,7 @@ function addEntity(obj, id, aHash){
 }
 
 function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
-  if(alreadyExist(aHash, aEntityID)){
-    throw new AlreadyExistIDEntity(aEntity);
-  }
-  else{
-    addEntity(aEntity, aEntityID, aHash);
-  }
+  addEntity(aEntity, aEntityID, aHash);
 }
 
 function getEntity(aHash, aKey){
@@ -61,52 +56,30 @@ class UNQfy {
   }
 
   addAlbum(artistId, albumData) {
-  let artist = null;
-    try{
-      artist = this.getArtistById(artistId);
-    }
-    catch(e){
-      throw e;
-    }
+    const artist = this.getArtistById(artistId);
     const anAlbum = new Album(albumData.name, albumData.year);
     artist.addAlbum(anAlbum);
     return anAlbum;
   }
 
   addTrack(albumId, trackData) {
-    let album = null;
-    try{
-      album = this.getAlbumById(albumId);
-    }
-    catch(e){
-      throw e;
-    }
+    const album = this.getAlbumById(albumId);
     const aTrack = new Track(trackData.name, trackData.duration, trackData.genres);
     album.addTrack(aTrack);
     return aTrack;
   }
 
   getArtistById(id) {
-    const artist = getEntity(this._artists, id);
-    if(artist === undefined){
-      throw new ArtistNotFoundException(id);
-    }
-    return artist;
+    return getEntity(this._artists, id);
   }
 
   getAlbumById(id) {
     const album = this.getAlbums().filter(album => album.id === id);
-    if (album === undefined){
-      throw new AlbumNotFoundException(id);
-    }
     return album[0];
   }
 
   getTrackById(id) {
     let track = this.getTracks().filter(track => track.id === id);
-    if (track === undefined){
-      throw new TrackNotFoundException(id);
-    }
     return track[0];
   }
 
@@ -138,13 +111,7 @@ class UNQfy {
   }
 
   getTracksMatchingArtist(artistName) {
-    let artist = null
-    try{
-      artist = this.getArtistByName(artistName);
-    }
-    catch (e) {
-      throw e;
-    }
+    const artist = this.getArtistByName(artistName);
     const albums = artist.albums;
     return albums.map(album => album.tracks).flat();
   }
@@ -155,9 +122,6 @@ class UNQfy {
 
   getArtistByName(nameArtist){
     const list = this.getArtists().filter(artist => artist.name === nameArtist);
-    if(list.length === 0){
-      throw new ArtistNotFoundException(nameArtist);
-    }
     return list[0];
   }
 
