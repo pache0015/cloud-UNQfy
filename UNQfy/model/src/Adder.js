@@ -1,5 +1,5 @@
 const Identificable = require('./Identificable.js');
-const {AlreadyExist, NotFoundElement} = require('./exceptions.js');
+const {AlreadyExist} = require('./exceptions.js');
 
 class Adder extends Identificable{
     constructor(aName, aList = []){
@@ -13,18 +13,17 @@ class Adder extends Identificable{
         return this._myElements.some(element => element.id === anIdentificable.id);
     }
 
-    addElement(anIdentificable, anException = new AlreadyExist(anIdentificable)){  
+    addElement(anIdentificable){
         if (this.belongsElement(anIdentificable)){
-            throw anException;
+            throw new AlreadyExist(anIdentificable);
         }
         this._myElements.push(anIdentificable);
     }
 
-    removeElement(anIdentificable, anException = new NotFoundElement(anIdentificable)){
-        if(!this.belongsElement(anIdentificable)){
-            throw anException;
+    removeElement(anIdentificable){
+        if(this.belongsElement(anIdentificable)){
+            this._myElements = this._myElements.filter(identificable => identificable.id !== anIdentificable.id);
         }
-        this._myElements = this._myElements.filter(identificable => identificable.id !== anIdentificable.id);
     }
 }
 

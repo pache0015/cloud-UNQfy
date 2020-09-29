@@ -92,15 +92,7 @@ module.exports = {
     InvalidCommandException,
     NotEnoughArguments,
     NoGenresMatchException,
-    NoGenresException,
     AlreadyExist,
-    NotFoundElement,
-    ArtistNotFoundException,
-    AlbumNotFoundException,
-    AlbumAlreadyExistInPlayList,
-    TrackAlreadyExistInPlayList,
-    TrackNotFoundException,
-    AlreadyExistIDEntity,
     ArtistNameAlreadyInUse,
     UserNameAlreadyInUse
   };

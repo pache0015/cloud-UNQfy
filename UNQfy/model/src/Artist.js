@@ -1,6 +1,6 @@
 const Identificable = require('./Identificable.js')
 const Adder = require('./Adder.js');
-const {AlbumNotFoundException, AlbumAlreadyExistInPlayList} = require('../src/exceptions.js');
+
 class Artist extends Adder{
     constructor(aName, aCountry){
         super(aName);
@@ -12,11 +12,11 @@ class Artist extends Adder{
     get albums(){ return this.myElements; }
 
     addAlbum(anAlbum){
-        this.addElement(anAlbum, new  AlbumAlreadyExistInPlayList(anAlbum));
+        this.addElement(anAlbum);
     }
 
     removeAlbum(anAlbum){
-        this.removeElement(anAlbum, new AlbumNotFoundException(anAlbum));
+        this.removeElement(anAlbum);
     }
 
     hasTrack(aTrack){

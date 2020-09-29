@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert;
 const PlayListGenerator = require('../src/PlayListGenerator.js');
-const {NoGenresMatchException, NoGenresException} = require('../src/exceptions.js');
+const {NoGenresMatchException} = require('../src/exceptions.js');
 const Track = require('../src/Track.js');
 const Album = require('../src/Album.js');
 const Artist = require('../src/Artist.js');
@@ -13,11 +13,6 @@ describe('Generation of playlists', () => {
   const aTrack1 = new Track("", 2, ["cumbion"]);
   const aTrack2 = new Track("", 3, ["cumbion"]);
   const list = [aTrack0,aTrack1,aTrack2 ];
-    
-  it('should throw a NoGenresException  when try to generate a playList with a empty list of genres', () => {
-    const exercise = () => myPlayListGenerator.generatePlayList([], "Duh", 42, []);
-    assert.throws(exercise, NoGenresException);
-  });
 
   it('should throw a NoGenresMatchException when try to generate a playList with a empty list of genres', () => {
     const exercise = () => myPlayListGenerator.generatePlayList([], "Duh", 42, ["algo"]);
