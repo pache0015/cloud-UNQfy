@@ -226,7 +226,6 @@ class UNQfy {
     conteiners.forEach(conteiner => conteiner.removeTrack(track))
     return track;
   }
-
   removePlayList(id){
     delete this._playLists[id];
   }
