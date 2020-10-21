@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
+    "axios": "^0.20.0",
     "chai": "^4.2.0",
     "picklify": "github:lwoites/picklify"
   },
