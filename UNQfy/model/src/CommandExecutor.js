@@ -4,6 +4,10 @@ const {InvalidCommandException, NotEnoughArguments} = require('./exceptions.js')
 class CommandExecutor {
     constructor(){
         this._handlers = {
+            populateAlbumsForArtist : function (artistName){
+              const anArtistName = artistName;
+              return ["Estos son los albums mas populares: ", unquify.populateAlbums(anArtistName)];
+            },
             addArtist : function (unquify, args){
                 const name = args[0];
                 const country = args[1];
