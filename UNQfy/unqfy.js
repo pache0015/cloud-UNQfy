@@ -14,8 +14,6 @@ const {ArtistNameAlreadyInUse, UserNameAlreadyInUse} = require('./model/src/exce
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
-const axios = require('axios');
-
 
 function alreadyExist(aHash, aEntityID){
   return aEntityID in aHash;
@@ -235,25 +233,6 @@ class UNQfy {
   }
   removePlayList(id){
     delete this._playLists[id];
-  }
-
-  // SPOTIFY
-
-  populateAlbums(anArtistName){
-
-  const getAlbums = axios.get('https://api.spotify.com/v1/artists/{id}/albums', {
-    params: {
-      ID: 12345
-    }
-  }).then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
   }
 
   //Persistencia:
