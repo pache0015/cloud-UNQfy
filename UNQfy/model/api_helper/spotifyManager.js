@@ -1,4 +1,4 @@
-const rp = require('axios').default;
+const axios = require('axios').default;
 
 const access_token = "BQCH52zyOhRVdB0WRlOcueBf8aLVyLVlHMlNvL09drk2mYtOVrZ9CRKOJdPRKjT3I3IBCjQI_A0EoG2-SoDN8pVCVvbobRS41gz_lRpxaTXHzfkAHrPSETAzSrZAjp5Vz71-EYrm9XFsvO2mxZEFMe4KeONCZfBam4l554KKM8VDCifrZwvLTA";
  
@@ -16,7 +16,7 @@ class SpotifyManager{
                headers: { Authorization: `Bearer ${this.access_token}`},
                json: true
           };
-          return rp.get('https://api.spotify.com/v1/search', searchArtist);
+          return axios.get('https://api.spotify.com/v1/search', searchArtist);
      }
 
      searchAlbumsById(aResponse){
@@ -28,7 +28,7 @@ class SpotifyManager{
                },
                json: true
           };
-          return rp.get(`https://api.spotify.com/v1/artists/${id}/albums`, searchAlbums);
+          return axios.get(`https://api.spotify.com/v1/artists/${id}/albums`, searchAlbums);
      }
 
      populate(anArtistName){
