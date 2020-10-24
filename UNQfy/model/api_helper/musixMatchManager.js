@@ -4,12 +4,13 @@ const rp = require('request-promise');
 class MusixMatchManager{
     constructor(){
         this._api_key = "3caa89508aacec4a8e76c3ba067eaf65";
+        this._BASE_URL = 'http://api.musixmatch.com/ws/1.1';
+        
     }
 
     doMagic(){
-        const BASE_URL = 'http://api.musixmatch.com/ws/1.1';
         const options = {
-          uri: BASE_URL + '/artist.search',
+          uri: this._BASE_URL + '/artist.search',
           qs: {
               apikey: this._api_key,
               q_artist: 'Queen',
@@ -29,6 +30,39 @@ class MusixMatchManager{
             .catch((error) => {
                 console.log('algo salio mal', error);});
     }
+
+    getLyrics(aTrackName){
+        const options = {
+          uri: this._BASE_URL + `/track.search`,
+          qs: {
+              apikey: this._api_key,
+              q_track: aTrackName
+          },
+          json: true
+        };
+        rp.get(options)
+            .then((response) => {
+                return response.message.body.track_list[0].track.track_id;
+            })
+            .then(id => {
+                const other_options = {
+                    uri: this._BASE_URL + `/track.lyrics.get`,
+                qs: {
+                    apikey: this._api_key,
+                    track_id: id
+                },
+                json: true
+                };
+                rp.get(other_options)
+                    .then(response => {
+                        return response.message.body.lyrics.lyrics_body;
+                    })
+                    .then(lyrics=> console.log(lyrics))
+            })
+            .catch(error => {
+                throw error;
+            });
+        }
 }
 
 module.exports = {
@@ -36,4 +70,5 @@ module.exports = {
 };
 
 
-new MusixMatchManager().doMagic();
+//new MusixMatchManager().doMagic();
+new MusixMatchManager().getLyrics("stairway to heaven");
