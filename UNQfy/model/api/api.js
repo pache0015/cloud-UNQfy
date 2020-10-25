@@ -21,17 +21,17 @@ const server = app.listen(port, () => {
 });
 
 if (process.platform === "win32") {
-    var rl = require("readline").createInterface({
+    const rl = require("readline").createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
-    rl.on("SIGINT", function () {
+    rl.on("SIGINT", () => {
         process.emit("SIGINT");
     });
 }
 
-process.on("SIGINT", function () {
+process.on("SIGINT", () => {
     //graceful shutdown
     console.log("Killing process and shutdown server");
     server.close(() => {
