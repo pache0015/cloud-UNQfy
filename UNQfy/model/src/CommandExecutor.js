@@ -3,147 +3,221 @@ const {InvalidCommandException, NotEnoughArguments} = require('./exceptions.js')
 
 class CommandExecutor {
     constructor(){
-        this._handlers = {
-            populateAlbumsForArtist : function (artistName){
-              const anArtistName = artistName;
-              return ["Estos son los albums mas populares: ", unquify.populateAlbums(anArtistName)];
+        this._handlers= {
+            //populateAlbumsForArtist : function (artistName){
+            //  const anArtistName = artistName;
+            //  return ["Estos son los albums mas populares: ", unquify.populateAlbums(anArtistName)];
+            //},
+            addArtist:{
+                f:(unquify, args) => {
+                    const name = args[0];
+                    const country = args[1];
+                    const artistData = {name, country};
+                    return ["Se creo al artista: ", unquify.addArtist(artistData)];
+                },
+                cantParams: 2,
             },
-            addArtist : function (unquify, args){
-                const name = args[0];
-                const country = args[1];
-                const artistData = {name, country};
-                return ["Se creo al artista: ", unquify.addArtist(artistData)];
+            addAlbum:{
+                f:(unquify, args) => {
+                    const artistId = args[0];
+                    const name = args[1];
+                    const year = parseInt(args[2]);
+                    const albumData = {name, year};
+                    return ["Se creo al album: ", unquify.addAlbum(artistId, albumData)];
+                },
+                cantParams: 3,
             },
-            addAlbum : function (unquify, args){
-                const artistId = args[0];
-                const name = args[1];
-                const year = eval(args[2]);
-                const albumData = {name, year};
-                return ["Se creo al album: ", unquify.addAlbum(artistId, albumData)];
+            addTrack:{
+                f:(unquify, args) => {
+                    const albumId = parseInt(args[0]);
+                    const name = args[1];
+                    const duration = parseInt(args[2]);
+                    const genres = args.slice(3);
+                    const trackData = {name, duration, genres};
+                    return ["Se creo el track: ", unquify.addTrack(albumId, trackData)];
+                },
+                cantParams: 4,
             },
-            addTrack : function (unquify, args){
-                console.log('######## ' + args[0]);
-                const albumId = eval(args[0]);
-                console.log('######## ' + args[1]);
-                const name = args[1];
-                console.log('######## ' + args[2]);
-                const duration = eval(args[2]);
-                console.log('######## ' + args.slice(3));
-                const genres = args.slice(3);
-                const trackData = {name, duration, genres};
-                return ["Se creo el track: ", unquify.addTrack(albumId, trackData)];
+            getArtistById:{
+                f:(unquify, args)=> {
+                    const id = parseInt(args[0]);
+                    return ["El artista solictado es: ", unquify.getArtistById(id)];
+                },
+                cantParams:1,
             },
-            getArtistById : function (unquify, args){
-                const id = eval(args[0]);
-                return ["El artista solictado es: ", unquify.getArtistById(id)];
+            getAlbumById:{
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["El album solictado es: ", unquify.getAlbumById(id)];
+                },
+                cantParams:1,
             },
-            getAlbumById :  function (unquify, args){
-                const id = eval(args[0]);
-                return ["El album solictado es: ", unquify.getAlbumById(id)];
+            getTrackById:{
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["El track solicitado es: ", unquify.getTrackById(id)];
+                },
+                cantParams: 1,
             },
-            getTrackById : function (unquify, args){
-                const id = eval(args[0]);
-                return ["El track solicitado es: ", unquify.getTrackById(id)];
+            getPlaylistById:{
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["La PlayList solictada es: ", unquify.getPlaylistById(id)];
+                },
+                cantParams: 1,
             },
-            getPlaylistById : function (unquify, args){
-                const id = eval(args[0]);
-                return ["La PlayList solictada es: ", unquify.getPlaylistById(id)];
+            addUser:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["Se ha agregado el usuario: ", unquify.addUser(name)];
+                },
+                cantParams: 1,
             },
-            addUser: function (unquify, args){
-                const name = args[0];
-                console.log(args[0]);
-                return ["Se ha agregado el usuario: ", unquify.addUser(name)];
+            getUserById:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El usuario solicitado fue: ", unquify.getUserById(name)];
+                },
+                cantParams: 1,
             },
-            getUserById : function (unquify, args){
-                const name = args[0];
-                return ["El usuario solicitado fue: ", unquify.getUserById(name)];
+            getUsers:{
+                f:(unquify)=>{
+                    return ["Los usuarios son: ", unquify.getUsers()];
+                },
+                cantParams: 0,
             },
-            getUsers : function (unquify){
-                return ["Los usuarios son: ", unquify.getUsers()];
+            getTracksMatchingGenres:{
+                f:(unquify, args)=>{
+                    return ["Los tracks de los generos ingresados son: ", unquify.getTracksMatchingGenres(args)];
+                },
+                cantParams: 0,
             },
-            getTracksMatchingGenres : function (unquify, args){
-                return ["Los tracks de los generos ingresados son: ", unquify.getTracksMatchingGenres(args)];
+            getTracksMatchingArtist:{
+                f: (unquify, args)=>{
+                    const artistName = args[0];
+                    return ["Los tracks del artista ingresados son: ", unquify.getTracksMatchingArtist(artistName)];
+                },
+                cantParams: 1,
             },
-            getTracksMatchingArtist : function (unquify, args){
-                const artistName = args[0];
-                return ["Los tracks del artista ingresados son: ", unquify.getTracksMatchingArtist(artistName)];
+            getArtists : {
+                f:(unquify)=>{
+                    return ["Los artistas son: ",unquify.getArtists()];
+                },
+                cantParams: 0,
             },
-            getArtists : function (unquify){
-                return ["Los artistas son: ",unquify.getArtists()];
+            getArtistByName:{
+                f:(unquify, args)=>{
+                    const nameArtist = args[0];
+                    return ["El artista del nombre ingresado son: ", unquify.getArtistByName(nameArtist)];
+                },
+                cantParams: 1,
             },
-            getArtistByName : function (unquify, args){
-                const nameArtist = args[0];
-                return ["El artista del nombre ingresado son: ", unquify.getArtistByName(nameArtist)];
+            getTracks:{
+                f:(unquify)=>{
+                    return ["Los tracks son: ", unquify.getTracks()];
+                },
+                cantParams: 0,
             },
-            getTracks : function (unquify){
-                return ["Los tracks son: ", unquify.getTracks()];
+            getPlayLists:{
+                f:(unquify)=>{
+                    return ["Las playlists son: ", unquify.getPlayLists()];
+                },
+                cantParams: 0,
             },
-            getPlayLists : function (unquify){
-                return ["Las playlists son: ", unquify.getPlayLists()];
+            getAlbums:{
+                f:(unquify)=>{
+                    return ["Los albums son: ", unquify.getAlbums()];
+                },
+                cantParams: 0,
             },
-            getAlbums : function (unquify){
-                return ["Los albums son: ", unquify.getAlbums()];
+            createPlaylist:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    const maxDuration = parseInt(args[1]);
+                    const genresToInclude = args.slice(2);
+                    return ["Se ha creado la PayList: ", unquify.createPlaylist(name, maxDuration, genresToInclude)];
+                },
+                cantParams: 3,
             },
-            createPlaylist: function (unquify, args){
-                const name = args[0];
-                const maxDuration = eval(args[1]);
-                const genresToInclude = args.slice(2);
-
-                console.log('###### ' + args[0]);
-                console.log('###### ' + eval(args[1]));
-                console.log('###### ' + (args.slice(2)));
-                console.log(genresToInclude instanceof Array);
-                const errorr = unquify.createPlaylist(name, maxDuration, genresToInclude);
-                console.log('####### ' + errorr + '######')
-                return ["Se ha creado la PayList: ", unquify.createPlaylist(name, maxDuration, genresToInclude)];
+            searchTracksWithPartialName:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El resultado de la busqueda fue: ", unquify.searchTracksWithPartialName(name)];
+                },
+                cantParams: 1,
             },
-            searchTracksWithPartialName : function (unquify, args){
-                const name = args[0];
-                return ["El resultado de la busqueda fue: ", unquify.searchTracksWithPartialName(name)];
+            searchAlbumsWithPartialName:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El resultado de la busqueda fue: ", unquify.searchAlbumsWithPartialName(name)];
+                },
+                cantParams: 1,
             },
-            searchAlbumsWithPartialName : function (unquify, args){
-                const name = args[0];
-                return ["El resultado de la busqueda fue: ", unquify.searchAlbumsWithPartialName(name)];
+            searchArtistsWithPartialName:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El resultado de la busqueda fue: ", unquify.searchArtistsWithPartialName(name)];
+                },
+                cantParams: 1,
             },
-            searchArtistsWithPartialName : function (unquify, args){
-                const name = args[0];
-                return ["El resultado de la busqueda fue: ", unquify.searchArtistsWithPartialName(name)];
+            searchPlaylistsWithPartialName:{ 
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El resultado de la busqueda fue: ", unquify.searchPlaylistsWithPartialName(name)];
+                },
+                cantParams: 1,
             },
-            searchPlaylistsWithPartialName : function (unquify, args){
-                const name = args[0];
-                return ["El resultado de la busqueda fue: ", unquify.searchPlaylistsWithPartialName(name)];
+            searchByName:{
+                f:(unquify, args)=>{
+                    const name = args[0];
+                    return ["El resultado de la busqueda fue: ", unquify.searchByName(name)];
+                },
+                cantParams: 1,
             },
-            searchByName : function (unquify, args){
-                const name = args[0];
-                return ["El resultado de la busqueda fue: ", unquify.searchByName(name)];
+            userListenTrack:{
+                f:(unquify, args)=>{
+                    const aUserID = parseInt(args[0]);
+                    const aTrackID = parseInt(args[1]);
+                    return ["El usuario ha escuchado el track", unquify.userListenTrack(aUserID, aTrackID)];
+                },
+                cantParams: 2,
             },
-            userListenTrack : function (unquify, args){
-                const aUserID = eval(args[0]);
-                const aTrackID = eval(args[1]);
-                return ["El usuario ha escuchado el track", unquify.userListenTrack(aUserID, aTrackID)];
+            timesUserListenedTrack:{
+                f:(unquify, args)=>{
+                    const aUserID = parseInt(args[0]);
+                    const aTrackID = parseInt(args[1]);
+                    return ["El usuario ha escuchado el tema: ",unquify.timesUserListenedTrack(aUserID, aTrackID)];
+                },
+                cantParams: 2,
             },
-            timesUserListenedTrack : function (unquify, args){
-                const aUserID = eval(args[0]);
-                const aTrackID = eval(args[1]);
-                return ["El usuario ha escuchado el tema: ",unquify.timesUserListenedTrack(aUserID, aTrackID)];
+            top3TracksFromArtist:{
+                f:(unquify, args)=>{
+                    const artistId = parseInt(args[0]);
+                    return ["This is: ",unquify.top3TracksFromArtist(artistId)];
+                },
+                cantParams: 1,
             },
-            top3TracksFromArtist : function (unquify, args){
-                const artistId = eval(args[0]);
-                return ["This is: ",unquify.top3TracksFromArtist(artistId)];
+            removeArtist : {
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["Se ha borrado al artista: ", unquify.removeArtist(id)];
+                },
+                cantParams: 1,
             },
-            removeArtist : function(unquify, args){
-                const id = eval(args[0]);
-                return ["Se ha borrado al artista: ", unquify.removeArtist(id)];
+            removeTrack : {
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["Se ha borrado al track: ", unquify.removeTrack(id)];
+                },
+                cantParams:1,
             },
-            removeTrack : function(unquify, args){
-                const id = eval(args[0]);
-                return ["Se ha borrado al track: ", unquify.removeTrack(id)];
-            },
-            removeAlbum : function(unquify, args){
-                const id = eval(args[0]);
-                return ["Se ha borrado al album: ", unquify.removeAlbum(id)];
-            },
-        };
+            removeAlbum : {
+                f:(unquify, args)=>{
+                    const id = parseInt(args[0]);
+                    return ["Se ha borrado al album: ", unquify.removeAlbum(id)];
+                },
+                cantParams: 1,
+            }};
         this._printer = new Printer();
     }
 
@@ -161,15 +235,15 @@ class CommandExecutor {
         if (!this.isValidCommand(aCommandName)) {
             throw new InvalidCommandException(aCommandName);
         }
-        const unquifyFunction = eval(`unquify.${aCommandName}`);
-        const amountOfNeededArguments = unquifyFunction.length;
+        const unquifyFunction = this._handlers[aCommandName];
+        const amountOfNeededArguments = unquifyFunction.cantParams;
         const amountOGivenArguments = args.length;
-        if (!amountOGivenArguments >= amountOfNeededArguments) {
+        if (amountOGivenArguments < amountOfNeededArguments) {
             throw new NotEnoughArguments(amountOfNeededArguments);
         }
         let result = null;
         try {
-            result = this.handlers[aCommandName](unquify, args);
+            result = unquifyFunction.f(unquify, args);
             const header = result[0];
             const entity = result[1];
             this.printer.printEntity(header, entity);

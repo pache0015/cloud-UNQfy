@@ -9,10 +9,8 @@ const prueba = express.Router();
 prueba.route('/prueba')
 .get((req, res) => {
     res.status(200);
-    res.json(
-        "Hola"
-    );
-});
+    res.json("Hola");
+    });
 
 module.exports = {
   //  artists,
