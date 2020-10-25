@@ -1,5 +1,5 @@
-const Printer = require("./Printer.js");
-const {InvalidCommandException, NotEnoughArguments} = require('./exceptions.js');
+const Printer = require("../src/Printer.js");
+const {InvalidCommandException, NotEnoughArguments} = require('../src/exceptions.js');
 
 class CommandExecutor {
     constructor(){
