@@ -21,4 +21,6 @@ express.get('/', function (req,res) {
     res.send('Bienvenido a UNQfy');
 })
 //ENDPOINT PLAYLISTS
-//express.get('/playlists')
+express.get('/playlists', function (req, res) {
+    res.json("una playlists");
+})
