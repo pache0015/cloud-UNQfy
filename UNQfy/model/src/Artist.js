@@ -1,4 +1,4 @@
-const Identificable = require('./Identificable.js')
+const Identificable = require('./Identificable.js');
 const Adder = require('./EntityManager.js');
 
 class Artist extends Adder{
@@ -8,7 +8,7 @@ class Artist extends Adder{
     }
 
     get country() { return this._country; }
-    set country(aCountry) {this.country == aCountry};
+    set country(aCountry) {this.country = aCountry;}
     get albums(){ return this.myElements; }
 
     addAlbum(anAlbum){
@@ -21,6 +21,15 @@ class Artist extends Adder{
 
     hasTrack(aTrack){
         return this.albums.some(album => album.hasTrack(aTrack));
+    }
+
+    toJSON() {
+        return {
+          id: this.id,
+          name: this.name,
+          country: this.country,
+          albums: this.albums.map(album => album.toJSON())
+        };
     }
 }
 

@@ -13,6 +13,15 @@ class Track extends Identificable{
         const genres = this.genres.map(genre => genre.toLowerCase());
         return genres.includes(aGenre.toLowerCase());
     }
+    toJSON() {
+        return {
+          id: this.id,
+          name: this.name,
+          genres: this.genres,
+          duration: this.duration,
+          //lyrics: this.lyrics
+        };
+      }
 }
 
 module.exports = Track;
