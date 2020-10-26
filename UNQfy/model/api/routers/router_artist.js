@@ -78,8 +78,6 @@ artists_router.route('/artists')
     .get((req, res) => {
         const unqfy = getUNQfy();
         const artist_name = req.query.artist_name;
-        console.log(req.query);
-        console.log(artist_name);
         if(artist_name === undefined){
             res.status(400);
             res.json({status: 400, errorCode: "BAD_REQUEST"});
