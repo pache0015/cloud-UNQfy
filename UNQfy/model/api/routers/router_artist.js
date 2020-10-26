@@ -63,10 +63,12 @@ artists_router.route('/artists/:artist_id')
                     res.status(404);
                     res.json({ status: 404,
                                errorCode: "RESOURCE_NOT_FOUND"});
+                               throw err;
                 }else{
                     if(err instanceof NonExistAtributeInEntity){
                         res.json(405);
                         res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+                        throw err;
                     }
                 }
             }
