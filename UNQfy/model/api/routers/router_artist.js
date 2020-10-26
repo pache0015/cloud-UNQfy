@@ -7,13 +7,13 @@ artists_router.route('/artists/:artist_id')
     const unqfy = getUNQfy();
     const artist_ID = parseInt(req.params.artist_id);
     const artist = unqfy.getArtistById(artist_ID);
-    if (artist === null){
-        res.status(404);
-        res.json({errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+    if (artist === undefined){
+        res.status(405);
+        res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
     }
     else{
         res.status(200);
-        res.json(artist);
+        res.json({body: artist.toJSON()});
     }});
 
 module.exports = artists_router;

@@ -13,7 +13,7 @@ app.use((req, res, next) => {
         next();
     });
 });
-app.use('/api', prueba,artists_router);
+app.use('/api', artists_router);
 const server = app.listen(port, () => {
     console.log("Server running");
 });
