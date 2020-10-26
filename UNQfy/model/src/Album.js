@@ -21,5 +21,14 @@ class Album extends Adder{
     hasTrack(aTrack){
         return this.belongsElement(aTrack);
     }
+
+    toJSON() {
+        return {
+          id: this.id,
+          name: this.name,
+          year: this.year,
+          tracks: this.tracks.map(track => track.toJSON())
+        }
+      }
 }
 module.exports = Album;
