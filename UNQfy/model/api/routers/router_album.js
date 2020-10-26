@@ -53,7 +53,7 @@ albums_router.route('/albums/:album_id')
                 res.status(200);
                 res.json({status:200,
                 artist: updated_album.toJSON()});
-                saveUNQfy();
+                saveUNQfy(unqfy);
             }
             catch(err){
                 if(err instanceof TypeError || err instanceof Error){

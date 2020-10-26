@@ -56,7 +56,7 @@ artists_router.route('/artists/:artist_id')
                 res.status(200);
                 res.json({status:200,
                 artist: updated_artist.toJSON()});
-                saveUNQfy();
+                saveUNQfy(unqfy);
             }
             catch(err){
                 if(err instanceof TypeError || err instanceof Error){
