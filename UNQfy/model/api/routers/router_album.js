@@ -76,18 +76,12 @@ albums_router.route('/albums')
     .get((req, res) => {
         const unqfy = getUNQfy();
         const album_name = req.query.name;
-        if(album_name === undefined){
-            res.status(400);
-            res.json({status: 400, errorCode: "BAD_REQUEST"});
-        }
-        else{
-            const albums = unqfy.searchAlbumsWithPartialName(album_name);
-            res.status(200);
-            res.json(
-                {status:200,
-                albums: albums.map(album => album.toJSON())}
-            );
-        }
+        const albums = unqfy.searchAlbumsWithPartialName(album_name === undefined ? "" : album_name);
+        res.status(200);
+        res.json(
+            {status:200,
+            albums: albums.map(album => album.toJSON())}
+        );
     })
     .post((req, res) => {
         const unqfy = getUNQfy();
