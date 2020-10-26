@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express  = require('express'); 
 const app = express();                 
 const {
-    prueba
+    router
     } = require('./routers.js');
 
 const port = 8080;  // set our port
@@ -15,7 +15,7 @@ app.use((req, res, next) => {
         next();
     });
 });
-app.use('/api', prueba);
+app.use('/api', router);
 const server = app.listen(port, () => {
     console.log("Server running");
 });

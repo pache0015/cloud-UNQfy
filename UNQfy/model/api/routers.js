@@ -17,6 +17,6 @@ module.exports = {
   router: router
 };
 
-express.get('/', function (req,res) {
-    res.send('Bienvenido a UNQfy');
-})
+//express.get('/', function (req,res) {
+//    res.send('Bienvenido a UNQfy');
+//})
