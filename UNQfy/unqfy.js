@@ -150,6 +150,17 @@ class UNQfy {
     return played;
   }
 
+  //addPlayList(name, listOfTracks){
+  //  let playList = null;
+  //  try{
+  //    playList = this._playListGenerator.generatePlayListByTracks(name, listOfTracks);
+  //    this._playLists[playList.id] = playList;
+  //  }
+  //  catch (e) {
+  //    throw e;
+  //  }
+  //  return playList;
+  //}
   createPlaylist(name, genresToInclude, maxDuration) {
     let playList = null;
     const listOfTracks = this.getTracks();

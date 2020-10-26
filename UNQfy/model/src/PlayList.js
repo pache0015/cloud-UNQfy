@@ -1,6 +1,6 @@
 const Adder = require('./EntityManager.js');
 
-class PlayList extends Adder{
+    class PlayList extends Adder{
     constructor(aName, aListOfTracks){
         super(aName, aListOfTracks);
     }
