@@ -1,7 +1,7 @@
 const express = require('express');    
 const artists_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const {ArtistNameAlreadyInUse} = require('../../../model/src/exceptions');
+const {ArtistNameAlreadyInUse, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
 
 artists_router.route('/artists/:artist_id')
     .get((req, res) => {
@@ -27,15 +27,55 @@ artists_router.route('/artists/:artist_id')
             res.status(204);
             res.send({ success: true});
         }catch(err){
-            //if(err instanceof TypeError){
-            //    res.status(404);
-            //    res.json({ status: 404,
-            //               errorCode: "RESOURCE_NOT_FOUND"});
-            //}
-            //else{
+            if(err instanceof TypeError){
+                res.status(404);
+                res.json({ status: 404,
+                           errorCode: "RESOURCE_NOT_FOUND"});
+            }
+            else{
                 throw err;
-            //}
+            }
         }
+    })
+    .patch((req, res)=>{
+        const unqfy = getUNQfy();
+        const artist_ID = parseInt(req.params.artist_id);
+        const artist_data = req.body;
+        if (artist_data.name === undefined || artist_data.country === undefined){
+            res.status(405);
+            res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND", s:"Primer if"});
+        }
+        else{
+            try{
+                const artist = unqfy.getArtistById(artist_ID);
+                const existName = unqfy.getArtists().some(artist => artist.name === artist_data.name);
+                if(existName){
+                    throw new Error("Ups");
+                }
+                const updated_artist = artist.update({name: artist_data.name});
+                res.status(200);
+                res.json({status:200,
+                artist: updated_artist.toJSON()});
+            }
+            catch(err){
+                if(err instanceof TypeError || err instanceof Error){
+                    res.status(404);
+                    res.json({ status: 404,
+                               errorCode: "RESOURCE_NOT_FOUND", s:"Segundo if"});
+                    throw err;
+                }else{
+                    if(err instanceof NonExistAtributeInEntity){
+                        res.json(405);
+                        res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND", s:"Tercer if"});
+                        throw err;
+                    }
+                    else{
+                        throw err;
+                    }
+                }
+            }
+            
+        }         
     });
 
 artists_router.route('/artists')
