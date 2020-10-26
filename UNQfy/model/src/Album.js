@@ -1,4 +1,3 @@
-const Identificable = require('./Identificable.js');
 const Adder = require('./EntityManager.js');
 
 class Album extends Adder{
@@ -8,6 +7,9 @@ class Album extends Adder{
     }
 
     get year(){ return this._year; }
+    set year(aNewYear){
+        this._year = aNewYear;
+    }
 
     get tracks(){ return this.myElements; }
 
@@ -28,7 +30,7 @@ class Album extends Adder{
           name: this.name,
           year: this.year,
           tracks: this.tracks.map(track => track.toJSON())
-        }
+        };
       }
 }
 module.exports = Album;

@@ -88,11 +88,19 @@ class NotEnoughArguments extends Error {
     }
 }
 
+class NonExistAtributeInEntity extends Error {
+    constructor(anAtribute){
+        super(`El objeto no tiene el atributo: ${anAtribute}!`);
+        this.name = "NonExistAtributeInEntity";
+    }
+}
+
 module.exports = {
     InvalidCommandException,
     NotEnoughArguments,
     NoGenresMatchException,
     AlreadyExist,
     ArtistNameAlreadyInUse,
-    UserNameAlreadyInUse
+    UserNameAlreadyInUse,
+    NonExistAtributeInEntity
   };

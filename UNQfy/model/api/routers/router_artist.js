@@ -85,7 +85,7 @@ artists_router.route('/artists')
             res.json({status: 400, errorCode: "BAD_REQUEST"});
         }
         else{
-            const artists = unqfy.searchArtistsWithPartialName(artist_name);
+            const artists = unqfy.searchArtistsWithPartialName(artist_name === undefined ? "" : artist_name);
             res.status(200);
             res.json(
                 {status:200,
