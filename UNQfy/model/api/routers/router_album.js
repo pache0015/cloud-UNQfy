@@ -1,28 +1,28 @@
 const express = require('express');    
-const artists_router = express.Router();
+const albums_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 const {ArtistNameAlreadyInUse, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
 
-artists_router.route('/artists/:artist_id')
+albums_router.route('/albums/:album_id')
     .get((req, res) => {
         const unqfy = getUNQfy();
-        const artist_ID = parseInt(req.params.artist_id);
-        const artist = unqfy.getArtistById(artist_ID);
-        if (artist === undefined){
+        const album_ID = parseInt(req.params.album_id);
+        const album = unqfy.getAlbumById(album_ID);
+        if (album === undefined){
             res.status(405);
             res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
         }
         else{
             res.status(200);
             res.json({status:200,
-                      artist: artist.toJSON()});
+                      album: album.toJSON()});
         }
     })
     .delete((req, res) => {
         const unqfy = getUNQfy();
-        const artistId = parseInt(req.params.artist_id);
+        const album_ID = parseInt(req.params.album_id);
         try{
-            unqfy.removeArtist(artistId);
+            unqfy.removeAlbum(album_ID);
             saveUNQfy(unqfy);
             res.status(204);
             res.send({ success: true});
@@ -39,23 +39,20 @@ artists_router.route('/artists/:artist_id')
     })
     .patch((req, res)=>{
         const unqfy = getUNQfy();
-        const artist_ID = parseInt(req.params.artist_id);
-        const artist_data = req.body;
-        if (artist_data.name === undefined || artist_data.country === undefined){
+        const album_ID = parseInt(req.params.album_id);
+        console.log(req.body)
+        const album_data = req.body;
+        if (album_data.year === undefined){
             res.status(405);
             res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
         }
         else{
             try{
-                const artist = unqfy.getArtistById(artist_ID);
-                const existName = unqfy.getArtists().some(artist => artist.name === artist_data.name);
-                if(existName){
-                    throw new Error("Ups");
-                }
-                const updated_artist = artist.update({name: artist_data.name});
+                const album = unqfy.getAlbumById(album_ID);
+                const updated_album = album.update(album_data);
                 res.status(200);
                 res.json({status:200,
-                artist: updated_artist.toJSON()});
+                artist: updated_album.toJSON()});
                 saveUNQfy();
             }
             catch(err){
@@ -63,47 +60,49 @@ artists_router.route('/artists/:artist_id')
                     res.status(404);
                     res.json({ status: 404,
                                errorCode: "RESOURCE_NOT_FOUND"});
+                    throw err;
                 }else{
                     if(err instanceof NonExistAtributeInEntity){
                         res.json(405);
                         res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+                        throw err;
                     }
                 }
             }
-            
         }         
     });
 
-artists_router.route('/artists')
+albums_router.route('/albums')
     .get((req, res) => {
         const unqfy = getUNQfy();
-        const artist_name = req.query.name;
-        if(artist_name === undefined){
+        const album_name = req.query.name;
+        if(album_name === undefined){
             res.status(400);
             res.json({status: 400, errorCode: "BAD_REQUEST"});
         }
         else{
-            const artists = unqfy.searchArtistsWithPartialName(artist_name);
+            const albums = unqfy.searchAlbumsWithPartialName(album_name);
             res.status(200);
             res.json(
                 {status:200,
-                artists: artists.map(artist => artist.toJSON())}
+                albums: albums.map(album => album.toJSON())}
             );
         }
     })
     .post((req, res) => {
         const unqfy = getUNQfy();
-        const artist_data = req.body;
-        if (artist_data.name === undefined || artist_data.country === undefined){
+        const album_data = req.body;
+        const existName = unqfy.getAlbums().some(album => album.name === album_data.name); 
+        if (existName || album_data.artistId === undefined || album_data.name === undefined || album_data.name === "" || album_data.year === undefined || album_data.year <= 0){
             res.status(409);
             res.json({status: 409,
               errorCode: "RESOURCE_ALREADY_EXISTS"});
         }
         try {
-            const model_artist = unqfy.addArtist(artist_data);
+            const model_album = unqfy.addAlbum(album_data.artistId, album_data);
             saveUNQfy(unqfy);
             res.status(201);
-            res.json(model_artist.toJSON());
+            res.json(model_album.toJSON());
         }catch(err){
             if(err instanceof ArtistNameAlreadyInUse){
                 res.status(409);
@@ -115,8 +114,5 @@ artists_router.route('/artists')
             }
         }
     });
-        
-        
 
-
-module.exports = artists_router;
+module.exports = albums_router;
