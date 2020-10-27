@@ -71,4 +71,4 @@ module.exports = {
 
 
 //new MusixMatchManager().doMagic();
-new MusixMatchManager().getLyrics("stairway to heaven");
+//new MusixMatchManager().getLyrics("stairway to heaven");

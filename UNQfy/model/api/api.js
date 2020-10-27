@@ -1,10 +1,8 @@
 const bodyParser = require('body-parser');
 const express  = require('express'); 
-const app = express();                 
-const {
-    router
-    } = require('./routers.js');
-
+const app = express();
+const track_router = require('./routers/router_track.js');
+const playlists_router = require('./routers/router_playlists.js');
 const port = 8080;  // set our port
 
 app.use((req, res, next) => {
@@ -15,7 +13,7 @@ app.use((req, res, next) => {
         next();
     });
 });
-app.use('/api', router);
+app.use('/api', track_router, playlists_router);
 const server = app.listen(port, () => {
     console.log("Server running");
 });
