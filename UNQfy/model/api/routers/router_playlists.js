@@ -90,7 +90,7 @@ playList_router.route('/playlists/:idPlaylists')
 playList_router.route('/playlists')
     .get((req,res)=>{
         const unqfy = getUNQfy();
-        const playlist_data = req.body;
+        const playlist_data = req.query;
         let playLists = unqfy.getPlayLists();
 
         try {
