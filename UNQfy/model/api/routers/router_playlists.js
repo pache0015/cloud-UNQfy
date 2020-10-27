@@ -10,9 +10,9 @@ playList_router.route('/playlists')
         const unqfy = getUNQfy();
         const playlist_data = req.body;
         if (playlist_data.name === undefined || playlist_data.tracks === undefined){
-            res.status(409);
-            res.json({status: 409,
-                errorCode: "WRONG PARAMETERS"});
+            res.status(400);
+            res.json({status: 400,
+                errorCode: "BAD_REQUEST"});
         }
         try{
             if (playlist_data.maxDuration != undefined && playlist_data.genres != undefined) {
@@ -58,7 +58,7 @@ playList_router.route('/playlists/:idPlaylists')
         const playlist = unqfy.getPlaylistById(playlist_id);
         if (playlist === undefined){
             res.status(405);
-            res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+            res.json({status: 404, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
         } else {
             res.status(200);
             res.json({
