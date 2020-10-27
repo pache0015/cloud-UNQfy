@@ -1,32 +1,114 @@
 const express = require('express');
-const unqfy = getUNQfy();
-const playList = require('tps/UNQfy/model/src/PlayList.js');
+const playList_router = express.Router();
+const playList = require('../../../model/src/PlayList.js');
+const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 
 
 //ENDPOINT PLAYLISTS
-express.post('/playlists', function (req, res) {
-    const parametros = req.params;
-    try{
-        if (parametros.maxDuration != null && parametros.genres != null) {
-            const aList = unqfy.createPlaylist(parametros.name, parametros.genres, parametros.maxDuration);
+playList_router.route('/playlists')
+    .post((req, res) =>{
+        const unqfy = getUNQfy();
+        const playlist_data = req.body;
+        if (playlist_data.name === undefined || playlist_data.tracks === undefined){
+            res.status(409);
+            res.json({status: 409,
+                errorCode: "WRONG PARAMETERS"});
+        }
+        try{
+            if (playlist_data.maxDuration != undefined && playlist_data.genres != undefined) {
+                const aList = unqfy.createPlaylist(playlist_data.name, playlist_data.genres, playlist_data.maxDuration);
+                saveUNQfy(unqfy);
+                res.status(201);
+                res.json({
+                    "id": aList.id,
+                    "name": aList.name,
+                    "duration": aList.duration,
+                    "tracks": aList.tracks,
+                });
+            } else{
+                const listByTracks = new playList(playlist_data.name, playlist_data.tracks);
+                const haveSomeTrack = unqfy.getTracks().some(track => track.name === playlist_data.tracks);
+                if(haveSomeTrack){
+                    let aList = new PlayList(playlist_data.name, playlist_data.tracks);
+                    saveUNQfy(unqfy);
+                    res.status(201);
+                    res.json({
+                        "id": listByTracks.id,
+                        "name" : listByTracks.name,
+                        "duration": listByTracks.duration,
+                        "tracks": listByTracks.tracks,
+                    })
+                } else {
+                    res.status(409);
+                    res.json({
+                        status: 409,
+                        errorCode: "WRONG PARAMETERS"
+                    });
+                }
+            }
+        }
+        catch (e) {
+            throw res.send('Error: ', e);
+        }
+    })
+playList_router.route('/playlists/:idPlaylists')
+    .get((req, res) =>{
+        const unqfy = getUNQfy();
+        const playlist_id = parseInt(req.params.id);
+        const playlist = unqfy.getPlaylistById(playlist_id);
+        if (playlist === undefined){
+            res.status(405);
+            res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+        } else {
+            res.status(200);
             res.json({
-                "id": aList.id,
-                "name": aList.name,
-                "duration": aList.duration,
-                "tracks": aList.tracks,
-            });
-        } else{
-            const listByTracks = new playList(parametros.name, parametros.tracks);
-            //unqfy.
-            res.json({
-                "id": listByTracks.id,
-                "name" : listByTracks.name,
-                "duration": listByTracks.duration,
-                "tracks": listByTracks.tracks,
+                status: 200,
+                playlist : playlist.toJSON()
             })
         }
-    }
-    catch (e) {
-        throw res.send('Error: ', e);
-    }
-})
+    })
+    .delete((req,res) =>{
+        const unqfy = getUNQfy();
+        const playlist_id = parseInt(req.params.id);
+        try{
+            unqfy.removePlayList(playlist_id);
+            saveUNQfy(unqfy);
+            res.status(204);
+            res.json({ status: 204});
+        }catch(e){
+            if(e instanceof TypeError){
+                res.status(404);
+                res.json({ status: 404,
+                    errorCode: "RESOURCE_NOT_FOUND"});
+            }
+            else{
+                throw e;
+            }
+        }
+    })
+
+playList_router.route('/playlists')
+    .get((req,res)=>{
+        const unqfy = getUNQfy();
+        const playlist_data = req.body;
+        let playLists = unqfy.getPlayLists();
+
+        try {
+            if (playlist_data.name != undefined) {
+                playLists.some(playlist => playlist.name === playlist_data.name);
+            }
+            if (playlist_data.durationLT != undefined) {
+                playLists = playLists.filter(playList => playList.duration < playlist_data.durationLT);
+            }
+            if (playlist_data.durationGT != undefined) {
+                playLists = playLists.filter(playList => playList.duration > playlist_data.durationGT);
+            }
+            res.status(200);
+            res.json(JSON.stringify(playLists.map(playList => playList.id)));
+        }
+        catch (e) {
+            throw e;
+        }
+    })
+
+module.exports = playList_router;
