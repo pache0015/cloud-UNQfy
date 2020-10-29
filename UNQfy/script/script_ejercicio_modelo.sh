@@ -42,8 +42,8 @@ node main.js addTrack 9 "Adios nonino" 266 Blues Clasica  #25
 
 # PLAYLISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-#node main.js createPlaylist "Insomio" 3000 Rap  #26
-#node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica #27
+node main.js createPlaylist "Insomio" 3000 Rap  #26
+node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica #27
 
 
 # USERS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
