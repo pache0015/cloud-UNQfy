@@ -1,5 +1,5 @@
-const CommandExecutor = require('./model/api/CommandExecutor.js');
-const {getUNQfy, saveUNQfy} = require('./model/persistencia/persistenceManager.js');
+const CommandExecutor = require('./CommandExecutor.js');
+const {getUNQfy, saveUNQfy} = require('../persistencia/persistenceManager.js');
 
 function main() {
   const unquify = getUNQfy();
