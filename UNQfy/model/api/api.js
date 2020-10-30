@@ -2,7 +2,10 @@ const bodyParser = require('body-parser');
 const express  = require('express'); 
 const app = express();
 const track_router = require('./routers/router_track.js');
-const playlists_router = require('./routers/router_playlists.js');
+const playlists_router = require('./routers/router_playlists.js');                
+const prueba = require('./routers.js');
+const albums_router = require('./routers/router_album.js');
+const artists_router = require('./routers/router_artist.js');
 const port = 8080;  // set our port
 
 app.use((req, res, next) => {
@@ -13,7 +16,7 @@ app.use((req, res, next) => {
         next();
     });
 });
-app.use('/api', track_router, playlists_router);
+app.use('/api', track_router, playlists_router, artists_router, albums_router);
 const server = app.listen(port, () => {
     console.log("Server running");
 });

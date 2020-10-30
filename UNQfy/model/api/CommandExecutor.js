@@ -135,7 +135,8 @@ class CommandExecutor {
                     const name = args[0];
                     const maxDuration = parseInt(args[1]);
                     const genresToInclude = args.slice(2);
-                    return ["Se ha creado la PayList: ", unquify.createPlaylist(name, maxDuration, genresToInclude)];
+                    console.log(genresToInclude);
+                    return ["Se ha creado la PayList: ", unquify.createPlaylist(name, genresToInclude, maxDuration)];
                 },
                 cantParams: 3,
             },

@@ -15,6 +15,7 @@ class Track extends Identificable{
         const genres = this.genres.map(genre => genre.toLowerCase());
         return genres.includes(aGenre.toLowerCase());
     }
+<<<<<<< HEAD
 
     getLyrics(){
         if (this._lyrics === undefined){
@@ -25,6 +26,17 @@ class Track extends Identificable{
         }
     }
 
+=======
+    toJSON() {
+        return {
+          id: this.id,
+          name: this.name,
+          genres: this.genres,
+          duration: this.duration,
+          //lyrics: this.lyrics
+        };
+      }
+>>>>>>> 829d6f7ed1cb2c70abc9e4f84246580e2c89b616
 }
 
 module.exports = Track;
