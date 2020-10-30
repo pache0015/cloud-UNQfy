@@ -1,8 +1,7 @@
 const express = require('express');
 const track_router = express.Router();
-const track = require('../../../model/src/Track.js');
-const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const {MusixMatchManager} = require('../../../model/api_helper/musixMatchManager');
+const {getUNQfy} = require('../../persistencia/persistenceManager.js');
+
 
 track_router.route('/tracks/:idTrack/lyrics')
     .get((req, res) =>{
@@ -19,7 +18,7 @@ track_router.route('/tracks/:idTrack/lyrics')
             )
         } else{
             res.status(200);
-            res.string(MusixMatchManager.getLyrics(trackSearched.name));
+            res.string(trackSearched.getLyrics());
         }
     })
 module.exports = track_router;

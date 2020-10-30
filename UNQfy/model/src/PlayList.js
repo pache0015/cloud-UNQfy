@@ -20,5 +20,14 @@ const Adder = require('./EntityManager.js');
     removeTrack(aTrack){
         this.removeElement(aTrack);
     }
+
+    toJSON(){
+        return {
+            id : this.id,
+            name : this.name,
+            listOfTrack : this.tracks,
+            duration : this.duration(),
+        }
+    }
 }
 module.exports = PlayList;

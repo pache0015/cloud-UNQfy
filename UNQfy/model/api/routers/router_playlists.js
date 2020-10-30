@@ -4,7 +4,6 @@ const playList = require('../../../model/src/PlayList.js');
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 
 
-//ENDPOINT PLAYLISTS
 playList_router.route('/playlists')
     .post((req, res) =>{
         const unqfy = getUNQfy();
@@ -104,7 +103,7 @@ playList_router.route('/playlists')
                 playLists = playLists.filter(playList => playList.duration > playlist_data.durationGT);
             }
             res.status(200);
-            res.json(JSON.stringify(playLists.map(playList => playList.id)));
+            res.json(playLists.map(playList => playList.toJSON()));
         }
         catch (e) {
             throw e;
