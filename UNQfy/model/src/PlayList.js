@@ -1,6 +1,6 @@
 const Adder = require('./EntityManager.js');
 
-class PlayList extends Adder{
+    class PlayList extends Adder{
     constructor(aName, aListOfTracks){
         super(aName, aListOfTracks);
     }
@@ -19,6 +19,15 @@ class PlayList extends Adder{
 
     removeTrack(aTrack){
         this.removeElement(aTrack);
+    }
+
+    toJSON(){
+        return {
+            id : this.id,
+            name : this.name,
+            listOfTrack : this.tracks,
+            duration : this.duration(),
+        }
     }
 }
 module.exports = PlayList;

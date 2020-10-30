@@ -57,7 +57,9 @@ class MusixMatchManager{
                     .then(response => {
                         return response.message.body.lyrics.lyrics_body;
                     })
-                    .then(lyrics=> console.log(lyrics))
+                    .then(lyrics=> {
+                        return lyrics
+                    })
             })
             .catch(error => {
                 throw error;
@@ -71,4 +73,4 @@ module.exports = {
 
 
 //new MusixMatchManager().doMagic();
-new MusixMatchManager().getLyrics("stairway to heaven");
+//new MusixMatchManager().getLyrics("stairway to heaven");
