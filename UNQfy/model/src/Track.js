@@ -18,7 +18,7 @@ class Track extends Identificable{
 
     getLyrics(){
         if (this._lyrics === undefined){
-            this._lyrics= new MusixMatchManager.getLyrics(this.name);
+            this._lyrics= new MusixMatchManager().getLyrics(this.name);
             return this._lyrics;
         } else {
             return  this._lyrics;
@@ -31,7 +31,7 @@ class Track extends Identificable{
           name: this.name,
           genres: this.genres,
           duration: this.duration,
-          lyrics: this.lyrics()
+        //lyrics: this.getLyrics()
         };
       }
 }

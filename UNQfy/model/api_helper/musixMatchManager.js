@@ -4,8 +4,7 @@ const rp = require('request-promise');
 class MusixMatchManager{
     constructor(){
         this._api_key = "3caa89508aacec4a8e76c3ba067eaf65";
-        this._BASE_URL = 'http://api.musixmatch.com/ws/1.1';
-        
+        this._BASE_URL = 'http://api.musixmatch.com/ws/1.1';   
     }
 
     doMagic(){
@@ -58,9 +57,8 @@ class MusixMatchManager{
                         return response.message.body.lyrics.lyrics_body;
                     })
                     .then(lyrics=> {
-                        return lyrics
-                    })
-            })
+                        return lyrics;
+                    });})
             .catch(error => {
                 throw error;
             });

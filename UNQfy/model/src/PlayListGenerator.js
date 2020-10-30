@@ -8,13 +8,13 @@ class PlayListGenerator{
         return aListOfGenres.some(aGenre => aTrack.hasGenre(aGenre));
     }
 
-    tracksOfGenres(aMaxDuration, aListOfTracks, aListOfGenres){"Asd".to
+    tracksOfGenres(aMaxDuration, aListOfTracks, aListOfGenres){
         const result =  aListOfTracks.reduce((tuple, aTrack) => {
                 const tracks = tuple[0];
                 let duration = tuple[1];
                 if(this.haveElementInCommon(aListOfGenres, aTrack) && duration + aTrack.duration <= aMaxDuration){
                     tracks.push(aTrack);
-                    duration += aTrack.duration
+                    duration += aTrack.duration;
                 } 
                 return [tracks, duration];}, [[], 0]);
 
