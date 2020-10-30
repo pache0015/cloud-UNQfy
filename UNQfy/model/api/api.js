@@ -3,7 +3,6 @@ const express  = require('express');
 const app = express();
 const track_router = require('./routers/router_track.js');
 const playlists_router = require('./routers/router_playlists.js');                
-const prueba = require('./routers.js');
 const albums_router = require('./routers/router_album.js');
 const artists_router = require('./routers/router_artist.js');
 const port = 8080;  // set our port
