@@ -1,6 +1,6 @@
 const express = require('express');
 const track_router = express.Router();
-const {getUNQfy} = require('../../persistencia/persistenceManager.js');
+const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 
 
 track_router.route('/tracks/:idTrack/lyrics')
@@ -22,6 +22,7 @@ track_router.route('/tracks/:idTrack/lyrics')
             res.json({
                 name: trackSearched.name,
                 lyrics: trackSearched.getLyrics()});
+            saveUNQfy(unqfy);
         }
     });
 module.exports = track_router;
