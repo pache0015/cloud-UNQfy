@@ -10,19 +10,19 @@ class Track extends Identificable{
     }
     get duration(){ return this._duration; }
     get genres(){ return this._genres; }
-
+    get lyrics(){ return this._lyrics; }
+    set lyrics(aLyrics){ this._lyrics = aLyrics;}
     hasGenre(aGenre){
         const genres = this.genres.map(genre => genre.toLowerCase());
         return genres.includes(aGenre.toLowerCase());
     }
 
     getLyrics(){
+        console.log("ACA");
         if (this._lyrics === undefined){
-            this._lyrics= new MusixMatchManager().getLyrics(this.name);
-            return this._lyrics;
-        } else {
-            return  this._lyrics;
-        }
+            new MusixMatchManager().getLyrics(this).then(lyrics => {return lyrics;});
+        } 
+        return  this._lyrics;
     }
 
     toJSON() {
@@ -31,7 +31,7 @@ class Track extends Identificable{
           name: this.name,
           genres: this.genres,
           duration: this.duration,
-        //lyrics: this.getLyrics()
+          //lyrics: this.getLyrics()
         };
       }
 }

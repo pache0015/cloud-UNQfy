@@ -1,5 +1,6 @@
 //const axios = require('axios').default;
 const rp = require('request-promise');
+const {getUNQfy, saveUNQfy} = require('../persistencia/persistenceManager.js');
 
 class MusixMatchManager{
     constructor(){
@@ -7,35 +8,13 @@ class MusixMatchManager{
         this._BASE_URL = 'http://api.musixmatch.com/ws/1.1';   
     }
 
-    doMagic(){
-        const options = {
-          uri: this._BASE_URL + '/artist.search',
-          qs: {
-              apikey: this._api_key,
-              q_artist: 'Queen',
-          },
-          json: true
-        };
-        rp.get(options)
-            .then((response) => {
-                const header = response.message.header;
-                const body = response.message.body;
-                if (header.status_code !== 200){
-                    throw new Error('status code != 200');
-                }
-                const artistNames = body.artist_list.map((artist => artist.artist.artist_name));
-                console.log(`Se econtraron ${artistNames.length} artistas`);
-                console.log(artistNames);})
-            .catch((error) => {
-                console.log('algo salio mal', error);});
-    }
-
-    getLyrics(aTrackName){
+    getLyrics(aTrack){
+        const unqfy = getUNQfy('data.json');
         const options = {
           uri: this._BASE_URL + `/track.search`,
           qs: {
               apikey: this._api_key,
-              q_track: aTrackName
+              q_track: aTrack.name
           },
           json: true
         };
@@ -46,19 +25,17 @@ class MusixMatchManager{
             .then(id => {
                 const other_options = {
                     uri: this._BASE_URL + `/track.lyrics.get`,
-                qs: {
-                    apikey: this._api_key,
-                    track_id: id
-                },
-                json: true
+                    qs: {
+                        apikey: this._api_key,
+                        track_id: id
+                    },
+                    json: true
                 };
-                rp.get(other_options)
-                    .then(response => {
-                        return response.message.body.lyrics.lyrics_body;
-                    })
-                    .then(lyrics=> {
-                        return lyrics;
-                    });})
+                return rp.get(other_options);})
+            .then(response => response.message.body.lyrics.lyrics_body)
+            .then(lyrics =>  { aTrack.lyrics = lyrics;
+                               saveUNQfy(unqfy); 
+                             return lyrics; })
             .catch(error => {
                 throw error;
             });
@@ -68,7 +45,3 @@ class MusixMatchManager{
 module.exports = {
     MusixMatchManager: MusixMatchManager
 };
-
-
-//new MusixMatchManager().doMagic();
-//new MusixMatchManager().getLyrics("stairway to heaven");

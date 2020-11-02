@@ -14,8 +14,7 @@ albums_router.route('/albums/:album_id')
         }
         else{
             res.status(200);
-            res.json({status:200,
-                      album: album.toJSON()});
+            res.json(album.toJSON());
         }
     })
     .delete((req, res) => {
@@ -51,8 +50,7 @@ albums_router.route('/albums/:album_id')
                 const album = unqfy.getAlbumById(album_ID);
                 const updated_album = album.update(album_data);
                 res.status(200);
-                res.json({status:200,
-                artist: updated_album.toJSON()});
+                res.json(updated_album.toJSON());
                 saveUNQfy(unqfy);
             }
             catch(err){

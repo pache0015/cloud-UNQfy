@@ -34,7 +34,7 @@ class SpotifyManager{
           //Esto solo se tiene que hacer si en UNQUIfy existe el artista con el nombre
           return this.searchArtist(anArtistName)
                .then(responseArtist => this.searchAlbumsById(responseArtist))
-               .then(responseAlbums => responseAlbums.data.items.map(it => it.name))
+               .then(responseAlbums => responseAlbums.data.items)
                .catch(error => {
                     if(error instanceof TypeError){
                          return [];
@@ -48,7 +48,7 @@ module.exports = {
      SpotifyManager: SpotifyManager
 };
 
-new SpotifyManager(access_token).populate("radiohead").then(resp => console.log(resp));
+new SpotifyManager(access_token).populate("radiohead");
 
 
 

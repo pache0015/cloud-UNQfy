@@ -14,8 +14,7 @@ artists_router.route('/artists/:artist_id')
         }
         else{
             res.status(200);
-            res.json({status:200,
-                      artist: artist.toJSON()});
+            res.json({artist: artist.toJSON()});
         }
     })
     .delete((req, res) => {
@@ -54,8 +53,7 @@ artists_router.route('/artists/:artist_id')
                 }
                 const updated_artist = artist.update({name: artist_data.name});
                 res.status(200);
-                res.json({status:200,
-                artist: updated_artist.toJSON()});
+                res.json(updated_artist.toJSON());
                 saveUNQfy(unqfy);
             }
             catch(err){
@@ -87,9 +85,7 @@ artists_router.route('/artists')
         else{
             const artists = unqfy.searchArtistsWithPartialName(artist_name === undefined ? "" : artist_name);
             res.status(200);
-            res.json(
-                {status:200,
-                artists: artists.map(artist => artist.toJSON())}
+            res.json({artists: artists.map(artist => artist.toJSON())}
             );
         }
     })

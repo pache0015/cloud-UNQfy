@@ -36,10 +36,7 @@ playList_router.route('/playlists/:id_playlist')
             res.json({status: 404, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
         } else {
             res.status(200);
-            res.json({
-                status: 200,
-                playlist : playlist.toJSON()
-            });
+            res.json({playlist : playlist.toJSON()});
         }
     })
     .delete((req,res) =>{

@@ -15,7 +15,7 @@ node main.js addAlbum 1 "Vida" 2010 #4
 node main.js addAlbum 1 "Muerte" 2012 #5
 node main.js addAlbum 0 "Blue" 2006 #6
 node main.js addAlbum 2 "Greater hits" 1974 #7
-node main.js addAlbum 2 "A donde jugaran las niñas" 1997 #8
+node main.js addAlbum 3 "A donde jugaran las niñas" 1997 #8
 node main.js addAlbum 3 "Piazzolla Project" 2006 #9
 
 
@@ -38,22 +38,22 @@ node main.js addTrack 7 "Black Dog" 255 Clasico Heavy Rock  #22
 node main.js addTrack 7 "Since i have been loving you" 188 Pop Alternativo  #23
 node main.js addTrack 7 "Dazed and confused" 246 Pop Clasico  #24
 node main.js addTrack 9 "Adios nonino" 266 Blues Clasica  #25
-
+node main.js addTrack 7 "Stairway to heaven" 420 Rock #26
 
 # PLAYLISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js createPlaylist "Insomio" 3000 Rap  #26
-node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica #27
+node main.js createPlaylist "Insomio" 3000 Rap  #27
+node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica #28
 
 
 # USERS  >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js addUser Pache0015  #28
-node main.js addUser H #29
+node main.js addUser Pache0015  #29
+node main.js addUser H #30
 
-node main.js userListenTrack 28 10
-node main.js userListenTrack 28 11
-node main.js userListenTrack 28 12
 node main.js userListenTrack 29 10
-node main.js userListenTrack 29 13
-node main.js userListenTrack 29 14
+node main.js userListenTrack 29 11
+node main.js userListenTrack 29 12
+node main.js userListenTrack 30 10
+node main.js userListenTrack 30 13
+node main.js userListenTrack 30 14
