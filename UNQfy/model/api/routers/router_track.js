@@ -1,6 +1,7 @@
 const express = require('express');
 const track_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
+const MusicMatch = require('../../api_helper/musixMatchManager.js');
 
 
 track_router.route('/tracks/:idTrack/lyrics')
@@ -21,7 +22,8 @@ track_router.route('/tracks/:idTrack/lyrics')
             res.status(200);
             res.json({
                 name: trackSearched.name,
-                lyrics: trackSearched.getLyrics()});
+                lyrics: MusicMatch.getLyrics(trackSearched.name)});
+                    //trackSearched.getLyrics()});
             saveUNQfy(unqfy);
         }
     });
