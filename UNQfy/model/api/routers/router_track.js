@@ -21,9 +21,9 @@ track_router.route('/tracks/:idTrack/lyrics')
         } else{
             res.status(200);
             res.json({
-                name: trackSearched.name,
-                lyrics: MusicMatch.getLyrics(trackSearched.name)});
-                    //trackSearched.getLyrics()});
+                name:   trackSearched.name,
+                lyrics: trackSearched.getLyrics()//new MusicMatch.MusicMatch().getLyrics(trackSearched.name)});
+                    });
             saveUNQfy(unqfy);
         }
     });
