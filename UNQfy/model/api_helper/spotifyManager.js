@@ -17,6 +17,17 @@ class SpotifyManager{
           };
           return axios.get('https://api.spotify.com/v1/search', searchArtist);
      }
+     searchArtistById(aResponse){
+          const id = aResponse.data.artists.item[0].id;
+          const searchArtist = {
+               headers: {
+                    Authorization: `Bearer ${this.access_token}`,
+               },
+               json: true
+          };
+
+          return axios.get(`https://api.spotify.com/v1/artists/${id}`, searchArtist);
+     }
 
      searchAlbumsById(aResponse){
           const id = aResponse.data.artists.items[0].id;
