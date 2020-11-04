@@ -59,7 +59,7 @@ module.exports = {
      SpotifyManager: SpotifyManager
 };
 
-new SpotifyManager(access_token).populate("radiohead");
+//new SpotifyManager(access_token).populate("radiohead");
 
 
 

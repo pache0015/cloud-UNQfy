@@ -240,8 +240,8 @@ class UNQfy {
 
   removeTrack(id){
     const track = this.getTrackById(id);
-    const conteiners = this.getAlbums().concat(this.getPlayLists()).filter(container => container.hasTrack(track));
-    conteinerssearchAlbumsById.forEach(conteiner => conteiner.removeTrack(track))
+    const conteiners = this.getAlbums().concat(this.getPlayLists());
+    conteiners.forEach(conteiner => conteiner.removeTrack(track));
     return track;
   }
   removePlayList(id){
