@@ -29,7 +29,7 @@ describe('Test about Artist class s behavior' , () => {
 
     it('Remove an album from an artist', () => {
       anArtist.addAlbum(aTrack);
-      anArtist.removeAlbum(aTrack)
+      anArtist.removeAlbum(aTrack);
       assert.lengthOf(anArtist.albums, 0);
     });
 

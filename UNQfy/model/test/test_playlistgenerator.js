@@ -4,8 +4,6 @@ const assert = require('chai').assert;
 const PlayListGenerator = require('../src/PlayListGenerator.js');
 const {NoGenresMatchException} = require('../src/exceptions.js');
 const Track = require('../src/Track.js');
-const Album = require('../src/Album.js');
-const Artist = require('../src/Artist.js');
 
 describe('Generation of playlists', () => {
   const myPlayListGenerator = new PlayListGenerator();
@@ -59,7 +57,7 @@ describe('Generation of playlists', () => {
     assert.equal(playList.name, "CumbionRemix");
     assert.isTrue(playList.hasTrack(aTrack1));
     assert.isFalse(playList.hasTrack(aTrack0));
-    assert.isTrue(playList.hasTrack(aTrack2));;
+    assert.isTrue(playList.hasTrack(aTrack2));
     assert.isTrue(playList.hasTrack(aTrack3));
   });
 

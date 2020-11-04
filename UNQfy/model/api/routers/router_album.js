@@ -39,7 +39,6 @@ albums_router.route('/albums/:album_id')
     .patch((req, res)=>{
         const unqfy = getUNQfy();
         const album_ID = parseInt(req.params.album_id);
-        console.log(req.body)
         const album_data = req.body;
         if (album_data.year === undefined){
             res.status(405);

@@ -4,11 +4,6 @@ const Track = require('../src/Track.js');
 const Album = require('../src/Album.js');
 const {AlreadyExist} = require('../src/exceptions.js');
 
-class DummyIdentificable{
-  constructor(aName){
-    this.name = aName;
-  }
-}
 
 describe('Album', () => {
     let anAlbum = null;
@@ -29,7 +24,7 @@ describe('Album', () => {
     it('Remove track to album', () => {
       anAlbum.addTrack(aTrack);
       anAlbum.addTrack(otherTrack);
-      anAlbum.removeTrack(aTrack)
+      anAlbum.removeTrack(aTrack);
       assert.lengthOf(anAlbum.tracks, 1);
     });
 

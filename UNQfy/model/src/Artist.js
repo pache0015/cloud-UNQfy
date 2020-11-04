@@ -1,4 +1,3 @@
-const Identificable = require('./Identificable.js');
 const Adder = require('./EntityManager.js');
 
 class Artist extends Adder{

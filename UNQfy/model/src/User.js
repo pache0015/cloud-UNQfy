@@ -1,4 +1,4 @@
-const Identificable = require('./Identificable.js')
+const Identificable = require('./Identificable.js');
 class User extends Identificable{
     constructor(aName){
         super(aName);

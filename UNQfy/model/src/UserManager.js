@@ -36,7 +36,7 @@ class UserManager{
         const uniqueTracks = Object.keys(uniqueKeys);
         const playedTracks = aUNQfy.getPlayedTracks();
         const counts = uniqueTracks.reduce((obj, aTrackID) => {
-            obj[Number(aTrackID)] = playedTracks.filter(playedTrack => playedTrack.id === aTrackID).length
+            obj[Number(aTrackID)] = playedTracks.filter(playedTrack => playedTrack.id === aTrackID).length;
             return obj;}, {});
         const sorted = Object.keys(counts).sort((a,b) => counts[a] > counts[b]).slice(0, 3);
         const sorted_tracks = sorted.map( key => aUNQfy.getTrackById(Number(key)));
