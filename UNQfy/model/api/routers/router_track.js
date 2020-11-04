@@ -15,8 +15,9 @@ track_router.route('/tracks/:idTrack/lyrics')
                     status: 400,
                     errorCode: "BAD_REQUEST"
                 });
-        } else{
-            if (trackSearched.getLyrics() instanceof Promise){
+        } 
+        else{
+            if(trackSearched.getLyrics() instanceof Promise){
                 trackSearched.getLyrics().then( lyrics => {
                     res.status(200);
                     res.json({
@@ -25,14 +26,17 @@ track_router.route('/tracks/:idTrack/lyrics')
                         });
                     saveUNQfy(unqfy);    
                     });
-            } 
+            }
             else{
+                trackSearched.getLyrics().then( lyrics => {
                     res.status(200);
+                
                     res.json({
                         name:   trackSearched.name,
-                        lyrics: trackSearched.getLyrics()
-                        }); 
-                    }
-        }
+                        lyrics: lyrics
+                        });
+                    });
+            }
+        } 
     });
 module.exports = track_router;
