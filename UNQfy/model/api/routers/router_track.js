@@ -1,7 +1,6 @@
 const express = require('express');
 const track_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const Promise = require('promise');
 
 
 track_router.route('/tracks/:idTrack/lyrics')
