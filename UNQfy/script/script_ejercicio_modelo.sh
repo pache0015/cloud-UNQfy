@@ -57,3 +57,6 @@ node main.js userListenTrack 29 12
 node main.js userListenTrack 30 10
 node main.js userListenTrack 30 13
 node main.js userListenTrack 30 14
+
+
+node main.js addArtist "Radiohead" "USA"
