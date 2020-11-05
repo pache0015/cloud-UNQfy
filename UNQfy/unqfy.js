@@ -14,21 +14,6 @@ const {ArtistNameAlreadyInUse, UserNameAlreadyInUse} = require('./model/src/exce
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
-const Spotify = require('./model/api_helper/spotifyManager.js');
-
-
-function alreadyExist(aHash, aEntityID){
-  return aEntityID in aHash;
-}
-
-function addEntity(obj, id, aHash){
-  aHash[id] = obj;
-}
-
-function evaluateThrowExceptionOrAdd(aHash, aEntityID, aEntity){
-  addEntity(aEntity, aEntityID, aHash);
-}
-
 function getEntity(aHash, aKey){
   return aHash[aKey];
 }
@@ -82,7 +67,7 @@ class UNQfy {
   }
 
   getTrackById(id) {
-    let track = this.getTracks().filter(track => track.id === id);
+    const track = this.getTracks().filter(track => track.id === id);
     return track[0];
   }
 
@@ -234,7 +219,7 @@ class UNQfy {
   removeAlbum(id){
     const album = this.getAlbumById(id);
     const tracks = album.tracks;
-    tracks.forEach(track => this.removeTrack(track.id))
+    tracks.forEach(track => this.removeTrack(track.id));
     return album;
   }
 
@@ -247,23 +232,6 @@ class UNQfy {
   removePlayList(id){
     delete this._playLists[id];
   }
-
-  //Spotify:
-  populateAlbumsForArtist(anArtistName){
-    const localArtits = this.getArtistByName(anArtistName);
-    const albumData = Spotify.searchAlbumsById(()=>{Spotify.searchArtist(anArtistName)});
-    const albumsData = albumData.items;
-
-    if (localArtits === undefined){
-      const artistRemote = Spotify.searchArtistById(()=>{Spotify.searchArtist(anArtistName)});
-      const artistData = {"name" : artistRemote.name, "country" : null}
-      this.addArtist(artistData);
-    }
-    albumsData.forEach((item) =>{
-      this.addAlbum(localArtits.id, {"name" : item.name, "year" : item.release_date});
-    });
-  }
-
 
   //Persistencia:
 
