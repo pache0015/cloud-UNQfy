@@ -34,7 +34,7 @@ class UNQfy {
   }
 
   addArtist(artistData) {
-    const existName = this.getArtists().some(artist => artist.toUpperCase() === artistData.name.toUpperCase());
+    const existName = this.getArtists().some(artist => artist.name.toUpperCase() === artistData.name.toUpperCase());
     if(existName){
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
