@@ -18,8 +18,9 @@ class Printer {
       else {
           if(entity instanceof Promise){
             entity.then(data => console.log(data));
+          }else{
+            console.log(entity);
           }
-          console.log(entity);
       }
     }
     printException(exception) {
