@@ -16,6 +16,9 @@ class Printer {
           this.printArray(entity);
       }
       else {
+          if(entity instanceof Promise){
+            entity.then(data => console.log(data));
+          }
           console.log(entity);
       }
     }

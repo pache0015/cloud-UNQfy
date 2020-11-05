@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-const access_token = "BQDjh8DR3LSjgPpegrRTIZn5o6SqhzIjl21wuZJ-k2mKAp_385MaA15g18PH2lqRXfKSb0b8zinEh9kuq71vwz4WwxUn-KSP-VdHlaZPxWHPH7yh9JLmpRoNo_W8T3cV5sxkKZWAUBMp4GQczxUkt1UrTgZ2ZooCuQUX2vlxS7634kXN0U3mKA";
+const access_token = "BQClKHVoivbmDeRM_njJ7vch9sKNwHN9OITecGjnpdxe2HVgZ5brZy-q0H9ekd7Me_8QaOYk3GUg2B3l5r4fHyLOZPspeq58J7lKnJmcRAdNf2zT8WBw0iqJGxXO2BnaHa1juLOl8nq-PYiz75U0fUW2xq-uSsWCLKBsgelntHhtSZJr5-9FOg";
 class SpotifyManager{
      constructor(anAccessToken=access_token){
           this.access_token  = anAccessToken;
