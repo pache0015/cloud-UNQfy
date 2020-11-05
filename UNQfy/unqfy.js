@@ -34,7 +34,7 @@ class UNQfy {
   }
 
   addArtist(artistData) {
-    const existName = this.getArtists().some(artist => artist.name === artistData.name);
+    const existName = this.getArtists().some(artist => artist.toUpperCase() === artistData.name.toUpperCase());
     if(existName){
       throw new ArtistNameAlreadyInUse(artistData.name);
     }
@@ -77,7 +77,7 @@ class UNQfy {
 
   addUser(userName){
     const users = this.getUsers();
-    const existName = users.some(user => user.name === userName);
+    const existName = users.some(user => user.name.toUpperCase() === userName.toUpperCase());
     if(existName){
       throw new UserNameAlreadyInUse(userName);
     }
@@ -109,7 +109,7 @@ class UNQfy {
   }
 
   getArtistByName(nameArtist){
-    const list = this.getArtists().filter(artist => artist.name === nameArtist);
+    const list = this.getArtists().filter(artist => artist.name.toUpperCase() === nameArtist.toUpperCase());
     return list[0];
   }
 
