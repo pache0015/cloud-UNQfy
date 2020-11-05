@@ -1,13 +1,17 @@
 const Printer = require("../src/Printer.js");
 const {InvalidCommandException, NotEnoughArguments} = require('../src/exceptions.js');
+const SpotifyManager = require('../api_helper/spotifyManager.js');
 
 class CommandExecutor {
     constructor(){
         this._handlers= {
-            //populateAlbumsForArtist : function (artistName){
-            //  const anArtistName = artistName;
-            //  return ["Estos son los albums mas populares: ", unquify.populateAlbums(anArtistName)];
-            //},
+            populate:{
+              f:(unquify, args)=> {
+                const anArtistName = args[0];
+                return ["Estos son los albums mas populares: ", new SpotifyManager().populate(unquify, anArtistName)];
+              },
+              cantParams: 1
+            },
             addArtist:{
                 f:(unquify, args) => {
                     const name = args[0];
@@ -135,7 +139,6 @@ class CommandExecutor {
                     const name = args[0];
                     const maxDuration = parseInt(args[1]);
                     const genresToInclude = args.slice(2);
-                    console.log(genresToInclude);
                     return ["Se ha creado la PayList: ", unquify.createPlaylist(name, genresToInclude, maxDuration)];
                 },
                 cantParams: 3,
