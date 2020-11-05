@@ -41,25 +41,28 @@ class SpotifyManager{
           return axios.get(`https://api.spotify.com/v1/artists/${id}/albums`, searchAlbums);
      }
 
-     populate(anArtistName){
-          //Esto solo se tiene que hacer si en UNQUIfy existe el artista con el nombre
+     populate(unqfy, anArtistName){
+          const unqfyArtist = unqfy.getArtistByName(anArtistName);
           return this.searchArtist(anArtistName)
                .then(responseArtist => this.searchAlbumsById(responseArtist))
-               .then(responseAlbums => responseAlbums.data.items)
-               .catch(error => {
+               .then(responseAlbums => { return responseAlbums.data.items; })
+               .then(listAlbums => {
+                    const res = listAlbums.map(album => 
+                         unqfy.addAlbum(unqfyArtist.id, {name: album.name, year: album.release_date.slice(0,4)}));
+                         return res;
+                    })
+               .catch(error => { 
                     if(error instanceof TypeError){
                          return [];
                     }
-                    else throw error;
+                    else{
+                         throw error;
+                    }
                });
      }
 }
 
-module.exports = {
-     SpotifyManager: SpotifyManager
-};
-
-//new SpotifyManager(access_token).populate("radiohead");
+module.exports = SpotifyManager;
 
 
 
