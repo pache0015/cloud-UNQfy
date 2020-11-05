@@ -78,16 +78,10 @@ artists_router.route('/artists')
     .get((req, res) => {
         const unqfy = getUNQfy();
         const artist_name = req.query.name;
-        if(artist_name === undefined){
-            res.status(400);
-            res.json({status: 400, errorCode: "BAD_REQUEST"});
-        }
-        else{
-            const artists = unqfy.searchArtistsWithPartialName(artist_name === undefined ? "" : artist_name);
-            res.status(200);
+        const artists = unqfy.searchArtistsWithPartialName(artist_name === undefined ? "" : artist_name);
+        res.status(200);
             res.json({artists: artists.map(artist => artist.toJSON())}
             );
-        }
     })
     .post((req, res) => {
         const unqfy = getUNQfy();

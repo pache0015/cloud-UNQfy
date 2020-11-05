@@ -1,6 +1,5 @@
 //const axios = require('axios').default;
 const rp = require('request-promise');
-const {getUNQfy, saveUNQfy} = require('../persistencia/persistenceManager.js');
 
 class MusixMatchManager{
     constructor(){
@@ -9,7 +8,6 @@ class MusixMatchManager{
     }
 
     getLyrics(aTrack){
-        const unqfy = getUNQfy('data.json');
         const options = {
           uri: this._BASE_URL + `/track.search`,
           qs: {
@@ -18,10 +16,9 @@ class MusixMatchManager{
           },
           json: true
         };
-        rp.get(options)
-            .then((response) => {
-                return response.message.body.track_list[0].track.track_id;
-            })
+      return rp.get(options)
+            .then((response) => 
+                response.message.body.track_list[0].track.track_id)
             .then(id => {
                 const other_options = {
                     uri: this._BASE_URL + `/track.lyrics.get`,
@@ -31,11 +28,10 @@ class MusixMatchManager{
                     },
                     json: true
                 };
-                return rp.get(other_options);})
+               return rp.get(other_options);})
             .then(response => response.message.body.lyrics.lyrics_body)
-            .then(lyrics =>  { aTrack.lyrics = lyrics;
-                               saveUNQfy(unqfy); 
-                             return lyrics; })
+            .then(lyrics => {aTrack.lyrics = lyrics;
+                return lyrics;})
             .catch(error => {
                 throw error;
             });

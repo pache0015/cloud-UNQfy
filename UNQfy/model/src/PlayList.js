@@ -27,7 +27,7 @@ const Adder = require('./EntityManager.js');
             name : this.name,
             listOfTrack : this.tracks,
             duration : this.duration(),
-        }
+        };
     }
 }
 module.exports = PlayList;

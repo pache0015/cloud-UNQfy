@@ -11,18 +11,20 @@ class Track extends Identificable{
     get duration(){ return this._duration; }
     get genres(){ return this._genres; }
     get lyrics(){ return this._lyrics; }
-    set lyrics(aLyrics){ this._lyrics = aLyrics;}
+    set lyrics(aLyrics){ return (this._lyrics = aLyrics);}
+
     hasGenre(aGenre){
         const genres = this.genres.map(genre => genre.toLowerCase());
         return genres.includes(aGenre.toLowerCase());
     }
 
     getLyrics(){
-        console.log("ACA");
-        if (this._lyrics === undefined){
-            new MusixMatchManager().getLyrics(this).then(lyrics => {return lyrics;});
-        } 
-        return  this._lyrics;
+        if(this._lyrics === undefined){
+          return new MusixMatchManager().getLyrics(this).then(lyrics => {return lyrics;});
+        }
+        else{
+            return this._lyrics;
+        }
     }
 
     toJSON() {

@@ -196,9 +196,12 @@ describe('Playlist Creation and properties', () => {
     const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);
     const t1 = createAndAddTrack(unqfy, album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
     const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    // eslint-disable-next-line no-unused-vars
     const t2 = createAndAddTrack(unqfy, album2.id, 'Thriller', 200, ['pop', 'movie']);
+    // eslint-disable-next-line no-unused-vars
     const t3 = createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['pop']);
-    const t4 = createAndAddTrack(unqfy, album2.id, 'Another song III', 500, ['pop']);
+    // eslint-disable-next-line no-unused-vars
+        const t4 = createAndAddTrack(unqfy, album2.id, 'Another song III', 500, ['pop']);
 
     const playlist = unqfy.createPlaylist('my playlist', ['pop', 'rock'], 1400);
     assert.lengthOf(playlist.tracks, 4);
@@ -215,8 +218,11 @@ describe('Playlist Creation and properties', () => {
     const album = createAndAddAlbum(unqfy, artist.id, 'Appetite for Destruction', 1987);
     const t1 = createAndAddTrack(unqfy, album.id, 'Welcome to the jungle', 200, ['rock', 'hard rock', 'movie']);
     const album2 = createAndAddAlbum(unqfy, artist2.id, 'Thriller', 1987);
+    // eslint-disable-next-line no-unused-vars
     const t2 = createAndAddTrack(unqfy, album2.id, 'Thriller', 200, ['pop', 'movie']);
+    // eslint-disable-next-line no-unused-vars
     const t3 = createAndAddTrack(unqfy, album2.id, 'Another song', 500, ['pop']);
+    // eslint-disable-next-line no-unused-vars
     const t4 = createAndAddTrack(unqfy, album2.id, 'Another song III', 500, ['pop']);
 
     const playlist = unqfy.createPlaylist('my playlist', ['pop', 'rock'], 1400);

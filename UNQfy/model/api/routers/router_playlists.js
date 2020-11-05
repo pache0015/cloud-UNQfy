@@ -1,6 +1,5 @@
 const express = require('express');
 const playList_router = express.Router();
-const playList = require('../../../model/src/PlayList.js');
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 
 

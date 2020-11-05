@@ -3,17 +3,17 @@ class IDGenerator{
         this.idCounter = 0;
     }
     newId(){
-        return this.idCounter++
+        return this.idCounter++;
     }
     static getInstance(){
         return Singleton.getInstance();
     }
 }
 
-let Singleton = (function () {
+const Singleton = (function () {
     let instance;
     function createInstance() {
-        let object = new IDGenerator();
+        const object = new IDGenerator();
         return object;
     }
     return {
@@ -25,5 +25,5 @@ let Singleton = (function () {
         }
     };
 })();
-const _instance = Singleton.getInstance()
+const _instance = Singleton.getInstance();
 module.exports = _instance;
