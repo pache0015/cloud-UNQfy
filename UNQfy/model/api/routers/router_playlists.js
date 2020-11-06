@@ -32,7 +32,7 @@ playList_router.route('/playlists/:id_playlist')
         const playlist = unqfy.getPlaylistById(playlist_id);
         if (playlist === undefined){
             res.status(405);
-            res.json({status: 404, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
         } else {
             res.status(200);
             res.json({playlist : playlist.toJSON()});

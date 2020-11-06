@@ -8,6 +8,7 @@
     "chai": "^4.2.0",
     "express": "^4.17.1",
     "picklify": "github:lwoites/picklify",
+    "promise": "^8.1.0",
     "request": "^2.88.2"
   },
   "devDependencies": {

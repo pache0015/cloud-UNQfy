@@ -1,6 +1,6 @@
 class IDGenerator{
     constructor() {
-        this.idCounter = 0;
+        this.idCounter = 1;
     }
     newId(){
         return this.idCounter++;

@@ -9,8 +9,8 @@ artists_router.route('/artists/:artist_id')
         const artist_ID = parseInt(req.params.artist_id);
         const artist = unqfy.getArtistById(artist_ID);
         if (artist === undefined){
-            res.status(405);
-            res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+            res.status(404);
+            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
         }
         else{
             res.status(200);
@@ -42,7 +42,7 @@ artists_router.route('/artists/:artist_id')
         const artist_data = req.body;
         if (artist_data.name === undefined || artist_data.country === undefined){
             res.status(405);
-            res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
+            res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
         }
         else{
             try{
@@ -61,12 +61,10 @@ artists_router.route('/artists/:artist_id')
                     res.status(404);
                     res.json({ status: 404,
                                errorCode: "RESOURCE_NOT_FOUND"});
-                               throw err;
                 }else{
                     if(err instanceof NonExistAtributeInEntity){
                         res.json(405);
-                        res.json({status: 405, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
-                        throw err;
+                        res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
                     }
                 }
             }
@@ -87,9 +85,9 @@ artists_router.route('/artists')
         const unqfy = getUNQfy();
         const artist_data = req.body;
         if (artist_data.name === undefined || artist_data.country === undefined){
-            res.status(409);
-            res.json({status: 409,
-              errorCode: "RESOURCE_ALREADY_EXISTS"});
+            res.status(400);
+            res.json({status: 400,
+              errorCode: "BAD_REQUEST"});
         }
         try {
             const model_artist = unqfy.addArtist(artist_data);
