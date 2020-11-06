@@ -21,7 +21,7 @@ artists_router.route('/artists/:artist_id')
         const unqfy = getUNQfy();
         const artistId = parseInt(req.params.artist_id);
         try{
-            const artist = unqfy.removeArtist(artistId);
+            unqfy.removeArtist(artistId);
             saveUNQfy(unqfy);
             res.status(204);
             res.send({ success: true});
