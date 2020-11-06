@@ -75,10 +75,7 @@ albums_router.route('/albums')
         const album_name = req.query.name;
         const albums = unqfy.searchAlbumsWithPartialName(album_name === undefined ? "" : album_name);
         res.status(200);
-        res.json(
-            {status:200,
-            albums: albums.map(album => album.toJSON())}
-        );
+        res.json(albums.map(album => album.toJSON()));
     })
     .post((req, res) => {
         const unqfy = getUNQfy();

@@ -30,6 +30,12 @@ class Artist extends Adder{
           albums: this.albums.map(album => album.toJSON())
         };
     }
+
+    update(aData){
+        this._name = aData.name;
+        this._country = aData.country;
+        return this;
+    }
 }
 
 module.exports = Artist;

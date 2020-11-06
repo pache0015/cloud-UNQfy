@@ -35,7 +35,7 @@ playList_router.route('/playlists/:id_playlist')
             res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
         } else {
             res.status(200);
-            res.json({playlist : playlist.toJSON()});
+            res.json(playlist.toJSON());
         }
     })
     .delete((req,res) =>{
@@ -68,7 +68,6 @@ playList_router.route('/playlists')
                 errorCode: "BAD_REQUEST"});
                 return;
         }
-        console.log("aca");
         const name = playlist_data.name !== undefined ? "" : playlist_data.name;
         const playLists = unqfy.searchPlaylistsWithPartialName(name).filter(playList => ! (playList.duration < playlist_data.durationLT || playList.duration > playlist_data.durationGT));
         res.status(200);

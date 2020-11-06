@@ -14,14 +14,14 @@ artists_router.route('/artists/:artist_id')
         }
         else{
             res.status(200);
-            res.json({artist: artist.toJSON()});
+            res.json(artist.toJSON());
         }
     })
     .delete((req, res) => {
         const unqfy = getUNQfy();
         const artistId = parseInt(req.params.artist_id);
         try{
-            unqfy.removeArtist(artistId);
+            const artist = unqfy.removeArtist(artistId);
             saveUNQfy(unqfy);
             res.status(204);
             res.send({ success: true});
@@ -36,28 +36,24 @@ artists_router.route('/artists/:artist_id')
             }
         }
     })
-    .patch((req, res)=>{
+    .put((req, res)=>{
         const unqfy = getUNQfy();
         const artist_ID = parseInt(req.params.artist_id);
         const artist_data = req.body;
         if (artist_data.name === undefined || artist_data.country === undefined){
-            res.status(405);
-            res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
+            res.status(400);
+            res.json({status: 400, errorCode: "BAD_REQUEST"});
         }
         else{
             try{
                 const artist = unqfy.getArtistById(artist_ID);
-                const existName = unqfy.getArtists().some(artist => artist.name === artist_data.name);
-                if(existName){
-                    throw new Error("Ups");
-                }
-                const updated_artist = artist.update({name: artist_data.name});
+                const updated_artist = artist.update({country: artist_data.country, name: artist_data.name});
                 res.status(200);
                 res.json(updated_artist.toJSON());
                 saveUNQfy(unqfy);
             }
             catch(err){
-                if(err instanceof TypeError || err instanceof Error){
+                if(err instanceof TypeError){
                     res.status(404);
                     res.json({ status: 404,
                                errorCode: "RESOURCE_NOT_FOUND"});
@@ -78,8 +74,7 @@ artists_router.route('/artists')
         const artist_name = req.query.name;
         const artists = unqfy.searchArtistsWithPartialName(artist_name === undefined ? "" : artist_name);
         res.status(200);
-            res.json({artists: artists.map(artist => artist.toJSON())}
-            );
+            res.json(artists.map(artist => artist.toJSON()));
     })
     .post((req, res) => {
         const unqfy = getUNQfy();

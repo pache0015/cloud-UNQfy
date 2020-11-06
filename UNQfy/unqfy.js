@@ -209,7 +209,7 @@ class UNQfy {
   }
 
   removeArtist(id){
-    const artist = this.getAlbumById(id);
+    const artist = this.getArtistById(id);
     const albums = artist.albums;
     albums.forEach(album => this.removeAlbum(album.id));
     delete this._artists[id];

@@ -32,5 +32,10 @@ class Album extends Adder{
           tracks: this.tracks.map(track => track.toJSON())
         };
       }
+
+      update(aData){
+          this._year = aData.year;
+          return this;
+      }
 }
 module.exports = Album;

@@ -10,9 +10,6 @@ const port = 8080;
 
 app.use((req, res, next) => {
     bodyParser.json()(req, res, err => {
-        //if (err) {
-        //    throw err;
-        //}
         if(err){
             switch (err){
                 case(err instanceof  SyntaxError): 
