@@ -1,7 +1,7 @@
 const express = require('express');    
 const albums_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const {ArtistNameAlreadyInUse, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
+const {AlreadyExist, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
 
 albums_router.route('/albums/:album_id')
     .get((req, res) => {
@@ -80,10 +80,14 @@ albums_router.route('/albums')
     .post((req, res) => {
         const unqfy = getUNQfy();
         const album_data = req.body;
-        if (album_data.artistId === undefined || album_data.name === undefined || album_data.name === "" || album_data.year === undefined || album_data.year <= 0){
+        if (album_data.artistId === undefined || album_data.name === undefined || album_data.year === undefined){
             res.status(400);
             res.json({status: 400,
               errorCode: "BAD_REQUEST"});
+        }
+        console.log("ACA", unqfy.getAlbums().some(album => album.name === album_data.name));
+        if(unqfy.getAlbums().some(album => album.name === album_data.name)){
+            throw new AlreadyExist();
         }
         try {
             const model_album = unqfy.addAlbum(album_data.artistId, album_data);
@@ -91,7 +95,7 @@ albums_router.route('/albums')
             res.status(201);
             res.json(model_album.toJSON());
         }catch(err){
-            if(err instanceof ArtistNameAlreadyInUse){
+            if(err instanceof AlreadyExist){
                 res.status(409);
                 res.json({status: 409,
                 errorCode: "RESOURCE_ALREADY_EXISTS"});

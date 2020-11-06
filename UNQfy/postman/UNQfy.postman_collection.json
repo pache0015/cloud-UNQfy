@@ -1360,81 +1360,50 @@
 					"response": []
 				},
 				{
-					"name": "add duplicated album",
+					"name": "artist",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "609b81aa-48ba-46d2-a7e3-248206bada33",
+								"id": "21a4c360-71c6-438c-9bc4-c724b48635b3",
+								"type": "text/javascript",
 								"exec": [
 									"const chai = require('chai');",
 									"chai.config.truncateThreshold = 0;",
 									"",
-									"pm.test(\"add album with the same name\", function () {",
-									"    pm.response.to.have.status(409);",
+									"pm.test(\"artist should have 1 album\", function () {",
+									"    pm.response.to.have.status(200);",
 									"    pm.response.to.have.jsonBody();",
 									"    ",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.be.deep.equal({",
-									"        status: 409,",
-									"        errorCode: \"RESOURCE_ALREADY_EXISTS\"        ",
-									"    });",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "4cb13adc-1e76-4637-a997-4440d4b880aa",
-								"exec": [
-									"/*",
-									"pm.test(\"response is ok\", function () {",
-									"    pm.response.to.have.status(200);",
-									"   ",
-									"    var jsonData = pm.response.json();",
-									"    var artistId = jsonData.artistId;",
 									"    ",
-									"    pm.response.to.have.jsonBody({",
-									"        \"name\": \"Appetite For Destruction\",",
-									"        \"year\": 1987,",
-									"        \"artistId\": artistId",
+									"",
+									"    pm.expect(jsonData).to.be.deep.equal({",
+									"        \"id\": pm.environment.get(\"testArtistId\"),",
+									"        \"name\": \"Guns n' Roses\",",
+									"        \"albums\": [",
+									"             {",
+									"                \"id\": pm.environment.get(\"testAlbumId\"),",
+									"                \"name\": \"Appetite For Destruction\",",
+									"                \"year\": 1987,",
+									"                \"tracks\":[]",
+									"            }",
+									"        ],",
+									"        \"country\": \"USA\",",
 									"    });",
+									"    ",
 									"});",
 									"",
-									"const echoPostRequest = {",
-									"  url: `http://localhost:${port}`,",
-									"  method: 'DELETE',",
-									"  header: '',",
-									"  body: {",
-									"    mode: 'raw',",
-									"    raw: JSON.stringify({ key: 'this is json' })",
-									"  }",
-									"};",
-									"pm.sendRequest(, function (err, response) {",
-									"    console.log(response.json());",
-									"});",
-									"*/"
-								],
-								"type": "text/javascript"
+									""
+								]
 							}
 						}
 					],
 					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Appetite For Destruction\",\n  \"year\": 2000,\n  \"artistId\": {{testArtistId}}\n}"
-						},
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "http://localhost:{{port}}/api/albums",
+							"raw": "http://localhost:{{port}}/api/artists/{{testArtistId}}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1442,7 +1411,8 @@
 							"port": "{{port}}",
 							"path": [
 								"api",
-								"albums"
+								"artists",
+								"{{testArtistId}}"
 							]
 						}
 					},
@@ -1560,65 +1530,6 @@
 					"response": []
 				},
 				{
-					"name": "artist",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "21a4c360-71c6-438c-9bc4-c724b48635b3",
-								"type": "text/javascript",
-								"exec": [
-									"const chai = require('chai');",
-									"chai.config.truncateThreshold = 0;",
-									"",
-									"pm.test(\"artist should have 1 album\", function () {",
-									"    pm.response.to.have.status(200);",
-									"    pm.response.to.have.jsonBody();",
-									"    ",
-									"    var jsonData = pm.response.json();",
-									"    ",
-									"",
-									"    pm.expect(jsonData).to.be.deep.equal({",
-									"        \"id\": pm.environment.get(\"testArtistId\"),",
-									"        \"name\": \"Guns n' Roses\",",
-									"        \"albums\": [",
-									"             {",
-									"                \"id\": pm.environment.get(\"testAlbumId\"),",
-									"                \"name\": \"Appetite For Destruction\",",
-									"                \"year\": 1987,",
-									"                \"tracks\":[]",
-									"            }",
-									"        ],",
-									"        \"country\": \"USA\",",
-									"    });",
-									"    ",
-									"});",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{port}}/api/artists/{{testArtistId}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"artists",
-								"{{testArtistId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "add another album",
 					"event": [
 						{
@@ -1715,100 +1626,79 @@
 					"response": []
 				},
 				{
-					"name": "filter albums illusion",
+					"name": "add duplicated album",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "b0f95ec5-897d-4517-a9db-137de73d820d",
-								"type": "text/javascript",
+								"id": "609b81aa-48ba-46d2-a7e3-248206bada33",
 								"exec": [
 									"const chai = require('chai');",
 									"chai.config.truncateThreshold = 0;",
 									"",
-									"pm.test(\"should be one album\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"add album with the same name\", function () {",
+									"    pm.response.to.have.status(409);",
 									"    pm.response.to.have.jsonBody();",
 									"    ",
 									"    var jsonData = pm.response.json();",
-									"    ",
-									"",
-									"    pm.expect(jsonData).to.be.deep.equal([",
-									"        {",
-									"        \"id\": pm.environment.get(\"testAlbumId2\"),",
-									"        \"name\": \"Use Your Illusion 1\",",
-									"        \"year\": 1992,",
-									"        \"tracks\": [],",
-									"    }]);",
-									"    ",
+									"    pm.expect(jsonData).to.be.deep.equal({",
+									"        status: 409,",
+									"        errorCode: \"RESOURCE_ALREADY_EXISTS\"        ",
+									"    });",
 									"});"
-								]
+								],
+								"type": "text/javascript"
 							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:{{port}}/api/albums?name=illusion",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"albums"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "illusion"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "all albums",
-					"event": [
+						},
 						{
-							"listen": "test",
+							"listen": "prerequest",
 							"script": {
-								"id": "dee64d45-87d8-445a-92fb-c90e06bd9a26",
-								"type": "text/javascript",
+								"id": "4cb13adc-1e76-4637-a997-4440d4b880aa",
 								"exec": [
-									"const chai = require('chai');",
-									"chai.config.truncateThreshold = 0;",
-									"",
-									"pm.test(\"should be two album\", function () {",
+									"/*",
+									"pm.test(\"response is ok\", function () {",
 									"    pm.response.to.have.status(200);",
-									"    pm.response.to.have.jsonBody();",
-									"    ",
+									"   ",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.be.deep.equal([",
-									"       {",
-									"            \"id\": pm.environment.get(\"testAlbumId\"),",
-									"            \"name\": \"Appetite For Destruction\",",
-									"            \"year\": 1987,",
-									"            \"tracks\":[]",
-									"        },",
-									"        {",
-									"            \"id\": pm.environment.get(\"testAlbumId2\"),",
-									"            \"name\": \"Use Your Illusion 1\",",
-									"            \"year\": 1992,",
-									"            \"tracks\": [],",
-									"        }",
-									"    ]);",
-									"});"
-								]
+									"    var artistId = jsonData.artistId;",
+									"    ",
+									"    pm.response.to.have.jsonBody({",
+									"        \"name\": \"Appetite For Destruction\",",
+									"        \"year\": 1987,",
+									"        \"artistId\": artistId",
+									"    });",
+									"});",
+									"",
+									"const echoPostRequest = {",
+									"  url: `http://localhost:${port}`,",
+									"  method: 'DELETE',",
+									"  header: '',",
+									"  body: {",
+									"    mode: 'raw',",
+									"    raw: JSON.stringify({ key: 'this is json' })",
+									"  }",
+									"};",
+									"pm.sendRequest(, function (err, response) {",
+									"    console.log(response.json());",
+									"});",
+									"*/"
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Appetite For Destruction\",\n  \"year\": 2000,\n  \"artistId\": {{testArtistId}}\n}"
+						},
 						"url": {
 							"raw": "http://localhost:{{port}}/api/albums",
 							"protocol": "http",
@@ -1884,6 +1774,116 @@
 								"api",
 								"artists",
 								"{{testArtistId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dee64d45-87d8-445a-92fb-c90e06bd9a26",
+								"type": "text/javascript",
+								"exec": [
+									"const chai = require('chai');",
+									"chai.config.truncateThreshold = 0;",
+									"",
+									"pm.test(\"should be two album\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.have.jsonBody();",
+									"    ",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.deep.equal([",
+									"       {",
+									"            \"id\": pm.environment.get(\"testAlbumId\"),",
+									"            \"name\": \"Appetite For Destruction\",",
+									"            \"year\": 1987,",
+									"            \"tracks\":[]",
+									"        },",
+									"        {",
+									"            \"id\": pm.environment.get(\"testAlbumId2\"),",
+									"            \"name\": \"Use Your Illusion 1\",",
+									"            \"year\": 1992,",
+									"            \"tracks\": [],",
+									"        }",
+									"    ]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/albums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter albums illusion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0f95ec5-897d-4517-a9db-137de73d820d",
+								"type": "text/javascript",
+								"exec": [
+									"const chai = require('chai');",
+									"chai.config.truncateThreshold = 0;",
+									"",
+									"pm.test(\"should be one album\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.have.jsonBody();",
+									"    ",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"",
+									"    pm.expect(jsonData).to.be.deep.equal([",
+									"        {",
+									"        \"id\": pm.environment.get(\"testAlbumId2\"),",
+									"        \"name\": \"Use Your Illusion 1\",",
+									"        \"year\": 1992,",
+									"        \"tracks\": [],",
+									"    }]);",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/albums?name=illusion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "illusion"
+								}
 							]
 						}
 					},
