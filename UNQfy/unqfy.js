@@ -10,7 +10,7 @@ const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {ArtistNameAlreadyInUse, UserNameAlreadyInUse} = require('./model/src/exceptions.js');
+const {ArtistNameAlreadyInUse, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
@@ -45,6 +45,11 @@ class UNQfy {
 
   addAlbum(artistId, albumData) {
     const artist = this.getArtistById(artistId);
+    const existName = this.getAlbums().some(album => album.name.toUpperCase() === albumData.name.toUpperCase());
+    if(existName){
+      throw new AlreadyExist(albumData.name);
+    }
+   
     const anAlbum = new Album(albumData.name, albumData.year);
     artist.addAlbum(anAlbum);
     return anAlbum;

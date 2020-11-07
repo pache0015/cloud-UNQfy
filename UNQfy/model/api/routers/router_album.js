@@ -85,10 +85,6 @@ albums_router.route('/albums')
             res.json({status: 400,
               errorCode: "BAD_REQUEST"});
         }
-        console.log("ACA", unqfy.getAlbums().some(album => album.name === album_data.name));
-        if(unqfy.getAlbums().some(album => album.name === album_data.name)){
-            throw new AlreadyExist();
-        }
         try {
             const model_album = unqfy.addAlbum(album_data.artistId, album_data);
             saveUNQfy(unqfy);
