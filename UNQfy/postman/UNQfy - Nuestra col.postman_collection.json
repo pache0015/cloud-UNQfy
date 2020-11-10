@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "47f229c5-4c01-4d0c-bd7c-da4fd92fba08",
+		"name": "UNQfy - Nuestra col",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listenings",
+			"item": [
+				{
+					"name": "localhost:8080/api/users/180/listenings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/180/listenings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"180",
+								"listenings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/users/31/listenings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/users/31/listenings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"31",
+								"listenings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/users/31/listenings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"trackId\": 27}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/users/31/listenings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"31",
+								"listenings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/users/31/listenings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"trackId\": 84}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/users/31/listenings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"31",
+								"listenings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/users/180/listenings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"trackId\": 27}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/users/180/listenings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"180",
+								"listenings"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
