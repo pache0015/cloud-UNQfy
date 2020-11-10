@@ -19,5 +19,13 @@ class User extends Identificable{
         const aTrackPlayed = this.trackPlayed.filter(played => played.id === aTrack.id);
         return aTrackPlayed.length;
     }
+
+    toJSON(){
+        return {
+            id: this.id,
+            name: this.name,
+            playedTracks: this.trackPlayed
+        };
+    }
 }
 module.exports = User;

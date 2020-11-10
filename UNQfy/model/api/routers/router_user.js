@@ -34,14 +34,15 @@ users_router.route('/users/:userId/listenings')
     }
     try {
         tmpUser = unqfy.userListenTrack(userId, parseInt(data.trackId));
+        saveUNQfy(unqfy);
+        
     }catch(err){
-        if(err instanceof TypeError || tmpUser.trackPlayed[tmpUser.trackPlayed.lenght - 1] === undefined){
+        if(err instanceof TypeError){
                 res.status(404);
                 res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
                 return;
             }
     }
-    saveUNQfy(unqfy);
     res.status(201);
     res.json(
         tmpUser.toJSON()
