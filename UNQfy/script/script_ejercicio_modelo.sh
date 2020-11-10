@@ -11,8 +11,8 @@ node main.js addArtist "Astor Piazzolla" "Argentina"
 
 #ALBUMS >>>>>>>>>>>>>>>>>>>>>>>>>>><
 
-node main.js addAlbum 1 "Vida" 2010 #5
-node main.js addAlbum 1 "Muerte" 2012 #6
+node main.js addAlbum 2 "Vida" 2010 #5
+node main.js addAlbum 2 "Muerte" 2012 #6
 node main.js addAlbum 1 "Blue" 2006 #7
 node main.js addAlbum 2 "Greater hits" 1974 #8
 node main.js addAlbum 3 "A donde jugaran las niñas" 1997 #9
@@ -51,10 +51,10 @@ node main.js createPlaylist "Relaxing Music" 1400 Blues Clasica #29
 node main.js addUser Pache0015  #30
 node main.js addUser H #31
 
-node main.js userListenTrack 30 10
+node main.js userListenTrack 30 13
 node main.js userListenTrack 30 11
 node main.js userListenTrack 30 12
-node main.js userListenTrack 31 10
+node main.js userListenTrack 31 11
 node main.js userListenTrack 31 13
 node main.js userListenTrack 31 14
 
