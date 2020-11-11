@@ -62,6 +62,10 @@ class UNQfy {
     return aTrack;
   }
 
+  addAlbumsFromSpotify(aListOfAlbumsFromSpotify){
+    const list = aListOfAlbumsFromSpotify;
+    
+  }
   getArtistById(id) {
     return getEntity(this._artists, id);
   }

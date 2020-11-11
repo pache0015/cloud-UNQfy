@@ -250,7 +250,7 @@ class CommandExecutor {
             result = unquifyFunction.f(unquify, args);
             const header = result[0];
             const entity = result[1];
-            this.printer.printEntity(header, entity);
+            this.printer.printEntity(header, entity, unquify);
         }
         catch(e){
             this.printer.printException(e);

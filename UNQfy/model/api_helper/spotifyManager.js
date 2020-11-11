@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 
-const access_token = "BQClKHVoivbmDeRM_njJ7vch9sKNwHN9OITecGjnpdxe2HVgZ5brZy-q0H9ekd7Me_8QaOYk3GUg2B3l5r4fHyLOZPspeq58J7lKnJmcRAdNf2zT8WBw0iqJGxXO2BnaHa1juLOl8nq-PYiz75U0fUW2xq-uSsWCLKBsgelntHhtSZJr5-9FOg";
+const access_token = "BQDaVip_mcoImqkn0H7EWNHm9reviVqaHDFiTh5jnEhaZbvwuYH8wcrwveznZB6usVD_zwua67MFnm3RawIBDC_vE0yTid_HoH-zDf3l1zPmmnT3duS7AjUC9mvnUsSOV2SacmexDztOOaAwDMaPt1q7VhCy8EI";
 class SpotifyManager{
      constructor(anAccessToken=access_token){
           this.access_token  = anAccessToken;
@@ -46,10 +46,10 @@ class SpotifyManager{
           return this.searchArtist(anArtistName)
                .then(responseArtist => this.searchAlbumsById(responseArtist))
                .then(responseAlbums => { return responseAlbums.data.items; })
-               .then(listAlbums => {
-                    const res = listAlbums.map(album => 
+               .then(listAlbums => { // eslint-disable-next-line no-undef
+                    const noRep =  [...new Map(listAlbums.map(item => [item["name"], item])).values()];
+                    return noRep.map(album => 
                          unqfy.addAlbum(unqfyArtist.id, {name: album.name, year: album.release_date.slice(0,4)}));
-                         return res;
                     })
                .catch(error => { 
                     if(error instanceof TypeError){
