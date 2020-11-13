@@ -61,15 +61,16 @@ playList_router.route('/playlists/:id_playlist')
 playList_router.route('/playlists')
     .get((req,res)=>{
         const unqfy = getUNQfy();
-        const playlist_data = req.query;
+        const playlist_data ={ name: req.query.name, durationLT: req.query.durationLT, durationGT: req.query.durationGT}
+
+
         if(playlist_data.name === undefined && playlist_data.durationLT === undefined && playlist_data.durationGT === undefined){
             res.status(400);
             res.json({ status: 400,
                 errorCode: "BAD_REQUEST"});
                 return;
         }
-        const name = playlist_data.name !== undefined ? "" : playlist_data.name;
-        const playLists = unqfy.searchPlaylistsWithPartialName(name).filter(playList => ! (playList.duration < playlist_data.durationLT || playList.duration > playlist_data.durationGT));
+        const playLists = unqfy.getPlaylistisByData(playlist_data);
         res.status(200);
         res.json(playLists.map(playList => playList.toJSON()));
     });    
