@@ -1,7 +1,6 @@
 const {AlreadyExist, NonExistAtributeInEntity, BadRequest, ArtistNameAlreadyInUse, ResourceNotFound, ArtistNotFound} = require('../../../model/src/exceptions');
 
 function error_handler(res, error){
-    console.log(error);
     switch (true){
         case error instanceof ArtistNotFound:
             res.status(404);
