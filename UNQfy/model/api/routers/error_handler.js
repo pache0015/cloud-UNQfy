@@ -5,7 +5,7 @@ function error_handler(res, error){
     switch (true){
         case error instanceof ArtistNotFound:
             res.status(404);
-            res.json({status:404, errorCorde: "RELATED_RESOURSE_NOT_FOUND"});
+            res.json({status:404, errorCode: "RELATED_RESOURCE_NOT_FOUND"});
             break;
         case error instanceof TypeError || error instanceof ResourceNotFound || error instanceof NonExistAtributeInEntity:
             res.status(404);

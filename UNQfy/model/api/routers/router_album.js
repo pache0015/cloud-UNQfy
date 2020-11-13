@@ -68,7 +68,7 @@ albums_router.route('/albums')
             return;
         }
 
-        if(unqfy.getArtistById(album_data.artistId)){
+        if(unqfy.getArtistById(album_data.artistId)=== undefined){
             error_handler(res, new ArtistNotFound());
             return;
         }
