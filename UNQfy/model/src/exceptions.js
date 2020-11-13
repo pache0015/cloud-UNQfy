@@ -11,6 +11,9 @@ class ArtistNameAlreadyInUse extends Error {
       }
 }
 
+class ArtistNotFound extends Error{
+
+}
 
 class UserNameAlreadyInUse extends Error {
     constructor(aName){
@@ -47,12 +50,23 @@ class NonExistAtributeInEntity extends Error {
     }
 }
 
+class BadRequest extends Error{
+
+}
+
+class ResourceNotFound extends Error{
+
+}
+
 module.exports = {
+    ArtistNotFound, 
     InvalidCommandException,
     NotEnoughArguments,
     NoGenresMatchException,
     AlreadyExist,
     ArtistNameAlreadyInUse,
     UserNameAlreadyInUse,
-    NonExistAtributeInEntity
+    NonExistAtributeInEntity,
+    BadRequest,
+    ResourceNotFound
   };

@@ -1,16 +1,16 @@
 const express = require('express');
 const playList_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-
+const {BadRequest, ResourceNotFound} = require('../../../model/src/exceptions');
+const error_handler = require('./error_handler.js');
 
 playList_router.route('/playlists')
     .post((req, res) =>{
         const unqfy = getUNQfy();
         const playlist_data = req.body;
         if (playlist_data.maxDuration === undefined || playlist_data.genres === undefined){
-            res.status(400);
-            res.json({status: 400,
-                errorCode: "BAD_REQUEST"});
+            error_handler(res, new BadRequest());
+            return;
         }
         else{
             try{
@@ -21,7 +21,7 @@ playList_router.route('/playlists')
                     aPlayList.toJSON()
                 );}
             catch (e) {
-                throw e;
+                error_handler(res, e);
             }
         }
     });
@@ -31,8 +31,8 @@ playList_router.route('/playlists/:id_playlist')
         const playlist_id = parseInt(req.params.id_playlist);
         const playlist = unqfy.getPlaylistById(playlist_id);
         if (playlist === undefined){
-            res.status(405);
-            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
+            error_handler(res, new ResourceNotFound());
+            return;
         } else {
             res.status(200);
             res.json(playlist.toJSON());
@@ -47,27 +47,16 @@ playList_router.route('/playlists/:id_playlist')
             res.status(204);
             res.json({ status: 204});
         }catch(e){
-            if(e instanceof TypeError){
-                res.status(404);
-                res.json({ status: 404,
-                    errorCode: "RESOURCE_NOT_FOUND"});
-            }
-            else{
-                throw e;
-            }
+            error_handler(res, e);
         }
     });
 
 playList_router.route('/playlists')
     .get((req,res)=>{
         const unqfy = getUNQfy();
-        const playlist_data ={ name: req.query.name, durationLT: req.query.durationLT, durationGT: req.query.durationGT}
-
-
+        const playlist_data ={ name: req.query.name, durationLT: req.query.durationLT, durationGT: req.query.durationGT};
         if(playlist_data.name === undefined && playlist_data.durationLT === undefined && playlist_data.durationGT === undefined){
-            res.status(400);
-            res.json({ status: 400,
-                errorCode: "BAD_REQUEST"});
+            error_handler(res, new BadRequest());
                 return;
         }
         const playLists = unqfy.getPlaylistisByData(playlist_data);

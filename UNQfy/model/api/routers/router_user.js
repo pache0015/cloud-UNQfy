@@ -1,6 +1,8 @@
 const express = require('express');    
 const users_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
+const { BadRequest } = require('../../src/exceptions.js');
+const error_handler = require('./error_handler.js');
 
 users_router.route('/users/:userId/listenings')
 .get((req, res) => {
@@ -11,11 +13,8 @@ users_router.route('/users/:userId/listenings')
         const user = unqfy.getUserById(userId);
         tmpTracks = user.trackPlayed;
     }catch(err){
-        if(err instanceof TypeError){
-            res.status(404);
-            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
-            return;
-        }
+        error_handler(res, err);
+        return;
     }
     res.status(200);
     res.json(
@@ -28,20 +27,14 @@ users_router.route('/users/:userId/listenings')
     const unqfy = getUNQfy();
     let tmpUser;
     if (data.trackId === undefined){
-        res.status(400);
-        res.json({status: 400,
-          errorCode: "BAD_REQUEST"});
+        error_handler(res, new BadRequest());
     }
     try {
         tmpUser = unqfy.userListenTrack(userId, parseInt(data.trackId));
         saveUNQfy(unqfy);
         
     }catch(err){
-        if(err instanceof TypeError){
-                res.status(404);
-                res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
-                return;
-            }
+        error_handler(res, err);
     }
     res.status(201);
     res.json(
