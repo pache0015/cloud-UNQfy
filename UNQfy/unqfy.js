@@ -10,7 +10,7 @@ const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {ArtistNameAlreadyInUse, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
+const {ArtistNameAlreadyInUse, ArtistNotFound, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
@@ -63,11 +63,12 @@ class UNQfy {
   }
 
   addAlbumsFromSpotify(aListOfAlbumsFromSpotify){
-    const list = aListOfAlbumsFromSpotify;
+    //const list = aListOfAlbumsFromSpotify;
     
   }
   getArtistById(id) {
-    return getEntity(this._artists, id);
+    const artist = getEntity(this._artists, id);
+    return artist;
   }
 
   getAlbumById(id) {
@@ -134,10 +135,10 @@ class UNQfy {
   
   getPlaylistisByData(playlist_data){
 
-    let playLists = this.searchPlaylistsWithPartialName(playlist_data.name === undefined ? "": playlist_data.name)
+    const playLists = this.searchPlaylistsWithPartialName(playlist_data.name === undefined ? "": playlist_data.name);
 
     if(playlist_data.durationLT !== undefined || playlist_data.durationGT !== undefined){
-      return playLists.filter(playList => playlist.duration > playlist_data.durationGT || playlist.duration < playlist_data.durationLT);
+      return playLists.filter(playList => playList.duration > playlist_data.durationGT || playList.duration < playlist_data.durationLT);
     }
     return playLists;
   }
