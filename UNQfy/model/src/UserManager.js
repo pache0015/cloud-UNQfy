@@ -6,7 +6,9 @@ class UserManager{
         let aTrack = null;
         try{
             aUser = aUNQfy.getUserById(aUserID);
+            aUser.id;
             aTrack = aUNQfy.getTrackById(aTrackID);
+            aTrack.id;
         }
         catch(e){
             throw e;
