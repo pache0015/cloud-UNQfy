@@ -1,7 +1,8 @@
 const express = require('express');    
 const artists_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const {ArtistNameAlreadyInUse, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
+const {BadRequest} = require('../../../model/src/exceptions');
+const error_handler = require('./error_handler.js');
 
 artists_router.route('/artists/:artist_id')
     .get((req, res) => {
@@ -9,8 +10,7 @@ artists_router.route('/artists/:artist_id')
         const artist_ID = parseInt(req.params.artist_id);
         const artist = unqfy.getArtistById(artist_ID);
         if (artist === undefined){
-            res.status(404);
-            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
+            error_handler(res, new TypeError());
         }
         else{
             res.status(200);
@@ -26,14 +26,7 @@ artists_router.route('/artists/:artist_id')
             res.status(204);
             res.send({ success: true});
         }catch(err){
-            if(err instanceof TypeError){
-                res.status(404);
-                res.json({ status: 404,
-                           errorCode: "RESOURCE_NOT_FOUND"});
-            }
-            else{
-                throw err;
-            }
+            error_handler(res, err);
         }
     })
     .put((req, res)=>{
@@ -41,8 +34,7 @@ artists_router.route('/artists/:artist_id')
         const artist_ID = parseInt(req.params.artist_id);
         const artist_data = req.body;
         if (artist_data.name === undefined || artist_data.country === undefined){
-            res.status(400);
-            res.json({status: 400, errorCode: "BAD_REQUEST"});
+            error_handler(res, new BadRequest());
         }
         else{
             try{
@@ -53,16 +45,7 @@ artists_router.route('/artists/:artist_id')
                 saveUNQfy(unqfy);
             }
             catch(err){
-                if(err instanceof TypeError){
-                    res.status(404);
-                    res.json({ status: 404,
-                               errorCode: "RESOURCE_NOT_FOUND"});
-                }else{
-                    if(err instanceof NonExistAtributeInEntity){
-                        res.json(405);
-                        res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
-                    }
-                }
+                error_handler(res, err);
             }
             
         }         
@@ -80,9 +63,7 @@ artists_router.route('/artists')
         const unqfy = getUNQfy();
         const artist_data = req.body;
         if (artist_data.name === undefined || artist_data.country === undefined){
-            res.status(400);
-            res.json({status: 400,
-              errorCode: "BAD_REQUEST"});
+            error_handler(res, new BadRequest());
         }
         try {
             const model_artist = unqfy.addArtist(artist_data);
@@ -90,18 +71,8 @@ artists_router.route('/artists')
             res.status(201);
             res.json(model_artist.toJSON());
         }catch(err){
-            if(err instanceof ArtistNameAlreadyInUse){
-                res.status(409);
-                res.json({status: 409,
-                errorCode: "RESOURCE_ALREADY_EXISTS"});
-            }
-            else{
-                throw err;
-            }
+            error_handler(res, err);
         }
     });
         
-        
-
-
 module.exports = artists_router;

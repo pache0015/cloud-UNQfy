@@ -10,7 +10,7 @@ const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {ArtistNameAlreadyInUse, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
+const {ArtistNameAlreadyInUse, ArtistNotFound, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
@@ -62,8 +62,13 @@ class UNQfy {
     return aTrack;
   }
 
+  addAlbumsFromSpotify(aListOfAlbumsFromSpotify){
+    //const list = aListOfAlbumsFromSpotify;
+    
+  }
   getArtistById(id) {
-    return getEntity(this._artists, id);
+    const artist = getEntity(this._artists, id);
+    return artist;
   }
 
   getAlbumById(id) {
@@ -127,6 +132,16 @@ class UNQfy {
   getPlayLists(){
     return allFromHash(this._playLists);
   }
+  
+  getPlaylistisByData(playlist_data){
+
+    const playLists = this.searchPlaylistsWithPartialName(playlist_data.name === undefined ? "": playlist_data.name);
+
+    if(playlist_data.durationLT !== undefined || playlist_data.durationGT !== undefined){
+      return playLists.filter(playList => playList.duration > playlist_data.durationGT || playList.duration < playlist_data.durationLT);
+    }
+    return playLists;
+  }
 
   getAlbums(){
     const albums = this.getArtists().map(artist => artist.albums);
@@ -142,17 +157,6 @@ class UNQfy {
     return played;
   }
 
-  //addPlayList(name, listOfTracks){
-  //  let playList = null;
-  //  try{
-  //    playList = this._playListGenerator.generatePlayListByTracks(name, listOfTracks);
-  //    this._playLists[playList.id] = playList;
-  //  }
-  //  catch (e) {
-  //    throw e;
-  //  }
-  //  return playList;
-  //}
   createPlaylist(name, genresToInclude, maxDuration) {
     let playList = null;
     const listOfTracks = this.getTracks();
@@ -225,6 +229,7 @@ class UNQfy {
     const album = this.getAlbumById(id);
     const tracks = album.tracks;
     tracks.forEach(track => this.removeTrack(track.id));
+    this.getArtists().forEach(artist => artist.removeAlbum(album));
     return album;
   }
 

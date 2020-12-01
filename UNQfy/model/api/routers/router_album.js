@@ -1,7 +1,8 @@
 const express = require('express');    
 const albums_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
-const {AlreadyExist, NonExistAtributeInEntity} = require('../../../model/src/exceptions');
+const error_handler = require('./error_handler.js');
+const {BadRequest, ArtistNotFound} = require('../../../model/src/exceptions');
 
 albums_router.route('/albums/:album_id')
     .get((req, res) => {
@@ -9,8 +10,8 @@ albums_router.route('/albums/:album_id')
         const album_ID = parseInt(req.params.album_id);
         const album = unqfy.getAlbumById(album_ID);
         if (album === undefined){
-            res.status(404);
-            res.json({status: 404, errorCode: "RESOURCE_NOT_FOUND"});
+            error_handler(res, new TypeError());
+            return;
         }
         else{
             res.status(200);
@@ -26,14 +27,7 @@ albums_router.route('/albums/:album_id')
             res.status(204);
             res.send({ success: true});
         }catch(err){
-            if(err instanceof TypeError){
-                res.status(404);
-                res.json({ status: 404,
-                           errorCode: "RESOURCE_NOT_FOUND"});
-            }
-            else{
-                throw err;
-            }
+            error_handler(res, err);
         }
     })
     .patch((req, res)=>{
@@ -41,8 +35,8 @@ albums_router.route('/albums/:album_id')
         const album_ID = parseInt(req.params.album_id);
         const album_data = req.body;
         if (album_data.year === undefined){
-            res.status(405);
-            res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
+            error_handler(res, new BadRequest());
+            return;
         }
         else{
             try{
@@ -53,18 +47,7 @@ albums_router.route('/albums/:album_id')
                 saveUNQfy(unqfy);
             }
             catch(err){
-                if(err instanceof TypeError || err instanceof Error){
-                    res.status(404);
-                    res.json({ status: 404,
-                               errorCode: "RESOURCE_NOT_FOUND"});
-                    throw err;
-                }else{
-                    if(err instanceof NonExistAtributeInEntity){
-                        res.json(405);
-                        res.json({status: 405, errorCode: "RESOURCE_NOT_FOUND"});
-                        throw err;
-                    }
-                }
+                error_handler(res, new BadRequest());
             }
         }         
     });
@@ -81,9 +64,13 @@ albums_router.route('/albums')
         const unqfy = getUNQfy();
         const album_data = req.body;
         if (album_data.artistId === undefined || album_data.name === undefined || album_data.year === undefined){
-            res.status(400);
-            res.json({status: 400,
-              errorCode: "BAD_REQUEST"});
+            error_handler(res, new BadRequest());
+            return;
+        }
+
+        if(unqfy.getArtistById(album_data.artistId)=== undefined){
+            error_handler(res, new ArtistNotFound());
+            return;
         }
         try {
             const model_album = unqfy.addAlbum(album_data.artistId, album_data);
@@ -91,18 +78,7 @@ albums_router.route('/albums')
             res.status(201);
             res.json(model_album.toJSON());
         }catch(err){
-            if(err instanceof AlreadyExist){
-                res.status(409);
-                res.json({status: 409,
-                errorCode: "RESOURCE_ALREADY_EXISTS"});
-            }
-            else{
-                if(err instanceof TypeError){
-                    res.status(404);
-                    res.json({status: 404,
-                    errorCode: "RELATED_RESOURCE_NOT_FOUND"});
-                }
-            }
+            error_handler(res, err);
         }
     });
 

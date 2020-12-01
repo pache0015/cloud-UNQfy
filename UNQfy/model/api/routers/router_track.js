@@ -2,7 +2,8 @@ const express = require('express');
 const track_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 const Promise = require('promise');
-
+const error_handler = require('./error_handler.js');
+const {BadRequest} = require('../../../model/src/exceptions');
 
 track_router.route('/tracks/:idTrack/lyrics')
     .get((req, res) =>{
@@ -10,11 +11,7 @@ track_router.route('/tracks/:idTrack/lyrics')
         const idTrack = parseInt(req.params.idTrack);
         const trackSearched = unqfy.getTrackById(idTrack);
         if(trackSearched === undefined){
-            res.status(400);
-            res.json({
-                    status: 400,
-                    errorCode: "BAD_REQUEST"
-                });
+            error_handler(res, new BadRequest());
         } 
         else{
             if(trackSearched.getLyrics() instanceof Promise){

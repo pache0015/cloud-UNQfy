@@ -1,35 +1,22 @@
 const express = require('express');
+const error_handler = require('./error_handler');
 const end_router = express.Router();
+const {ResourceNotFound} = require('../../../model/src/exceptions');
+
 
 
     end_router.route('*')
     .get((req, res) => {
-        res.status(404);
-        res.json({
-            status: 404,
-            errorCode: "RESOURCE_NOT_FOUND"
-        });
+        error_handler(res, new ResourceNotFound());
     })
     .post((req, res) => {
-        res.status(404);
-        res.json({
-            status: 404,
-            errorCode: "RESOURCE_NOT_FOUND"
-        });
+        error_handler(res, new ResourceNotFound());
     })
     .delete((req, res) => {
-        res.status(404);
-        res.json({
-            status: 404,
-            errorCode: "RESOURCE_NOT_FOUND"
-        });
+        error_handler(res, new ResourceNotFound());
     })
     .patch((req, res) => {
-        res.status(404);
-        res.json({
-            status: 404,
-            errorCode: "RESOURCE_NOT_FOUND"
-        });
+        error_handler(res, new ResourceNotFound());
     });
 
 module.exports = end_router;
