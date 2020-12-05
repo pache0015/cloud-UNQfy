@@ -3,6 +3,8 @@ const users_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 const { BadRequest } = require('../../src/exceptions.js');
 const error_handler = require('./error_handler.js');
+const {Wrapper} = require('../../../wrapper.js');
+const myWrapper = new Wrapper();
 
 users_router.route('/users/:userId/listenings')
 .get((req, res) => {
@@ -10,7 +12,7 @@ users_router.route('/users/:userId/listenings')
     const userId = parseInt(req.params.userId);
     let tmpTracks;
     try {        
-        const user = unqfy.getUserById(userId);
+        const user = myWrapper.getUserById(unqfy, userId);
         tmpTracks = user.trackPlayed;
     }catch(err){
         error_handler(res, err);
@@ -30,7 +32,7 @@ users_router.route('/users/:userId/listenings')
         error_handler(res, new BadRequest());
     }
     try {
-        tmpUser = unqfy.userListenTrack(userId, parseInt(data.trackId));
+        tmpUser = myWrapper.userListenTrack(unqfy, userId, parseInt(data.trackId));
         saveUNQfy(unqfy);
         
     }catch(err){
