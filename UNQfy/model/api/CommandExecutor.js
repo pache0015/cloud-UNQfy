@@ -1,7 +1,7 @@
 const Printer = require("../src/Printer.js");
 const {InvalidCommandException, NotEnoughArguments} = require('../src/exceptions.js');
 const SpotifyManager = require('../api_helper/spotifyManager.js');
-const Wrapper = require('../../wrapper.js');
+const {Wrapper} = require('../../wrapper.js');
 
 class CommandExecutor {
     constructor(){

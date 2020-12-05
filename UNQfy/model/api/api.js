@@ -20,10 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', track_router, playlists_router, artists_router, albums_router, users_router, end_router);
-<<<<<<< HEAD
-=======
 app.use('*', end_router);
->>>>>>> 1abf4a28ac7cf9cdcc9d6b174793193fcbcca608
 const server = app.listen(port, () => {
     console.log("Server running");
 });
