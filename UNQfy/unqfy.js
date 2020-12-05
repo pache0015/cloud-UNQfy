@@ -49,7 +49,6 @@ class UNQfy {
     if(existName){
       throw new AlreadyExist(albumData.name);
     }
-   
     const anAlbum = new Album(albumData.name, albumData.year);
     artist.addAlbum(anAlbum);
     return anAlbum;
