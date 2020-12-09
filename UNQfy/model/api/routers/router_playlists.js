@@ -3,8 +3,6 @@ const playList_router = express.Router();
 const {getUNQfy, saveUNQfy} = require('../../persistencia/persistenceManager.js');
 const {BadRequest, ResourceNotFound} = require('../../../model/src/exceptions');
 const error_handler = require('./error_handler.js');
-const {Wrapper} = require('../../../wrapper.js');
-const myWrapper = new Wrapper();
 
 playList_router.route('/playlists')
     .post((req, res) =>{
@@ -16,7 +14,7 @@ playList_router.route('/playlists')
         }
         else{
             try{
-                const aPlayList = myWrapper.createPlaylist(unqfy, playlist_data.name, playlist_data.genres, playlist_data.maxDuration);
+                const aPlayList = unqfy.createPlaylist(playlist_data.name, playlist_data.genres, playlist_data.maxDuration);
                 saveUNQfy(unqfy);
                 res.status(201);
                 res.json(
@@ -31,7 +29,7 @@ playList_router.route('/playlists/:id_playlist')
     .get((req, res) =>{
         const unqfy = getUNQfy();
         const playlist_id = parseInt(req.params.id_playlist);
-        const playlist = myWrapper.getPlaylistById(unqfy, playlist_id);
+        const playlist = unqfy.getPlaylistById(playlist_id);
         if (playlist === undefined){
             error_handler(res, new ResourceNotFound());
             return;
@@ -44,7 +42,7 @@ playList_router.route('/playlists/:id_playlist')
         const unqfy = getUNQfy();
         const playlist_id = parseInt(req.params.id_playlist);
         try{
-            myWrapper.removePlayList(unqfy, playlist_id);
+            unqfy.removePlayList(playlist_id);
             saveUNQfy(unqfy);
             res.status(204);
             res.json({ status: 204});
@@ -61,7 +59,7 @@ playList_router.route('/playlists')
             error_handler(res, new BadRequest());
                 return;
         }
-        const playLists = myWrapper.getPlaylistisByData(unqfy, playlist_data);
+        const playLists = unqfy.getPlaylistisByData(playlist_data);
         res.status(200);
         res.json(playLists.map(playList => playList.toJSON()));
     });    
