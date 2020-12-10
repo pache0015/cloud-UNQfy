@@ -1,13 +1,12 @@
-const NewsletterConnector = require('./newsletterConnector.js');
+const NewsletterConnector = require('./newletterConnector.js');
 const notifier  = new NewsletterConnector();
 
 class Newsletter{
-    updateState(json){
+    update(json){
         const subject = `Nuevo album ${json.album}`;
         const message = `Tu artista ${json.artist} publicó su nuevo album ${json.album}!!!`;
-        notifier.notifySubscribers(json.artistId, subject, message);
+        notifier.notify(json.artistId, subject, message);
     }   
-
 }
 
 module.exports = Newsletter;

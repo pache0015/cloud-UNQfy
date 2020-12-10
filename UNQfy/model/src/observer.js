@@ -14,7 +14,7 @@ class ObserverMaster{
     }
     
     notifyAll(aJson){
-        this._observersSlayers.forEach(obs => { obs.updateState(aJson); });    
+        this._observersSlayers.forEach(obs => { obs.update(aJson); });    
     }
 }
 

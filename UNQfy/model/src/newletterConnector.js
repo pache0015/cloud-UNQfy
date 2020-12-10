@@ -1,7 +1,7 @@
 const rp = require('request-promise');
 
 class NewsletterConnector {
-  notifySubscribers(artistId, subject, message) {
+  notify(artistId, subject, message) {
     const options = {
       uri: `http://localhost:8083/api/notify`,
       body: {
