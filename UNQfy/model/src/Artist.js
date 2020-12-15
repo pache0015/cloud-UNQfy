@@ -1,4 +1,6 @@
 const Adder = require('./EntityManager.js');
+const Observer = require('./observer.js');
+const observer = new Observer();
 
 class Artist extends Adder{
     constructor(aName, aCountry){
@@ -11,6 +13,7 @@ class Artist extends Adder{
     get albums(){ return this.myElements; }
 
     addAlbum(anAlbum){
+        observer.notifyAll({album:anAlbum.name, artist: this.name, artistId:this.id});   
         this.addElement(anAlbum);
     }
 
