@@ -10,7 +10,7 @@ const PlayListGenerator = require('./model/src/PlayListGenerator.js');
 
 const PartialSearcher = require('./model/src/PartialSearcher.js');
 
-const {ArtistNameAlreadyInUse, ArtistNotFound, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
+const {ArtistNameAlreadyInUse, UserNameAlreadyInUse, AlreadyExist} = require('./model/src/exceptions.js');
 const _instance = require('./model/src/IDGenerator.js');
 const UserManager = require("./model/src/UserManager");
 
@@ -61,10 +61,6 @@ class UNQfy {
     return aTrack;
   }
 
-  addAlbumsFromSpotify(aListOfAlbumsFromSpotify){
-    //const list = aListOfAlbumsFromSpotify;
-    
-  }
   getArtistById(id) {
     const artist = getEntity(this._artists, id);
     return artist;

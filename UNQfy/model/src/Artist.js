@@ -13,7 +13,7 @@ class Artist extends Adder{
     get albums(){ return this.myElements; }
 
     addAlbum(anAlbum){
-        observer.notifyAll({album:anAlbum.name, artist: this.name, artistId:this.id});   
+        observer.notifyAll({album:anAlbum.name, artist: this.name, artistId: this.id});   
         this.addElement(anAlbum);
     }
 
